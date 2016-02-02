@@ -6,15 +6,16 @@ using DAL.Models;
 using DAL.Repositories.IRepo;
 using DAL.UOW;
 using System.Data.Entity;
+using DAL.Base;
 
 namespace DAL.Repositories
 {
     public class CategoryRepo : ICategoryRepo
     {
-        private readonly KBContext _context;
-        public CategoryRepo(KBUOW uow)
+        private readonly IKBContext _context;
+        public CategoryRepo(IUnitOfWork uow)
         {
-            _context = uow.Context;
+            _context = uow.Context as IKBContext;
         }
 
         public IQueryable<CategoryVO> All
@@ -56,11 +57,11 @@ namespace DAL.Repositories
         {
             if(category.CategoryID == default(int))
             {
-                _context.Entry(category).State = EntityState.Added;
+                _context.SetAdd(category);
             }
             else
             {
-                _context.Entry(category).State = EntityState.Modified;
+                _context.SetModified(category);
             }
         }
     }

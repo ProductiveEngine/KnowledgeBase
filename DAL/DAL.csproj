@@ -49,7 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Accessor\CategoryAccessor.cs" />
+    <Compile Include="Base\IContext.cs" />
     <Compile Include="Base\BaseContext.cs" />
     <Compile Include="Base\ContextHelpers.cs" />
     <Compile Include="Base\IObjectWithState.cs" />

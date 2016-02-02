@@ -7,6 +7,11 @@ namespace DAL.Models
 {
     public class BaseVO : IObjectWithState
     {
+        public BaseVO()
+        {
+            CreatedDate = DateTime.Now;
+        }
+
         [Required]
         [StringLength(50, MinimumLength = 3)]
         [DataType(DataType.Text)]
@@ -15,12 +20,11 @@ namespace DAL.Models
         [StringLength(500)]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
-
+    
         [Required]
         [DataType(DataType.DateTime)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreatedDate { get; set; }
-
+        
         [DataType(DataType.DateTime)]        
         public DateTime? ModifiedDate { get; set; }
 

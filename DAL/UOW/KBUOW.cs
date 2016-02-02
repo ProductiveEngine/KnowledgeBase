@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace DAL.UOW
 {
-    public class KBUOW: IUnitOfWork<KBContext>
+    public class KBUOW<TContext>: IUnitOfWork 
+        where TContext : IContext, new()
     {        
-        private readonly KBContext _context;
+        private readonly IContext _context;
 
         public KBUOW()
         {
-            _context = new KBContext();
+            _context = new TContext();
         }
 
-        public KBUOW(KBContext context)
+        public KBUOW(IContext context)
         {
             _context = context;
         }
@@ -26,9 +27,9 @@ namespace DAL.UOW
             return _context.SaveChanges();
         }
 
-        public KBContext Context
+        public IContext Context
         {
-            get { return _context; }
+            get { return (TContext)_context; }
         }
 
         public void Dispose()

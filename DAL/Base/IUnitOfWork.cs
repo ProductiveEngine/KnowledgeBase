@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace DAL.Base
 {
-    public interface IUnitOfWork<TContext> : IDisposable where TContext : DbContext
+    public interface IUnitOfWork: IDisposable
     {
         int Save();
-        TContext Context { get; }
+        IContext Context { get; }
     }
 }
