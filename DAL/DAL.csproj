@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accessor\CategoryAccessor.cs" />
+    <Compile Include="Accessors\CategoryAccessor.cs" />
     <Compile Include="Base\IContext.cs" />
     <Compile Include="Base\BaseContext.cs" />
     <Compile Include="Base\ContextHelpers.cs" />

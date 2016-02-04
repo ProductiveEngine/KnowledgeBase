@@ -4,7 +4,6 @@ using System.Linq.Expressions;
 using DAL.Contexts;
 using DAL.Models;
 using DAL.Repositories.IRepo;
-using DAL.UOW;
 using System.Data.Entity;
 using DAL.Base;
 
@@ -12,10 +11,10 @@ namespace DAL.Repositories
 {
     public class CategoryRepo : ICategoryRepo
     {
-        private readonly IKBContext _context;
+        private readonly KBContext _context;
         public CategoryRepo(IUnitOfWork uow)
         {
-            _context = uow.Context as IKBContext;
+            _context = uow.Context as KBContext;
         }
 
         public IQueryable<CategoryVO> All
@@ -25,6 +24,14 @@ namespace DAL.Repositories
                 return _context.Categories;
             }
         }
+        //public List<Customer> AllCustomers
+        //{
+        //    get { return _context.Customers.ToList(); }
+        //}
+        //public List<Customer> AllCustomersWhoHaveOrdered
+        //{
+        //    get { return _context.Customers.Where(c => c.Orders.Any()).ToList(); }
+        //}
 
         public IQueryable<CategoryVO> AllIncluding(params Expression<Func<CategoryVO, object>>[] includeProperties)
         {
@@ -62,6 +69,18 @@ namespace DAL.Repositories
             else
             {
                 _context.SetModified(category);
+            }
+        }
+        public void InsertOrUpdateGraph(CategoryVO customerGraph)
+        {
+            if (customerGraph.State == State.Added)
+            {
+                _context.Categories.Add(customerGraph);
+            }
+            else
+            {
+                _context.Categories.Add(customerGraph);
+                _context.ApplyStateChanges();
             }
         }
     }

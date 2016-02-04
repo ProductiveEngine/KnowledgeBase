@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DAL;
-using DAL.Accessor;
+using DAL.Accessors;
 using System.Linq;
 using DAL.Models;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace KBTest
             _categoryAccessor.Repo.InsertOrUpdate(cat);
             _categoryAccessor.Save();
 
-            List<CategoryVO> q = _categoryAccessor.Repo.AllIncluding(x => x.Title == "Databases").ToList();
+            List<CategoryVO> q = _categoryAccessor.Repo.All.Where(x => x.Title == "Databases").ToList();
 
             if (q == null || q.Count == 0)
             {
@@ -41,3 +41,52 @@ namespace KBTest
         }
     }
 }
+//public void CanInsertCustomerWithOrderIntoDatabase()
+//{
+//    string guidStoredInCompanyForTesting = Guid.NewGuid().ToString();
+//    ProductReference bikeProduct;
+//    using (var refRepo = new ReferenceDataRepository())
+//    {
+//        bikeProduct = refRepo.Products.FirstOrDefault(p => p.ProductNumber == "BK-R68R-44");
+//    }
+//    using (var uow = new UnitOfWork<CustomerServiceContext>())
+//    {
+//        using (var repo = new CustomerRepository(uow))
+//        {
+//            repo.InsertOrUpdateGraph(new Customer
+//            {
+//                FirstName = "Julie",
+//                LastName = "Lerman",
+//                Phone = "802 555 1212",
+//                EmailAddress = "julielerman@gmail.com",
+//                Addresses = new List<Address> { new Address { Street1 = "Main St", City = "Anytown" } },
+//                Title = "Ms.",
+//                CompanyName = guidStoredInCompanyForTesting,
+//                Orders = new List<Order>
+//                                               {
+//                                                 new Order
+//                                                   {
+//                                                     OrderDate = DateTime.Now,
+//                                                     DueDate = DateTime.Now.AddDays(7),
+//                                                     ModifiedDate = DateTime.Now,
+//                                                     LineItems = new List<LineItem>
+//                                                                   {
+//                                                                     new LineItem
+//                                                                       {
+//                                                                         OrderQty = 1,
+//                                                                         ProductId = bikeProduct.ProductId,
+//                                                                         UnitPrice = bikeProduct.ListPrice
+//                                                                       }
+//                                                                   }
+//                                                   }
+//                                               }
+//            }
+//                                    );
+//            uow.Save();
+//        }
+//    }
+//    using (var repo = new CustomerRepository(new UnitOfWork<CustomerServiceContext>()))
+//    {
+//        Assert.IsTrue(repo.All.Any(c => c.CompanyName == guidStoredInCompanyForTesting));
+//    }
+//}

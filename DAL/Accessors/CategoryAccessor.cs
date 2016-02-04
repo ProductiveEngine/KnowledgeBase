@@ -2,7 +2,7 @@
 using DAL.Repositories;
 using DAL.UOW;
 
-namespace DAL.Accessor
+namespace DAL.Accessors
 {
     public class CategoryAccessor
     {
