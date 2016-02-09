@@ -131,6 +131,10 @@
       <Project>{46bbd1b5-b7ba-40f5-a6ab-d97289b143a5}</Project>
       <Name>KnolwdgeBase.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModuleSubCategory\ModuleSubCategory.csproj">
+      <Project>{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}</Project>
+      <Name>ModuleSubCategory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\ModuleCategory\ModuleCategory.csproj">
       <Project>{c7cd6963-8809-48ec-ac5c-a115f26e93c0}</Project>
       <Name>ModuleCategory</Name>
