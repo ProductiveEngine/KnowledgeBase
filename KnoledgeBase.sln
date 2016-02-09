@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnolwdgeBase.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleCategory", "Modules\ModuleCategory\ModuleCategory.csproj", "{C7CD6963-8809-48EC-AC5C-A115F26E93C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSubCategory", "ModuleSubCategory\ModuleSubCategory.csproj", "{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,11 +49,16 @@ Global
 		{C7CD6963-8809-48EC-AC5C-A115F26E93C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7CD6963-8809-48EC-AC5C-A115F26E93C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7CD6963-8809-48EC-AC5C-A115F26E93C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14809B71-9FA7-4F7B-BF7D-2618447DAEA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C7CD6963-8809-48EC-AC5C-A115F26E93C0} = {87D3FD46-479A-49EC-80F4-9DBE8345A9FE}
+		{14809B71-9FA7-4F7B-BF7D-2618447DAEA8} = {87D3FD46-479A-49EC-80F4-9DBE8345A9FE}
 	EndGlobalSection
 EndGlobal

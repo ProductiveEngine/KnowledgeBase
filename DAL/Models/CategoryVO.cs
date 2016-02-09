@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
     [Table("Categories")]
-    public class CategoryVO : BaseVO
+    public class CategoryVO : BaseVO, IDataErrorInfo
     {
         [Key]
         public int CategoryID { get; set; }
@@ -14,5 +15,36 @@ namespace DAL.Models
         public byte[] RowVersion { get; set; }
 
         public virtual ICollection<SubCategoryVO> SubCategories { get; set; }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = null;
+
+                switch (columnName)
+                {
+                    case "Title":
+                        if (string.IsNullOrEmpty(Title))
+                        {
+                            error = "Title required";
+                        }                                           
+                        break;
+                }
+                Error = error;
+                return (Error);
+            }
+        }
+
+        private string _Error;
+        public string Error
+        {
+            get { return _Error; }
+            private set
+            {
+                _Error = value;
+                OnPropertyChanged("Error");
+            }
+        }
     }
 }

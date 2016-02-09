@@ -1,11 +1,12 @@
 ﻿using DAL.Base;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
-    public class BaseVO : IObjectWithState
+    public class BaseVO : IObjectWithState, INotifyPropertyChanged
     {
         public BaseVO()
         {
@@ -30,5 +31,12 @@ namespace DAL.Models
 
         [NotMapped]
         public State State { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyname)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+        }        
     }
 }
