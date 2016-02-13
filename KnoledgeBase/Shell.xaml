@@ -1,0 +1,28 @@
+﻿<Window x:Class="KnoledgeBase.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:KnoledgeBase"        
+        xmlns:inf="clr-namespace:KnolwdgeBase.Infrastructure;assembly=KnolwdgeBase.Infrastructure"
+        mc:Ignorable="d"
+        Title="Shell" Height="561.3" Width="664.8">
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>
+            
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusBarRegion}" DockPanel.Dock="Bottom" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+
+            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+
+            <!--<TabControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Header" Value="{Binding Content.DataContext.ViewName, RelativeSource={RelativeSource Self}}" />
+                    </Style>
+                </TabControl.ItemContainerStyle>
+            </TabControl>-->
+        </DockPanel>
+    </Grid>
+</Window>
