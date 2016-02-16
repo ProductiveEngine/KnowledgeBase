@@ -54,7 +54,27 @@ namespace KB.Business
                 OnPropertyChanged("LastUpdated");
             }
         }
+        private string _email;
+        public string Email
+        {
+            get { return _email; }
+            set
+            {
+                _email = value;
+                OnPropertyChanged("Email");
+            }
+        }
 
+        private string _imagePath;
+        public string ImagePath
+        {
+            get { return _imagePath; }
+            set
+            {
+                _imagePath = value;
+                OnPropertyChanged("ImagePath");
+            }
+        }
         #endregion //Properties
 
         #region INotifyPropertyChanged

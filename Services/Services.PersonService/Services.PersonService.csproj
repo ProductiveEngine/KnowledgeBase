@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{46BBD1B5-B7BA-40F5-A6AB-D97289B143A5}</ProjectGuid>
+    <ProjectGuid>{ECF30690-95AB-4167-99AF-61EA18371BD0}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KnolwdgeBase.Infrastructure</RootNamespace>
-    <AssemblyName>KnolwdgeBase.Infrastructure</AssemblyName>
+    <RootNamespace>Services.PersonService</RootNamespace>
+    <AssemblyName>Services.PersonService</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,9 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf">
+      <HintPath>..\..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -52,11 +54,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Events.cs" />
-    <Compile Include="GlobalCommands.cs" />
-    <Compile Include="IPersonRepository.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="IViewModel.cs" />
+    <Compile Include="PersonService.cs" />
+    <Compile Include="PersonServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -70,15 +69,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RegionNames.cs" />
-    <Compile Include="Services\IPersonService.cs" />
-    <Compile Include="Services\ServiceResult.cs" />
-    <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,9 +80,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\KB.Business\KB.Business.csproj">
-      <Project>{5F3DAF58-D67A-4122-A710-4E5D714B59D4}</Project>
+    <ProjectReference Include="..\..\Business\KB.Business\KB.Business.csproj">
+      <Project>{5f3daf58-d67a-4122-a710-4e5d714b59d4}</Project>
       <Name>KB.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
+      <Project>{46bbd1b5-b7ba-40f5-a6ab-d97289b143a5}</Project>
+      <Name>KnolwdgeBase.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
