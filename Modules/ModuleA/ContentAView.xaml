@@ -20,6 +20,24 @@
             </StackPanel>
         </DataTemplate>
 
+        <DataTemplate x:Key="PersonIconTemplate">
+            <StackPanel Margin="5" Width="100" >
+                <Image Source="{Binding ImagePath}" Height="75" Width="75">
+                    <Image.ToolTip>
+                        <TextBlock Text="{Binding Email}" FontSize="12" FontStyle="Italic" />
+                    </Image.ToolTip>
+                </Image>
+                <TextBlock FontSize="14" TextWrapping="Wrap"  >
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}, {1}" >
+                            <Binding Path="LastName" />
+                            <Binding Path="FirstName" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
     </UserControl.Resources>
 
     <Grid Margin="25" >
@@ -30,15 +48,82 @@
 
         <StackPanel Margin="10" Orientation="Horizontal">
             <ToggleButton IsChecked="{Binding IsBusy}" Content="IsBusy" Margin="4"/>
+            <ToggleButton x:Name="switchViewsToggleButton" Margin="4">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton">
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content" Value="Show List" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Content" Value="Show Icons" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+            <Button Command="{Binding EditPersonCommand}" Content="Edit Person" Margin="4" />
         </StackPanel>
+
+        <xctk:ChildWindow Grid.Row="1" Caption="Edit Person" IsModal="True" WindowStartupLocation="Center" WindowState="{Binding WindowState}" >
+            <Grid DataContext="{Binding SelectedPerson}" Margin="15" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="First Name:" />
+                <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
+
+                <TextBlock Text="Last Name:" Grid.Row="1" />
+                <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" />
+
+                <TextBlock Text="Age:" Grid.Row="2" />
+                <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" />
+
+                <TextBlock Text="Email:" Grid.Row="3" />
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" />
+            </Grid>
+        </xctk:ChildWindow>
 
         <xctk:BusyIndicator Grid.Row="1" IsBusy="{Binding IsBusy}" BusyContent="Loading People..."  >
             <ListBox ItemsSource="{Binding People}"
-                     ItemTemplate="{StaticResource PersonItemTemplate}">
-                
+                     SelectedItem="{Binding SelectedPerson}">
+                <ListBox.Style>
+                    <Style TargetType="ListBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=switchViewsToggleButton}" Value="True">
+                                <Setter Property="ItemTemplate" Value="{StaticResource PersonIconTemplate}" />
+                                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel  />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=switchViewsToggleButton}" Value="False">
+                                <Setter Property="ItemTemplate" Value="{StaticResource PersonItemTemplate}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Style>
             </ListBox>
         </xctk:BusyIndicator>
     </Grid>
 
 </UserControl>
+
+
+
+
+
+
 

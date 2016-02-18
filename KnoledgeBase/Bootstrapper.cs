@@ -4,8 +4,10 @@ using KB.Services;
 using KB.StatusBar;
 using KB.Toolbar;
 using Microsoft.Practices.Unity;
+using ModuleA;
 using Prism.Modularity;
 using Prism.Unity;
+using Services.PersonService;
 
 namespace KnoledgeBase
 {
@@ -26,12 +28,14 @@ namespace KnoledgeBase
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog catalog = new ModuleCatalog();
-            catalog.AddModule(typeof(ServicesModule));
-            catalog.AddModule(typeof(ToolbarModule));
-            catalog.AddModule(typeof (PeopleModule));
-            catalog.AddModule(typeof(StatusBarModule));
-            
-            
+            catalog.AddModule(typeof(PersonServiceModule));
+            catalog.AddModule(typeof(ModuleAModule));
+            //catalog.AddModule(typeof(ServicesModule));
+            //catalog.AddModule(typeof(ToolbarModule));
+            //catalog.AddModule(typeof (PeopleModule));
+            //catalog.AddModule(typeof(StatusBarModule));
+
+
             //catalog.AddModule(typeof(SubCatModule));            
             return catalog;
         }

@@ -171,6 +171,14 @@
       <Project>{9AAE7D27-8EB0-426C-AC66-D15BDA9FA9AC}</Project>
       <Name>KB.Toolbar</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\ModuleA\ModuleA.csproj">
+      <Project>{92BBD591-137B-419E-95DF-90B8BAAB3C19}</Project>
+      <Name>ModuleA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.PersonService\Services.PersonService.csproj">
+      <Project>{ECF30690-95AB-4167-99AF-61EA18371BD0}</Project>
+      <Name>Services.PersonService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Shell.xaml">

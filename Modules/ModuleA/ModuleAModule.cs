@@ -24,7 +24,7 @@ namespace ModuleA
         {
             _container.RegisterType<IContentAView, ContentAView>();
             _container.RegisterType<IContentAViewViewModel, ContentAViewViewModel>();
-
+            
             _manager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ContentAView));
         }
     }
