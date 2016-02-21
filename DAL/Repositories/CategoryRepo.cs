@@ -85,3 +85,12 @@ namespace DAL.Repositories
         }
     }
 }
+//For references objects
+//public IQueryable<ProductReference> Products
+//{
+//    get { return _context.Products.AsNoTracking(); }
+//}
+//public IQueryable<CustomerReference> Customers
+//{
+//    get { return _context.Customers.AsNoTracking(); }
+//}

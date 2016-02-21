@@ -10,9 +10,9 @@
         Title="Shell" Height="561.3" Width="664.8">
     <Grid>
         <DockPanel LastChildFill="True">
-            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>
+            <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>-->
             
-            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusBarRegion}" DockPanel.Dock="Bottom" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
+            <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusBarRegion}" DockPanel.Dock="Bottom" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>-->
 
             <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>
 

@@ -147,13 +147,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{01dfeed0-1917-4fe5-aa6b-1caa598210d9}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
       <Project>{46bbd1b5-b7ba-40f5-a6ab-d97289b143a5}</Project>
       <Name>KnolwdgeBase.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\CategoryModule\CategoryModule.csproj">
+      <Project>{69a76156-dd02-4c70-b7f5-3acdb8b9cf8a}</Project>
+      <Name>CategoryModule</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modules\KB.People\KB.People.csproj">
       <Project>{D5276B2F-B895-4185-A55A-30CDD2E14730}</Project>
@@ -174,6 +174,10 @@
     <ProjectReference Include="..\Modules\ModuleA\ModuleA.csproj">
       <Project>{92BBD591-137B-419E-95DF-90B8BAAB3C19}</Project>
       <Name>ModuleA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.BLService\Services.BLService.csproj">
+      <Project>{0b09e253-902d-4a66-94d5-28fa31bf21c9}</Project>
+      <Name>Services.BLService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Services\Services.PersonService\Services.PersonService.csproj">
       <Project>{ECF30690-95AB-4167-99AF-61EA18371BD0}</Project>

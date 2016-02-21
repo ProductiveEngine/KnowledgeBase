@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using CategoryModule;
+using KB.BL;
 using KB.People;
 using KB.Services;
 using KB.StatusBar;
@@ -28,8 +30,11 @@ namespace KnoledgeBase
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog catalog = new ModuleCatalog();
-            catalog.AddModule(typeof(PersonServiceModule));
-            catalog.AddModule(typeof(ModuleAModule));
+            catalog.AddModule(typeof(BLModule));
+            catalog.AddModule(typeof(ModuleCateogryModule));
+            //catalog.AddModule(typeof(PersonServiceModule));
+            //catalog.AddModule(typeof(ModuleAModule));
+
             //catalog.AddModule(typeof(ServicesModule));
             //catalog.AddModule(typeof(ToolbarModule));
             //catalog.AddModule(typeof (PeopleModule));

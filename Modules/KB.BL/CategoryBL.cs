@@ -1,14 +1,13 @@
-﻿using DAL.Accessors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.Accessors;
 using DAL.Models;
 
-namespace BL
-{    
+namespace KB.BL
+{
     public class CategoryBL
     {
         private readonly CategoryAccessor _categoryAccessor;
