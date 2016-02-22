@@ -63,14 +63,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{98695871-c15f-436d-834d-05e4f29f1b03}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Modules\KB.Services\KB.Services.csproj">
+      <Project>{81df9e6c-3832-4b85-8200-cb8ca8ec50f9}</Project>
+      <Name>KB.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.BLService\Services.BLService.csproj">
+      <Project>{0B09E253-902D-4A66-94D5-28FA31BF21C9}</Project>
+      <Name>Services.BLService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

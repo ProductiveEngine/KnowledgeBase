@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using DAL.Contexts;
-using DAL.Repositories;
-using DAL.UOW;
+using KB.BL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
@@ -13,12 +11,18 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
+            //DAL
             //var ConnStr = ConfigurationManager.AppSettings["Trackboard"];
             //Title Databases
-            using (var repo = new CategoryRepo(new KBUOW<KBContext>()))
-            {
-                Assert.IsTrue(repo.All.Any(c => c.Title == "Databases"));
-            }
+            //using (var repo = new CategoryRepo(new KBUOW<KBContext>()))
+            //{
+            //    var a = repo.All.Any(c => c.Title == "Databases");
+            //    Assert.IsTrue(repo.All.Any(c => c.Title == "Databases"));
+            //}
+
+            CategoryBL cBL = new CategoryBL();
+            Assert.IsTrue(cBL.GetAll().Any(c => c.Title == "Databases"));
+
         }
     }
 }

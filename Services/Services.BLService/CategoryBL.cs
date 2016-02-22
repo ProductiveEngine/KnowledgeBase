@@ -25,6 +25,11 @@ namespace KB.BL
             return catList;
         }
 
+        public IQueryable<CategoryVO> GetAll()
+        {            
+            return _categoryAccessor.Repo.All;            
+        }
+
         public Boolean Save(CategoryVO vo)
         {
             _categoryAccessor.Repo.InsertOrUpdate(vo);

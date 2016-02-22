@@ -19,14 +19,14 @@ namespace CategoryModule.ViewModels
 
         #region Properties
 
-        private ObservableCollection<CategoryVO> _Categories;
+        private ObservableCollection<CategoryVO> _categories;
 
         public ObservableCollection<CategoryVO> Categories
         {
-            get { return _Categories;}
+            get { return _categories;}
             set
             {
-                _Categories = value;
+                _categories = value;
                 OnPropertyChanged("Categories");
             }
         }
@@ -37,7 +37,7 @@ namespace CategoryModule.ViewModels
             : base(view)
         {
             _categoryBL = categoryBL;
-            _Categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());
+            _categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());            
         }
         #endregion //Constructors       
     }

@@ -35,8 +35,9 @@ namespace DAL.Models
                 return (Error);
             }
         }
-
+        
         private string _Error;
+        [NotMapped]
         public string Error
         {
             get { return _Error; }
