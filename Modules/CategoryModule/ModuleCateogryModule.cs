@@ -38,3 +38,25 @@ namespace CategoryModule
         }
     }
 }
+//private void DriversDataGrid_PreviewDeleteCommandHandler(object sender, ExecutedRoutedEventArgs e)
+//{
+//    if (e.Command == DataGrid.DeleteCommand)
+//    {
+//        if (!(MessageBox.Show("Are you sure you want to delete?", "Please confirm.", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+//        {
+//            // Cancel Delete.
+//            e.Handled = true;
+//        }
+//    }
+//}
+//private void Drivers_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+//{
+//    // Only Delete
+//    if (e.Action == NotifyCollectionChangedAction.Remove)
+//    {
+//        foreach (FormulaOneDriver driver in e.OldItems)
+//        {
+//            driver.Delete();
+//        }
+//    }
+//}

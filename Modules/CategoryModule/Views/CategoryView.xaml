@@ -7,15 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="359" d:DesignWidth="429">
     <StackPanel >
-        <DataGrid x:Name="gridCategory" Height="293" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Categories}"
-                  AlternatingRowBackground="Gainsboro"  AlternationCount="2"  AutoGenerateColumns="False">
+        
+        <DataGrid x:Name="gridCategory" Height="293" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"
+                  AutoGenerateColumns="False" RowEditEnding="gridCategory_RowEditEnding" CellEditEnding="gridCategory_CellEditEnding">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Derscription" Binding="{Binding Derscription}"/>
-                <DataGridTextColumn Header="Created Date" Binding="{Binding CreatedDate}"/>
-                <DataGridTextColumn Header="Modified Date" Binding="{Binding ModifiedDate}"/>
+                <DataGridTextColumn Header="Title" Binding = "{Binding Title, NotifyOnTargetUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Derscription" Binding = "{Binding Derscription, NotifyOnTargetUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Created Date" Binding="{Binding CreatedDate, NotifyOnTargetUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Modified Date" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="cmdSave" Content="Save" HorizontalAlignment="Right" Height="36" Margin="0,15,10,0" Width="103"/>
     </StackPanel>
+    
+    
 </UserControl>
