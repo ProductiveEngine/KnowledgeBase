@@ -5,39 +5,35 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLService.BL;
 using CategoryModule.Views;
-using DAL.Models;
-using KB.BL;
+using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Events;
 
 namespace CategoryModule.ViewModels
 {
     public class CategoryViewModel: ViewModelBase, ICategoryViewModel
-    {
+    {        
         private readonly CategoryBL _categoryBL;
 
         #region Properties
 
-        private ObservableCollection<CategoryVO> _categories;
+        private ObservableCollection<Category> _categories;
 
-        public ObservableCollection<CategoryVO> Categories
+        public ObservableCollection<Category> Categories
         {
-            get { return _categories;}
-            set
-            {
-                _categories = value;
-                OnPropertyChanged("Categories");
-            }
-        }
-
+            get { return _categories; }
+            set { _categories = value; }
+        }      
         #endregion //Properties
         #region Constructors
+
         public CategoryViewModel(ICategoryView view, CategoryBL categoryBL)
             : base(view)
         {
             _categoryBL = categoryBL;
-            _categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());            
+            _categories = new ObservableCollection<Category>(_categoryBL.FindAll());            
         }
         #endregion //Constructors       
     }

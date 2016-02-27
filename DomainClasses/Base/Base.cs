@@ -1,14 +1,13 @@
-﻿using DAL.Base;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DAL.Models
+namespace DomainClasses.Base
 {
-    public class BaseVO : IObjectWithState, INotifyPropertyChanged
+    public class Base : IObjectWithState, INotifyPropertyChanged
     {
-        public BaseVO()
+        public Base()
         {
             CreatedDate = DateTime.Now;
         }

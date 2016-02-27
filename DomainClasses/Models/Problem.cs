@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("Problems")]
-    public class ProblemVO : BaseVO
+    public class Problem : Base.Base
     {
         [Key]
         public int ProblemID { get; set; }
@@ -15,7 +16,7 @@ namespace DAL.Models
         public string Tags { get; set; }
 
         public int? SubCategoryID { get; set; }
-        public virtual SubCategoryVO SubCategory { get; set; }
-        public virtual ICollection<SolutionVO> Solutions { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
+        public virtual ICollection<Solution> Solutions { get; set; }
     }
 }

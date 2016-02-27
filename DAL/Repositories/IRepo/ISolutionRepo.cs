@@ -1,8 +1,8 @@
-﻿using DAL.Models;
+﻿using DomainClasses.Models;
 
 namespace DAL.Repositories.IRepo
 {
-    public interface ISolutionRepo : IEntityRepo<SolutionVO>
+    public interface ISolutionRepo : IEntityRepo<Solution>
     {
 
     }

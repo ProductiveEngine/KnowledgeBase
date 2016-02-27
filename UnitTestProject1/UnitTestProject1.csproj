@@ -71,13 +71,17 @@
       <Project>{98695871-c15f-436d-834d-05e4f29f1b03}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
+      <Project>{9b7e22f0-b173-4b44-9b23-f26ca856a161}</Project>
+      <Name>DomainClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\KB.Services\KB.Services.csproj">
       <Project>{81df9e6c-3832-4b85-8200-cb8ca8ec50f9}</Project>
       <Name>KB.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.BLService\Services.BLService.csproj">
+    <ProjectReference Include="..\Services\Services.BLService\BLService.csproj">
       <Project>{0B09E253-902D-4A66-94D5-28FA31BF21C9}</Project>
-      <Name>Services.BLService</Name>
+      <Name>BLService</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

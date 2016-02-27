@@ -119,13 +119,17 @@
       <Project>{98695871-C15F-436D-834D-05E4F29F1B03}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\DomainClasses\DomainClasses.csproj">
+      <Project>{9B7E22F0-B173-4B44-9B23-F26CA856A161}</Project>
+      <Name>DomainClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
       <Project>{46BBD1B5-B7BA-40F5-A6AB-D97289B143A5}</Project>
       <Name>KnolwdgeBase.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Services\Services.BLService\Services.BLService.csproj">
+    <ProjectReference Include="..\..\Services\Services.BLService\BLService.csproj">
       <Project>{0b09e253-902d-4a66-94d5-28fa31bf21c9}</Project>
-      <Name>Services.BLService</Name>
+      <Name>BLService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

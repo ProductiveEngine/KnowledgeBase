@@ -1,15 +1,9 @@
 ﻿using System.Windows;
+using BLService;
 using CategoryModule;
-using KB.BL;
-using KB.People;
-using KB.Services;
-using KB.StatusBar;
-using KB.Toolbar;
 using Microsoft.Practices.Unity;
-using ModuleA;
 using Prism.Modularity;
 using Prism.Unity;
-using Services.PersonService;
 
 namespace KnoledgeBase
 {

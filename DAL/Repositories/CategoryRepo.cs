@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Linq.Expressions;
 using DAL.Contexts;
-using DAL.Models;
 using DAL.Repositories.IRepo;
 using System.Data.Entity;
 using DAL.Base;
+using DomainClasses.Base;
+using DomainClasses.Models;
 
 namespace DAL.Repositories
 {
@@ -17,7 +18,7 @@ namespace DAL.Repositories
             _context = uow.Context as KBContext;
         }
 
-        public IQueryable<CategoryVO> All
+        public IQueryable<Category> All
         {
             get
             {
@@ -33,9 +34,9 @@ namespace DAL.Repositories
         //    get { return _context.Customers.Where(c => c.Orders.Any()).ToList(); }
         //}
 
-        public IQueryable<CategoryVO> AllIncluding(params Expression<Func<CategoryVO, object>>[] includeProperties)
+        public IQueryable<Category> AllIncluding(params Expression<Func<Category, object>>[] includeProperties)
         {
-            IQueryable<CategoryVO> query = _context.Categories;
+            IQueryable<Category> query = _context.Categories;
 
             foreach(var includeProperty in includeProperties)
             {
@@ -55,12 +56,12 @@ namespace DAL.Repositories
             _context.Dispose();
         }
 
-        public CategoryVO Find(int id)
+        public Category Find(int id)
         {
             return _context.Categories.Find(id);
         }
 
-        public void InsertOrUpdate(CategoryVO category)
+        public void InsertOrUpdate(Category category)
         {
             if(category.CategoryID == default(int))
             {
@@ -71,7 +72,7 @@ namespace DAL.Repositories
                 _context.SetModified(category);
             }
         }
-        public void InsertOrUpdateGraph(CategoryVO customerGraph)
+        public void InsertOrUpdateGraph(Category customerGraph)
         {
             if (customerGraph.State == State.Added)
             {

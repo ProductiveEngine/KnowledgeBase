@@ -1,15 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("Comments")]
-    public class CommentVO : BaseVO
+    public class Comment : Base.Base
     {
         [Key]
         public int CommentID { get; set; }
 
         public int? StepID { get; set; }
-        public virtual StepVO Step { get; set; }
+        public virtual Step Step { get; set; }
     }
 }

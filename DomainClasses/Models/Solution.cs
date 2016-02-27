@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("Solutions")]
-    public class SolutionVO : BaseVO
+    public class Solution : Base.Base
     {
         [Key]
         public int SolutionId { get; set; }
@@ -16,8 +17,8 @@ namespace DAL.Models
         public float Rating { get; set; }
 
         public int ProblemID { get; set; }
-        public virtual ProblemVO Problem { get; set; }
+        public virtual Problem Problem { get; set; }
 
-        public virtual ICollection<StepVO> Steps { get; set; }
+        public virtual ICollection<Step> Steps { get; set; }
     }
 }

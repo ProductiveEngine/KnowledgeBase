@@ -2,11 +2,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("Categories")]
-    public class CategoryVO : BaseVO, IDataErrorInfo
+    public class Category : Base.Base, IDataErrorInfo
     {
         [Key]
         public int CategoryID { get; set; }
@@ -14,7 +15,7 @@ namespace DAL.Models
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        public virtual ICollection<SubCategoryVO> SubCategories { get; set; }
+        public virtual ICollection<SubCategory> SubCategories { get; set; }
 
         public string this[string columnName]
         {

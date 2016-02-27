@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using KB.BL;
+using BLService.BL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1

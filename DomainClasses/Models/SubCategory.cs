@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("SubCategories")]
-    public class SubCategoryVO : BaseVO
+    public class SubCategory : Base.Base
     {
         [Key]
         public int SubCategoryID { get; set; }
@@ -16,7 +17,7 @@ namespace DAL.Models
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        public virtual CategoryVO Category { get; set; }
-        public virtual ICollection<ProblemVO> Problems { get; set; }        
+        public virtual Category Category { get; set; }
+        public virtual ICollection<Problem> Problems { get; set; }        
     }
 }

@@ -65,7 +65,7 @@
             <Button Command="{Binding EditPersonCommand}" Content="Edit Person" Margin="4" />
         </StackPanel>
 
-        <xctk:ChildWindow Grid.Row="1" Caption="Edit Person" IsModal="True" WindowStartupLocation="Center" WindowState="{Binding WindowState}" >
+        <!--<xctk:ChildWindow Grid.Row="1" Caption="Edit Person" IsModal="True" WindowStartupLocation="Center" WindowState="{Binding WindowState}" >
             <Grid DataContext="{Binding SelectedPerson}" Margin="15" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -116,7 +116,9 @@
                     </Style>
                 </ListBox.Style>
             </ListBox>
-        </xctk:BusyIndicator>
+        </xctk:BusyIndicator>-->
+    
+    
     </Grid>
 
 </UserControl>

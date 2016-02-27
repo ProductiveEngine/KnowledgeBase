@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using DomainClasses.Base;
 
 namespace DAL.Base
 {

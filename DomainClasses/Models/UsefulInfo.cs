@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DomainClasses.Base;
 
-namespace DAL.Models
+namespace DomainClasses.Models
 {
     [Table("UsefulInfos")]
-    public class UsefulInfoVO : BaseVO
+    public class UsefulInfo : Base.Base
     {
         [Key]
         public int UsefulInfoID { get; set; }
@@ -19,7 +20,7 @@ namespace DAL.Models
         public string Tags { get; set; }
 
         public int? ProblemID { get; set; }
-        public virtual ProblemVO Problem { get; set; }
+        public virtual Problem Problem { get; set; }
     }
 
     public enum ProgamingLanguage

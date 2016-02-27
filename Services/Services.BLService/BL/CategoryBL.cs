@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Accessors;
-using DAL.Models;
+using DomainClasses.Models;
 
-namespace KB.BL
+namespace BLService.BL
 {
     public class CategoryBL
     {
@@ -17,20 +17,20 @@ namespace KB.BL
             _categoryAccessor = new CategoryAccessor();
         }
 
-        public List<CategoryVO> FindAll()
+        public List<Category> FindAll()
         {
-            List<CategoryVO> catList = null;
+            List<Category> catList = null;
             catList = _categoryAccessor.Repo.All.ToList();
 
             return catList;
         }
 
-        public IQueryable<CategoryVO> GetAll()
+        public IQueryable<Category> GetAll()
         {            
             return _categoryAccessor.Repo.All;            
         }
 
-        public Boolean Save(CategoryVO vo)
+        public Boolean Save(Category vo)
         {
             _categoryAccessor.Repo.InsertOrUpdate(vo);
             _categoryAccessor.Save();

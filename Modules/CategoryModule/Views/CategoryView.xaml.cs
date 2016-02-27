@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DAL.Models;
+using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 
 namespace CategoryModule.Views
@@ -22,6 +10,7 @@ namespace CategoryModule.Views
     /// </summary>
     public partial class CategoryView : UserControl, ICategoryView 
     {
+        
         public CategoryView()
         {
             InitializeComponent();
@@ -32,25 +21,14 @@ namespace CategoryModule.Views
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
         }
-
+          
         private void gridCategory_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        {            
-            // Only act on Commit
-            if (e.EditAction == DataGridEditAction.Commit)
-            {
-                CategoryVO cVO = e.Row.DataContext as CategoryVO;
-                //driver.Save();
-            }
-        }
-
-        private void ScrollViewer_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            var cVO = e;
-        }
+            //var _emp = e.Row.Item as Employee;
+            Category cVO = e.Row.DataContext as Category;
 
-        private void gridCategory_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            TextBox textBox = e.EditingElement as TextBox;
+            MessageBox.Show(string.Format("updated record:\n{0}\n{1}\n{2}",
+                cVO.Title, cVO.Description, cVO.CreatedDate));
         }
     }
 }

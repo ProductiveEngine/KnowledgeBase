@@ -1,8 +1,8 @@
-﻿using DAL.Models;
+﻿using DomainClasses.Models;
 
 namespace DAL.Repositories.IRepo
 {
-    public interface IStepRepo : IEntityRepo<StepVO>
+    public interface IStepRepo : IEntityRepo<Step>
     {
 
     }

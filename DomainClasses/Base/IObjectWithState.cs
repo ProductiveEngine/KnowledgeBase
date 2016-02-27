@@ -1,4 +1,4 @@
-﻿namespace DAL.Base
+﻿namespace DomainClasses.Base
 {
     public interface IObjectWithState
     {
