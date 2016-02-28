@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CategoryModule.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="359" d:DesignWidth="429">
-    <StackPanel >
-        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Categories}" RowEditEnding="gridCategory_RowEditEnding">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="tes" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
-                <DataGridTextColumn Header="dd" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+             d:DesignHeight="359" d:DesignWidth="488">
+    <DataGrid x:Name="gridCategory" AutoGenerateColumns="False" ItemsSource="{Binding Categories}" RowEditEnding="GridCategory_RowEditEnding">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+            <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+            <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+            <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+        </DataGrid.Columns>
+    </DataGrid>
 </UserControl>

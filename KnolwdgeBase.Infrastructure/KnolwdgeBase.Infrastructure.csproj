@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Events.cs" />
     <Compile Include="GlobalCommands.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />

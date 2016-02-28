@@ -35,6 +35,15 @@ namespace CategoryModule.ViewModels
             _categoryBL = categoryBL;
             _categories = new ObservableCollection<Category>(_categoryBL.FindAll());            
         }
-        #endregion //Constructors       
+        #endregion //Constructors  
+
+        public Boolean ManageSave(Category category)
+        {
+            bool ok = false;
+            ok = _categoryBL.Save(category);
+   
+            return ok;
+        }
+             
     }
 }

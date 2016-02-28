@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using CategoryModule.ViewModels;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 
@@ -10,7 +12,8 @@ namespace CategoryModule.Views
     /// </summary>
     public partial class CategoryView : UserControl, ICategoryView 
     {
-        
+        CategoryViewModel _cvm = null;
+
         public CategoryView()
         {
             InitializeComponent();
@@ -22,13 +25,31 @@ namespace CategoryModule.Views
             set { DataContext = value; }
         }
           
-        private void gridCategory_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        private void GridCategory_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
         {
-            //var _emp = e.Row.Item as Employee;
-            Category cVO = e.Row.DataContext as Category;
+            bool ok = false;
 
-            MessageBox.Show(string.Format("updated record:\n{0}\n{1}\n{2}",
-                cVO.Title, cVO.Description, cVO.CreatedDate));
+            //var _emp = e.Row.Item as Employee;
+            Category cat = e.Row.DataContext as Category;
+            _cvm = (CategoryViewModel)ViewModel;
+            cat.ModifiedDate = DateTime.Now;
+
+            ok = _cvm.ManageSave(cat);
+            
+            if (ok)
+            {                
+                MessageBox.Show(Properties.Resources.SaveSuccess,
+                    Properties.Resources.SaveCategoryResult,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.SaveSuccess,
+                    Properties.Resources.SaveCategoryResult,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Exclamation);
+            }            
         }
     }
 }

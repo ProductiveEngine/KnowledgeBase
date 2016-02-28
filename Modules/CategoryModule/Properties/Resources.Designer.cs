@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace CategoryModule.Properties {
+    using System;
     
     
     /// <summary>
@@ -37,7 +38,7 @@ namespace CategoryModule.Properties {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if ((resourceMan == null)) {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CategoryModule.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
@@ -56,6 +57,24 @@ namespace CategoryModule.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Category result.
+        /// </summary>
+        internal static string SaveCategoryResult {
+            get {
+                return ResourceManager.GetString("SaveCategoryResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category saved successfully.
+        /// </summary>
+        internal static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
             }
         }
     }
