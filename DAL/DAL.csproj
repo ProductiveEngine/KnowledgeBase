@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accessors\CategoryAccessor.cs" />
+    <Compile Include="Accessors\SubCategoryAccessor.cs" />
     <Compile Include="Base\IContext.cs" />
     <Compile Include="Base\BaseContext.cs" />
     <Compile Include="Base\ContextHelpers.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Repositories\IRepo\IStepRepo.cs" />
     <Compile Include="Repositories\IRepo\ISubCategoryRepo.cs" />
     <Compile Include="Repositories\IRepo\IUsefulInfoRepo.cs" />
+    <Compile Include="Repositories\SubCategoryRepo.cs" />
     <Compile Include="UOW\KBUOW.cs" />
   </ItemGroup>
   <ItemGroup />

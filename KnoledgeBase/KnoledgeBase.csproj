@@ -183,6 +183,10 @@
       <Project>{92BBD591-137B-419E-95DF-90B8BAAB3C19}</Project>
       <Name>ModuleA</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\SubCategoryModule\SubCategoryModule.csproj">
+      <Project>{C3BBC5EE-DD6F-4D91-B2AD-DBB9B315E9C7}</Project>
+      <Name>SubCategoryModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.BLService\BLService.csproj">
       <Project>{0b09e253-902d-4a66-94d5-28fa31bf21c9}</Project>
       <Name>BLService</Name>

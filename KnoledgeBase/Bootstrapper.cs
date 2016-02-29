@@ -4,6 +4,7 @@ using CategoryModule;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
+using SubCategoryModule;
 
 namespace KnoledgeBase
 {
@@ -25,7 +26,8 @@ namespace KnoledgeBase
         {
             ModuleCatalog catalog = new ModuleCatalog();
             catalog.AddModule(typeof(BLModule));
-            catalog.AddModule(typeof(ModuleCateogryModule));
+            catalog.AddModule(typeof(ModuleSubCateogryModule));
+            //catalog.AddModule(typeof(ModuleCateogryModule));
             //catalog.AddModule(typeof(PersonServiceModule));
             //catalog.AddModule(typeof(ModuleAModule));
 
