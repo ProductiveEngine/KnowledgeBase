@@ -117,6 +117,10 @@
       <Project>{0b09e253-902d-4a66-94d5-28fa31bf21c9}</Project>
       <Name>BLService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CategoryModule\CategoryModule.csproj">
+      <Project>{69A76156-DD02-4C70-B7F5-3ACDB8B9CF8A}</Project>
+      <Name>CategoryModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

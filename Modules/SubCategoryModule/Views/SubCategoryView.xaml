@@ -6,7 +6,32 @@
              xmlns:local="clr-namespace:SubCategoryModule.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+    
+    <StackPanel>
+
+        <!--<DataGridComboBoxColumn Header="MySelections"  
+                        SelectedItemBinding="{Binding MySelectionsProperty}" 
+                        ItemsSource="{Binding Source={StaticResource mySelectionsEnum}}" />-->
+        <Grid>
+            <Grid.Resources>
+                <CollectionViewSource x:Key="source" Source="{Binding States, Mode=OneTime}"/>
+            </Grid.Resources>
+            <DataGrid x:Name="gridSubCategory" AutoGenerateColumns="False" 
+                  ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" Margin="0,0,-262,0">
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn x:Name="CmdCategories2" Header="Category" 
+                                            ItemsSource="{Binding Source={StaticResource source}}"/>
+                    <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
+                                            DisplayMemberPath="Title" 
+                                            SelectedValueBinding="{Binding CategoryID}" 
+                                            SelectedValuePath="ID"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <ComboBox ItemsSource="{Binding Categories}" DisplayMemberPath="Title"/>    
+    </StackPanel>
 </UserControl>

@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace SubCategoryModule.Properties {
+    using System;
     
     
     /// <summary>
@@ -37,7 +38,7 @@ namespace SubCategoryModule.Properties {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if ((resourceMan == null)) {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SubCategoryModule.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
@@ -56,6 +57,24 @@ namespace SubCategoryModule.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save SubCategory result.
+        /// </summary>
+        internal static string SaveSubCategoryResult {
+            get {
+                return ResourceManager.GetString("SaveSubCategoryResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SubCategory saved successfully.
+        /// </summary>
+        internal static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
             }
         }
     }

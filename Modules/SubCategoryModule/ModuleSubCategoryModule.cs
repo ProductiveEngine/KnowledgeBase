@@ -7,6 +7,8 @@ using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
+using SubCategoryModule.ViewModels;
+using SubCategoryModule.Views;
 
 namespace SubCategoryModule
 {
@@ -25,14 +27,14 @@ namespace SubCategoryModule
         {
             RegisterViewsAndServices();
 
-            var vm = _container.Resolve<ICategoryViewModel>();
+            var vm = _container.Resolve<ISubCategoryViewModel>();
             _regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
         }
 
         protected void RegisterViewsAndServices()
         {
-            _container.RegisterType<ICategoryViewModel, CategoryViewModel>();
-            _container.RegisterType<ICategoryView, CategoryView>();
+            _container.RegisterType<ISubCategoryViewModel, SubCategoryViewModel>();
+            _container.RegisterType<ISubCategoryView, SubCategoryView>();
         }
     }
 }

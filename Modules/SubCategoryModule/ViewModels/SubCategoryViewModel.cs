@@ -13,12 +13,17 @@ namespace SubCategoryModule.ViewModels
 {
     public class SubCategoryViewModel : ViewModelBase, ISubCategoryViewModel
     {
+        private readonly CategoryBL _categoryBl;
         private readonly SubCategoryBL _subCategoryBl;
 
         #region Properties
-
+        private ObservableCollection<Category> _categories;
+        public ObservableCollection<Category> Categories
+        {
+            get { return _categories; }
+            set { _categories = value; }
+        }
         private ObservableCollection<SubCategory> _subCategories;
-
         public ObservableCollection<SubCategory> SubCategories
         {
             get { return _subCategories; }
@@ -27,11 +32,14 @@ namespace SubCategoryModule.ViewModels
         #endregion //Properties
         #region Constructors
 
-        public SubCategoryViewModel(ISubCategoryView view, SubCategoryBL subCategoryBL)
+        public SubCategoryViewModel(ISubCategoryView view)
             : base(view)
         {
-            _subCategoryBl = subCategoryBL;
+            _subCategoryBl = new SubCategoryBL();            
             _subCategories = new ObservableCollection<SubCategory>(_subCategoryBl.FindAll());
+
+            _categoryBl = new CategoryBL();
+            _categories = new ObservableCollection<Category>(_categoryBl.FindAll());
         }
         #endregion //Constructors  
 

@@ -61,11 +61,29 @@ namespace KnolwdgeBase.Infrastructure.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save Category result.
+        /// </summary>
+        internal static string SaveCategoryResult {
+            get {
+                return ResourceManager.GetString("SaveCategoryResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save result.
         /// </summary>
         internal static string SaveResult {
             get {
                 return ResourceManager.GetString("SaveResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Category saved successfully.
+        /// </summary>
+        internal static string SaveSuccess {
+            get {
+                return ResourceManager.GetString("SaveSuccess", resourceCulture);
             }
         }
     }
