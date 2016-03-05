@@ -4,34 +4,47 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SubCategoryModule.Views"
+             xmlns:subCategoryModule="clr-namespace:SubCategoryModule"
              mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:core="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <StackPanel>
 
-        <!--<DataGridComboBoxColumn Header="MySelections"  
-                        SelectedItemBinding="{Binding MySelectionsProperty}" 
-                        ItemsSource="{Binding Source={StaticResource mySelectionsEnum}}" />-->
-        <Grid>
-            <Grid.Resources>
-                <CollectionViewSource x:Key="source" Source="{Binding States, Mode=OneTime}"/>
-            </Grid.Resources>
-            <DataGrid x:Name="gridSubCategory" AutoGenerateColumns="False" 
+    <UserControl.Resources>
+        <!--Create list of enumeration values--><!--
+        <ObjectDataProvider x:Key="myEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="local:OrderStatus"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>-->
+        <!--Create an instance of the converter for Email-->
+        <!--<local:EmailConverter x:Key="EmailConverter" />-->       
+    </UserControl.Resources>
+
+    <StackPanel Margin="0,0,-813,-272">
+        <!--    <ComboBox Height="25"
+                SelectedItem="{Binding Path=FieldTypesEnumProperty}"
+                ItemsSource="{Binding Source={StaticResource myEnum}}" />-->
+
+    <Grid>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
+        </Grid.Resources>
+        <DataGrid x:Name="gridSubCategory" AutoGenerateColumns="False" 
                   ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" Margin="0,0,-262,0">
-                <DataGrid.Columns>
-                    <DataGridComboBoxColumn x:Name="CmdCategories2" Header="Category" 
-                                            ItemsSource="{Binding Source={StaticResource source}}"/>
-                    <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
                                             DisplayMemberPath="Title" 
-                                            SelectedValueBinding="{Binding CategoryID}" 
-                                            SelectedValuePath="ID"/>
-                    <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
-                    <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
-                    <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                    <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <ComboBox ItemsSource="{Binding Categories}" DisplayMemberPath="Title"/>    
+                                            ItemsSource="{Binding Source={StaticResource CategoriesKey}}"                                            
+                                            SelectedValueBinding="{Binding CategoryID, UpdateSourceTrigger=PropertyChanged}" 
+                                            SelectedValuePath="CategoryID"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
     </StackPanel>
 </UserControl>
