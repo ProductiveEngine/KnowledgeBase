@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KnolwdgeBase.Infrastructure;
+﻿using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
-using SubCategoryModule.ViewModels;
 using SubCategoryModule.Views;
 
 namespace SubCategoryModule
@@ -27,14 +21,26 @@ namespace SubCategoryModule
         {
             RegisterViewsAndServices();
 
-            var vm = _container.Resolve<ISubCategoryViewModel>();
-            _regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+            //Standard registration
+            //var vm = _container.Resolve<ISubCategoryViewModel>();
+            //_regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+            //Navigation registration
+            _regionManager.RequestNavigate("ContentRegion", "SubCategoryView");
         }
 
         protected void RegisterViewsAndServices()
         {
-            _container.RegisterType<ISubCategoryViewModel, SubCategoryViewModel>();
-            _container.RegisterType<ISubCategoryView, SubCategoryView>();
+            //Standard registration
+            //_container.RegisterType<ISubCategoryViewModel, SubCategoryViewModel>();
+            //_container.RegisterType<ISubCategoryView, SubCategoryView>();
+            //Navigation Registration            
+            _container.RegisterType(typeof(object),typeof(SubCategoryView), "SubCategoryView");
+            _container.RegisterType(typeof (object), typeof (CategoryInfoView), "CategoryInfoView");
+            //_container.RegisterType<object, SubCategoryView>(typeof(SubCategoryView).FullName);
+            //_container.RegisterType<object, CategoryInfoView>(typeof(CategoryInfoView).FullName);
+
+            //_container.RegisterTypeForNavigation<SubCategoryView>();
+            //_container.RegisterTypeForNavigation<CategoryInfoView>();
         }
     }
 }

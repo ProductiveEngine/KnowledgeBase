@@ -19,20 +19,21 @@ namespace SubCategoryModule.Views
     {
         SubCategoryViewModel _cvm = null;
        
-
         public DataTable Orders
         {
             get;
             private set;
         }
-
-        ObservableCollection<Category> testCat = new ObservableCollection<Category>();
-        
-
-        public SubCategoryView()
+        //Standard registration       
+        //public SubCategoryView()
+        //{
+        //    InitializeComponent();            
+        //}
+        //Navigation registration
+        public SubCategoryView(SubCategoryViewModel subcategoryViewModel)
         {
             InitializeComponent();
-            testCat.Add(new Category() {Title = "TEST"});
+            DataContext = subcategoryViewModel;
         }
 
         public IViewModel ViewModel

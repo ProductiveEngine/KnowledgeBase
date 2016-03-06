@@ -97,8 +97,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormulaOneDriver.cs" />
-    <Compile Include="FormulaOneTeam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -113,8 +111,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ModuleSubCategoryModule.cs" />
+    <Compile Include="ViewModels\CategoryInfoViewModel.cs" />
     <Compile Include="ViewModels\ISubCategoryViewModel.cs" />
     <Compile Include="ViewModels\SubCategoryViewModel.cs" />
+    <Compile Include="Views\CategoryInfoView.xaml.cs">
+      <DependentUpon>CategoryInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomPopupView.xaml.cs">
+      <DependentUpon>CustomPopupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ISubCategoryView.cs" />
     <Compile Include="Views\SubCategoryView.xaml.cs">
       <DependentUpon>SubCategoryView.xaml</DependentUpon>
@@ -150,6 +155,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\CategoryInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomPopupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SubCategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

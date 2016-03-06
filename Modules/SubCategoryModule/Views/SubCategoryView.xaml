@@ -1,50 +1,79 @@
-﻿<UserControl x:Class="SubCategoryModule.Views.SubCategoryView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
              xmlns:local="clr-namespace:SubCategoryModule.Views"
-             xmlns:subCategoryModule="clr-namespace:SubCategoryModule"
-             mc:Ignorable="d" 
+             xmlns:subCategoryModule="clr-namespace:SubCategoryModule"             
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
              xmlns:core="clr-namespace:System;assembly=mscorlib"
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:prism="http://prismlibrary.com/"             
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" x:Class="SubCategoryModule.Views.SubCategoryView"             
+             xmlns:views="clr-namespace:SubCategoryModule.Views"
+             d:DesignWidth="513.5" d:DesignHeight="252.5"             >
 
-    <UserControl.Resources>
-        <!--Create list of enumeration values--><!--
-        <ObjectDataProvider x:Key="myEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type Type="local:OrderStatus"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>-->
-        <!--Create an instance of the converter for Email-->
-        <!--<local:EmailConverter x:Key="EmailConverter" />-->       
-    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <prism:InteractionRequestTrigger SourceObject="{Binding NotificationRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"/>
+        </prism:InteractionRequestTrigger>
 
-    <StackPanel Margin="0,0,-813,-272">
+        <prism:InteractionRequestTrigger SourceObject="{Binding ConfirmationRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"/>
+        </prism:InteractionRequestTrigger>
+
+        <prism:InteractionRequestTrigger SourceObject="{Binding CustomPopupRequest}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowContent>
+                    <views:CustomPopupView/>
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+                
+    </i:Interaction.Triggers>
+    
+    <StackPanel Margin="0,0,10,10">
+      
         <!--    <ComboBox Height="25"
                 SelectedItem="{Binding Path=FieldTypesEnumProperty}"
                 ItemsSource="{Binding Source={StaticResource myEnum}}" />-->
 
-    <Grid>
-        <Grid.Resources>
-            <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
-        </Grid.Resources>
-        <DataGrid x:Name="gridSubCategory" AutoGenerateColumns="False" 
-                  ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" Margin="0,0,-262,0">
-            <DataGrid.Columns>
-                <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
-                                            DisplayMemberPath="Title" 
-                                            ItemsSource="{Binding Source={StaticResource CategoriesKey}}"                                            
-                                            SelectedValueBinding="{Binding CategoryID, UpdateSourceTrigger=PropertyChanged}" 
-                                            SelectedValuePath="CategoryID"/>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
-                <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
-                <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
-                <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+        <Grid>
+            <Grid.Resources>
+                <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
+            </Grid.Resources>
+            <DataGrid x:Name="gridSubCategory" AutoGenerateColumns="False" 
+				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <prism:InvokeCommandAction Command="{Binding SelectItemCommand}" TriggerParameterPath="AddedItems"/>    
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
+						DisplayMemberPath="Title" 
+						ItemsSource="{Binding Source={StaticResource CategoriesKey}}"                                            
+						SelectedValueBinding="{Binding CategoryID, UpdateSourceTrigger=PropertyChanged}" 
+						SelectedValuePath="CategoryID"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+                    <DataGridTextColumn Header="Created at" Binding="{Binding CreatedDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Button Margin="5" Content="Notification" Command="{Binding NotificationCommand}"/>
+        <Button Margin="5" Content="Confirmation" Command="{Binding ConfirmationCommand}"/>
+        <Button Margin="5" Content="View Interaction" Command="{Binding CustomPopupCommand}"/>
+        <Button Margin="5" Content="Category Info" Command="{Binding CategoryInfoCommand}" CommandParameter="{Binding SelectedItem, ElementName=gridSubCategory}"/>
+        <TextBlock Margin="25" Text="{Binding Status}"/>
+        <TextBlock Margin="25" Text="{Binding SelectedItem}"/>
     </StackPanel>
 </UserControl>
+
+
+
+
+
+
+
