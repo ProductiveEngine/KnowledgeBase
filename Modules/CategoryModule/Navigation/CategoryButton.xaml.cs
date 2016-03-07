@@ -10,26 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using KnolwdgeBase.Infrastructure;
 
-namespace KnoledgeBase
+namespace CategoryModule.Navigation
 {
     /// <summary>
-    /// Interaction logic for Shell.xaml
+    /// Interaction logic for CategoryButton.xaml
     /// </summary>
-    public partial class Shell : Window, IView
+    public partial class CategoryButton : UserControl
     {
-        public Shell(IShellViewModel viewModel)
+        public CategoryButton()
         {
             InitializeComponent();
-            ViewModel = viewModel;
-        }
-
-        public IViewModel ViewModel
-        {
-            get { return (IViewModel) DataContext; }
-            set { DataContext = value; }
         }
     }
 }

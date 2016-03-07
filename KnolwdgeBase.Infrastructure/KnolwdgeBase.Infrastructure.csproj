@@ -52,8 +52,13 @@
       <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Prism.Wpf, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.1.0\lib\net45\Prism.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,6 +79,7 @@
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
+    <Compile Include="ModuleBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -90,6 +96,7 @@
     <Compile Include="RegionNames.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Services\ServiceResult.cs" />
+    <Compile Include="StackPanelRegionAdapter.cs" />
     <Compile Include="UnityExtensions.cs" />
     <Compile Include="ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

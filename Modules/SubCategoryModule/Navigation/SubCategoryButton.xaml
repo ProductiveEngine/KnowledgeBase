@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SubCategoryModule.Navigation.SubCategoryButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubCategoryModule.Navigation"             
+             xmlns:infCommands="clr-namespace:KnolwdgeBase.Infrastructure;assembly=KnolwdgeBase.Infrastructure"
+             xmlns:views="clr-namespace:SubCategoryModule.Views"
+             mc:Ignorable="d">
+    <Grid Margin="5">
+        <Button Command="{x:Static infCommands:GlobalCommands.NavigateCommand}" CommandParameter="{x:Type views:SubCategoryView}">Subcategories</Button>
+    </Grid>
+</UserControl>

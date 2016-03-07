@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CategoryModule.Navigation;
 using CategoryModule.ViewModels;
 using CategoryModule.Views;
 using KnolwdgeBase.Infrastructure;
@@ -27,14 +28,17 @@ namespace CategoryModule
         {
             RegisterViewsAndServices();
 
-            var vm = _container.Resolve<ICategoryViewModel>();
-            _regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+            //var vm = _container.Resolve<ICategoryViewModel>();
+            //_regionManager.Regions[RegionNames.ContentRegion].Add(vm.View);
+
+            _regionManager.RegisterViewWithRegion(RegionNames.ToolbarRegion, typeof(CategoryButton));
         }
 
         protected void RegisterViewsAndServices()
         {
-            _container.RegisterType<ICategoryViewModel, CategoryViewModel>();
-            _container.RegisterType<ICategoryView, CategoryView>();
+            //_container.RegisterType<ICategoryViewModel, CategoryViewModel>();
+            //_container.RegisterType<ICategoryView, CategoryView>();
+            _container.RegisterType<object, CategoryView>(typeof(CategoryView).FullName);
         }
     }
 }

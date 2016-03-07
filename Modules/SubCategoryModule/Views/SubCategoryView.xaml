@@ -62,12 +62,17 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
+        <Label Target="SelectedItemTitle">Title:</Label>
+        <TextBlock Name="SelectedItemTitle" Text="{Binding SelectedItem}"/>
+        
         <Button Margin="5" Content="Notification" Command="{Binding NotificationCommand}"/>
         <Button Margin="5" Content="Confirmation" Command="{Binding ConfirmationCommand}"/>
         <Button Margin="5" Content="View Interaction" Command="{Binding CustomPopupCommand}"/>
         <Button Margin="5" Content="Category Info" Command="{Binding CategoryInfoCommand}" CommandParameter="{Binding SelectedItem, ElementName=gridSubCategory}"/>
-        <TextBlock Margin="25" Text="{Binding Status}"/>
-        <TextBlock Margin="25" Text="{Binding SelectedItem}"/>
+
+        <TextBlock Text="Status:"/>
+        <TextBlock Name="TitleStatus" Text="{Binding Status}"/>
+        
     </StackPanel>
 </UserControl>
 

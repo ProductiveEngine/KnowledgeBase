@@ -1,8 +1,11 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using BLService;
 using CategoryModule;
+using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
+using Prism.Regions;
 using Prism.Unity;
 using SubCategoryModule;
 
@@ -22,12 +25,25 @@ namespace KnoledgeBase
             App.Current.MainWindow.Show();
         }
 
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+            Container.RegisterType<IShellViewModel, ShellViewModel>();
+        }
+
+        protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+        {
+            RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
+            mappings.RegisterMapping(typeof(StackPanel), Container.Resolve<StackPanelRegionAdapter>());
+            return mappings;
+        }
+
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog catalog = new ModuleCatalog();
             catalog.AddModule(typeof(BLModule));
-            catalog.AddModule(typeof(ModuleSubCateogryModule));
-            //catalog.AddModule(typeof(ModuleCateogryModule));
+            catalog.AddModule(typeof(ModuleCateogryModule));
+            catalog.AddModule(typeof(ModuleSubCateogryModule));            
             //catalog.AddModule(typeof(PersonServiceModule));
             //catalog.AddModule(typeof(ModuleAModule));
 
