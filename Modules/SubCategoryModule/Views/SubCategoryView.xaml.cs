@@ -7,6 +7,7 @@ using CategoryModule.ViewModels;
 using CategoryModule.Views;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
+using Prism.Regions;
 using SubCategoryModule.ViewModels;
 
 namespace SubCategoryModule.Views
@@ -15,7 +16,7 @@ namespace SubCategoryModule.Views
     /// <summary>
     /// Interaction logic for SubCategoryView.xaml
     /// </summary>
-    public partial class SubCategoryView : UserControl, ISubCategoryView
+    public partial class SubCategoryView : UserControl, ISubCategoryView, INavigationAware
     {
         SubCategoryViewModel _cvm = null;
        
@@ -67,6 +68,21 @@ namespace SubCategoryModule.Views
             //        MessageBoxButton.OK,
             //        MessageBoxImage.Exclamation);
             //}
+        }
+
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            
         }
     }
 }

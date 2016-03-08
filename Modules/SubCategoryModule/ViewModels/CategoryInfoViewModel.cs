@@ -1,12 +1,28 @@
 ﻿using System;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
+using Prism.Commands;
 using Prism.Regions;
 
 namespace SubCategoryModule.ViewModels
 {
     public class CategoryInfoViewModel : ViewModelBase, INavigationAware
     {
+        private IRegionNavigationJournal _journal;
+                
+        public DelegateCommand CancelCommand {get; private set; }
+
+        public CategoryInfoViewModel()
+        {
+            CancelCommand = new DelegateCommand(Cancel);
+        }
+
+        private void Cancel()
+        {
+            _journal.GoBack();
+        }
+
+
         private string _title;
         public string Title
         {
@@ -32,7 +48,15 @@ namespace SubCategoryModule.ViewModels
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            return true;
+            var toCategoryTitle = ((Category) navigationContext.Parameters["To"]).Title;
+            if (Title == toCategoryTitle)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
@@ -42,6 +66,8 @@ namespace SubCategoryModule.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            _journal = navigationContext.NavigationService.Journal;
+               
             Category category = navigationContext.Parameters["To"] as Category;
 
             if (category != null)

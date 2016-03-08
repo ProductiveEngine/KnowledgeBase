@@ -12,17 +12,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Grid.Row="0" Grid.Column="0" Margin="0,0,5,0" VerticalAlignment="Bottom">Title:</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title}" Margin="0,5,0,0"/>
 
         <Label Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" VerticalAlignment="Bottom">Description:</Label>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Margin="0,5,0,0"/>
+
+        <Button Grid.Row="2" Command="{Binding CancelCommand}">Cancel</Button>
     </Grid>
 </UserControl>

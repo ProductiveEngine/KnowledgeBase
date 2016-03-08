@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using BLService.BL;
 using DomainClasses.Models;
@@ -19,14 +20,23 @@ using SubCategoryModule.Views;
 
 namespace SubCategoryModule.ViewModels
 {
-    public class SubCategoryViewModel : ViewModelBase, ISubCategoryViewModel
+    public class SubCategoryViewModel : ViewModelBase, ISubCategoryViewModel, INavigationAware, IConfirmNavigationRequest
     {
         private readonly IRegionManager _regionManager;
         private readonly CategoryBL _categoryBl;
         private readonly SubCategoryBL _subCategoryBl;
 
         #region Properties
-
+        private int _pageViews;
+        public int PageViews
+        {
+            get { return _pageViews; }
+            set
+            {
+                _pageViews = value;
+                OnPropertyChanged("PageViews");
+            }
+        }
         private string _status;
 
         public string Status
@@ -158,5 +168,47 @@ namespace SubCategoryModule.ViewModels
                 SelectedItem = ((SubCategory) items.FirstOrDefault()).Title ;
             }
         }
+
+        //NavigationContext
+        //Navigation Services
+        //URI
+        //Parameters
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            PageViews++;
+        }
+
+        public bool IsNavigationTarget(NavigationContext navigationContext)
+        {
+            return true;
+        }
+
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            
+        }
+
+        public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+        {
+            bool result = true;
+
+            //if (MessageBox.Show("Do you want to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            //{
+                continuationCallback(result);
+            //}
+        }
     }
 }
+
+//Navigation Journal works only with Region Navigation Services
+//Not with view injection or view discovery
+
+//View injection -> programmatically inject view
+    //RegionManager.Region["Name"].Add(view,name)
+    //IRegion.Add(view, name)
+    //Activate/Deactivate views
+
+//View discovery
+    //Views are added automatically
+    //RegionManager.RegisterViewWithRegion(name,type)
+    //No excplicit control

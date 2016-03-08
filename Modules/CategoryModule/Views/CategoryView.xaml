@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CategoryModule.Views"
              mc:Ignorable="d" 
              d:DesignHeight="359" d:DesignWidth="488">
+    <StackPanel>
     <DataGrid x:Name="gridCategory" AutoGenerateColumns="False" ItemsSource="{Binding Categories}" RowEditEnding="GridCategory_RowEditEnding">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="100" />
@@ -14,4 +15,7 @@
             <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, NotifyOnTargetUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="100" CanUserResize="False"/>
         </DataGrid.Columns>
     </DataGrid>
+    <TextBlock Text="TEST"></TextBlock>
+    <TextBlock Name="PageViews" Margin="5" Text="{Binding PageViews}"/>
+    </StackPanel>
 </UserControl>
