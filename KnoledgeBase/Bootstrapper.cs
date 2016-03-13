@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using BLService;
 using CategoryModule;
 using KnolwdgeBase.Infrastructure;
+using KnolwdgeBase.Infrastructure.Prism;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -21,6 +22,9 @@ namespace KnoledgeBase
         {
             base.InitializeShell();
 
+            var regionManager = RegionManager.GetRegionManager((Shell));
+            RegionManagerAware.SetRegionManagerAware(Shell, regionManager);
+
             App.Current.MainWindow = (Window) Shell;
             App.Current.MainWindow.Show();
         }
@@ -29,6 +33,8 @@ namespace KnoledgeBase
         {
             base.ConfigureContainer();
             Container.RegisterType<IShellViewModel, ShellViewModel>();
+
+            Container.RegisterType<IShellService, ShellService>(new ContainerControlledLifetimeManager());
         }
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
@@ -67,6 +73,14 @@ namespace KnoledgeBase
         //        InitializationMode = InitializationMode.WhenAvailable
         //    });
 
+        //}
+
+        //protected override IRegionBehaviorFactory ConfigureDefaultRegionBehaviors()
+        //{
+        //    IRegionBehaviorFactory behaviors = base.ConfigureDefaultRegionBehaviors();
+        //    behaviors.AddIfMissing(RegionManagerAwareBehavior.BehaviorKey, typeof(RegionManagerAwareBehavior));
+
+        //    return behaviors;
         //}
     }
 }

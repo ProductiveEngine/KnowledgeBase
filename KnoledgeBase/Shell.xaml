@@ -10,7 +10,14 @@
         Title="Shell" Height="561.3" Width="664.8">
     <Grid>
         <DockPanel LastChildFill="True">
+            <Menu>
+                <MenuItem Header="Open Shell" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
+                <MenuItem Header="Navigate To ViewA" Command="{Binding NavigateCommand}" CommandParameter="CategoryView" />
+                <MenuItem Header="Navigate To ViewB" Command="{Binding NavigateCommand}" CommandParameter="ViewB" />
+            </Menu>
+            
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" Margin="5" />
+            
             <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Margin="5"  />
 
             <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>-->            

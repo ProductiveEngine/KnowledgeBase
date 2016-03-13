@@ -125,6 +125,7 @@
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShellService.cs" />
     <Compile Include="ShellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

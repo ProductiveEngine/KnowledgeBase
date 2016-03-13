@@ -77,9 +77,13 @@
     <Compile Include="GlobalCommands.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="IPersonRepository.cs" />
+    <Compile Include="IShellService.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
     <Compile Include="ModuleBase.cs" />
+    <Compile Include="Prism\IRegionManagerAware.cs" />
+    <Compile Include="Prism\RegionManagerAware.cs" />
+    <Compile Include="Prism\RegionManagerAwareBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

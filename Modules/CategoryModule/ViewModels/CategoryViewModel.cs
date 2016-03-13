@@ -18,6 +18,8 @@ namespace CategoryModule.ViewModels
     {        
         private readonly CategoryBL _categoryBL;
 
+        //Naming View models convention-> View Name + "ViewModel"
+
         #region Properties
         private int _pageViews;
         public int PageViews
