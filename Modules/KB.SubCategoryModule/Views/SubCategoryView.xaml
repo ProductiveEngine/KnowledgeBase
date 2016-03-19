@@ -1,0 +1,36 @@
+﻿<UserControl
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"	         
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            mc:Ignorable="d" x:Class="KB.SubCategoryModule.Views.SubCategoryView" 
+    d:DesignHeight="359" d:DesignWidth="488">
+    <Grid>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
+        </Grid.Resources>
+        <DataGrid x:Name="GridSubCategory" AutoGenerateColumns="False" 
+				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding">
+
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
+						DisplayMemberPath="Title" 
+						ItemsSource="{Binding Source={StaticResource CategoriesKey}}"                                            
+						SelectedValueBinding="{Binding CategoryID, UpdateSourceTrigger=PropertyChanged}" 
+						SelectedValuePath="CategoryID"
+                        Width="150"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}" Width="150" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="Modified at" Binding="{Binding ModifiedDate, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Width="Auto" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+
+</UserControl>
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using BLService;
 using KB.CategoryModule;
+using KB.StatusBar;
 using KB.SubCategoryModule;
 using KnolwdgeBase.Infrastructure;
 using KnolwdgeBase.Infrastructure.Prism;
@@ -56,7 +57,7 @@ namespace KnoledgeBase
             //catalog.AddModule(typeof(ServicesModule));
             //catalog.AddModule(typeof(ToolbarModule));
             //catalog.AddModule(typeof (PeopleModule));
-            //catalog.AddModule(typeof(StatusBarModule));
+            catalog.AddModule(typeof(StatusBarModule));
 
 
             //catalog.AddModule(typeof(SubCatModule));            

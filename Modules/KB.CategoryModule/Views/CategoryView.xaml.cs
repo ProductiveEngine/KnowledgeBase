@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
-using CategoryModule.ViewModels;
 using DomainClasses.Models;
+using KB.CategoryModule.ViewModels;
 using KnolwdgeBase.Infrastructure;
 
-namespace CategoryModule.Views
-{
-    /// <summary>
-    /// Interaction logic for CategoryView.xaml
-    /// </summary>
+namespace KB.CategoryModule.Views
+{    
     public partial class CategoryView : UserControl, ICategoryView 
     {
         CategoryViewModel _cvm = null;
 
-        public CategoryView()
+        public CategoryView(CategoryViewModel categoryViewModel)
         {
             InitializeComponent();
+            DataContext = categoryViewModel;
         }
 
         public IViewModel ViewModel
@@ -24,32 +21,18 @@ namespace CategoryModule.Views
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
         }
-          
-        //private void GridCategory_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
-        //{
-        //    bool ok = false;
 
-        //    //var _emp = e.Row.Item as Employee;
-        //    Category cat = e.Row.DataContext as Category;
-        //    _cvm = (CategoryViewModel)ViewModel;
-        //    cat.ModifiedDate = DateTime.Now;
+        private void GridCategory_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            bool ok = false;
 
-        //    ok = _cvm.ManageSave(cat);
-            
-        //    if (ok)
-        //    {                
-        //        MessageBox.Show(Properties.Resources.SaveSuccess,
-        //            Properties.Resources.SaveCategoryResult,
-        //            MessageBoxButton.OK,
-        //            MessageBoxImage.Information);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(Properties.Resources.SaveSuccess,
-        //            Properties.Resources.SaveCategoryResult,
-        //            MessageBoxButton.OK,
-        //            MessageBoxImage.Exclamation);
-        //    }            
-        //}
+            Category cat = e.Row.DataContext as Category;
+            _cvm = (CategoryViewModel) ViewModel;
+            cat.ModifiedDate = DateTime.Now;
+
+            ok = _cvm.ManageSave(cat);
+
+        }
+
     }
 }

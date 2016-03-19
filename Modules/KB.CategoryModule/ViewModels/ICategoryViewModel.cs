@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KnolwdgeBase.Infrastructure;
 
-namespace CategoryModule.ViewModels
+namespace KB.CategoryModule.ViewModels
 {
     public interface ICategoryViewModel : IViewModel
     {

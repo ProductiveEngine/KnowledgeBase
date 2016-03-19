@@ -7,29 +7,20 @@ using Prism.Regions;
 
 namespace KB.StatusBar
 {
-    public class StatusBarModule : IModule
+    public class StatusBarModule : ModuleBase
     {
-        private readonly IRegionManager _regionManager;
-        private readonly IUnityContainer _container;
-
-        public StatusBarModule(IUnityContainer container, IRegionManager regionManager)
+        public StatusBarModule(IUnityContainer container, IRegionManager regionManager) : base(container, regionManager)
         {
-            this._container = container;
-            this._regionManager = regionManager;
         }
 
-        public void Initialize()
+        protected override void InitializeModule()
         {
-            RegisterViewsAndServices();
-
-            var vm = _container.Resolve<IStatusBarViewModel>();
-            _regionManager.Regions[RegionNames.StatusBarRegion].Add(vm.View);
+            RegionManager.RegisterViewWithRegion(RegionNames.StatusBarRegion, typeof(StatusBarView));
         }
 
-        protected void RegisterViewsAndServices()
+        protected override void RegisterTypes()
         {
-            _container.RegisterType<IStatusBarViewModel, StatusBarViewModel>();
-            _container.RegisterType<IStatusBarView, StatusBarView>();
+            
         }
     }
 }

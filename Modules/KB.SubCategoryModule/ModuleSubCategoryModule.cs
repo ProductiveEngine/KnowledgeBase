@@ -1,8 +1,7 @@
-﻿using KnolwdgeBase.Infrastructure;
+﻿using KB.SubCategoryModule.Views;
+using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
-using Prism.Modularity;
 using Prism.Regions;
-using SubCategoryModule.Views;
 
 namespace KB.SubCategoryModule
 {
@@ -19,7 +18,8 @@ namespace KB.SubCategoryModule
         }
 
         protected override void RegisterTypes()
-        {          
+        {
+            Container.RegisterTypeForNavigation<SubCategoryView>();
         }        
     }
 }

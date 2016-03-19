@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BLService.BL;
-using CategoryModule.Views;
 using DomainClasses.Models;
+using KB.CategoryModule.Views;
 using KnolwdgeBase.Infrastructure;
-using Prism.Events;
 using Prism.Regions;
 
-namespace CategoryModule.ViewModels
+namespace KB.CategoryModule.ViewModels
 {
     public class CategoryViewModel: ViewModelBase, ICategoryViewModel
     {        
         private readonly CategoryBL _categoryBL;
-
-        //Naming View models convention-> View Name + "ViewModel"
-
+        
         #region Properties
         private ObservableCollection<Category> _categories;
         public ObservableCollection<Category> Categories
@@ -30,10 +22,9 @@ namespace CategoryModule.ViewModels
         #endregion //Properties
         #region Constructors
 
-        public CategoryViewModel(ICategoryView view, CategoryBL categoryBL)
-            : base(view)
+        public CategoryViewModel(IRegionManager regionManager)            
         {
-            _categoryBL = categoryBL;
+            _categoryBL = new CategoryBL();
             _categories = new ObservableCollection<Category>(_categoryBL.FindAll());            
         }
         #endregion //Constructors  

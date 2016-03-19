@@ -91,6 +91,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\ISubCategoryViewModel.cs" />
+    <Compile Include="ViewModels\SubCategoryViewModel.cs" />
+    <Compile Include="Views\ISubCategoryView.cs" />
+    <Compile Include="Views\SubCategoryView.xaml.cs">
+      <DependentUpon>SubCategoryView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,18 +110,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Navigation\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DomainClasses\DomainClasses.csproj">
+      <Project>{9B7E22F0-B173-4B44-9B23-F26CA856A161}</Project>
+      <Name>DomainClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
       <Project>{46bbd1b5-b7ba-40f5-a6ab-d97289b143a5}</Project>
       <Name>KnolwdgeBase.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SubCategoryModule\SubCategoryModule.csproj">
-      <Project>{C3BBC5EE-DD6F-4D91-B2AD-DBB9B315E9C7}</Project>
-      <Name>SubCategoryModule</Name>
+    <ProjectReference Include="..\..\Services\Services.BLService\BLService.csproj">
+      <Project>{0B09E253-902D-4A66-94D5-28FA31BF21C9}</Project>
+      <Name>BLService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\SubCategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
