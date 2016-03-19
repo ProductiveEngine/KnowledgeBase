@@ -19,6 +19,7 @@ namespace KnoledgeBase
 
         public DelegateCommand<string> OpenShellCommand { get; private set; }
         public DelegateCommand<object> NavigateCommand { get; private set; }
+        public DelegateCommand<object> AboutCommand { get; private set; }
 
         //IRegionManager -> Singleton
         public ShellViewModel(  IShellService service)
@@ -28,11 +29,19 @@ namespace KnoledgeBase
             OpenShellCommand = new DelegateCommand<string>(OpenShell);
             NavigateCommand = new DelegateCommand<object>(Navigate);
             GlobalCommands.NavigateCommand.RegisterCommand(NavigateCommand);
+
+            AboutCommand = new DelegateCommand<object>(OpenAboutDialog);
         }
 
         void OpenShell(string viewName)
         {
             _service.ShowShell(viewName);
+        }
+
+        private void OpenAboutDialog(object navigatePath)
+        {
+            About about = new About();
+            about.ShowDialog();
         }
 
         //void Navigate(string viewName)

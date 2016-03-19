@@ -9,18 +9,29 @@
         mc:Ignorable="d"
         Title="Shell" Height="561.3" Width="664.8">
     <Grid>
-        <DockPanel LastChildFill="True">
-            <Menu>
-                <MenuItem Header="Open Shell" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
-                <MenuItem Header="Navigate To ViewA" Command="{Binding NavigateCommand}" CommandParameter="CategoryView" />
-                <MenuItem Header="Navigate To ViewB" Command="{Binding NavigateCommand}" CommandParameter="ViewB" />
-            </Menu>
-            
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" Margin="5" />
-            
-            <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Margin="5"  />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Menu  Grid.Row = "0" Grid.Column = "0">
+            <MenuItem Header="Settings">
+                <MenuItem Header="Categories" Command="{Binding NavigateCommand}" CommandParameter="CategoryView" />
+                <MenuItem Header="Subcategories" Command="{Binding NavigateCommand}" CommandParameter="SubCategoryView" />
+            </MenuItem>
+            <MenuItem Header="Usefull info" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
+            <MenuItem Header="Problems and Solutions" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
+            <MenuItem Header="Open Shell" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
+            <MenuItem Header="About" Command="{Binding AboutCommand}"/>
+        </Menu>
+                        
+        <ContentControl Grid.Row = "1" Grid.Column = "0" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Margin="5"  />
 
-            <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>-->            
+        <!-- <StackPanel Orientation="Horizontal" Grid.Row = "2" Grid.Column = "0" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}" Margin="5" />-->
+        <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ToolbarRegion}"  DockPanel.Dock="Top" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"></ContentControl>-->            
             <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.StatusBarRegion}" DockPanel.Dock="Bottom" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>-->
             <!--<ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"/>-->
             <!--<TabControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" Width="Auto" Height="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
@@ -29,7 +40,6 @@
                         <Setter Property="Header" Value="{Binding Content.DataContext.ViewName, RelativeSource={RelativeSource Self}}" />
                     </Style>
                 </TabControl.ItemContainerStyle>
-            </TabControl>-->
-        </DockPanel>
+            </TabControl>-->        
     </Grid>
 </Window>

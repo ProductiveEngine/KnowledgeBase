@@ -13,7 +13,7 @@ using Prism.Regions;
 
 namespace CategoryModule
 {
-    public class ModuleCateogryModule: IModule
+     class ModuleCateogryModule: IModule
     {
         private readonly IRegionManager _regionManager;
         private readonly IUnityContainer _container;

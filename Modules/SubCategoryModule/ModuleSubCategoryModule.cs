@@ -7,7 +7,7 @@ using SubCategoryModule.Views;
 
 namespace SubCategoryModule
 {
-    public class ModuleSubCateogryModule : ModuleBase//IModule
+    class ModuleSubCateogryModule : ModuleBase//IModule
     {
         //private readonly IRegionManager _regionManager;
         //private readonly IUnityContainer _container;

@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using BLService;
-using CategoryModule;
+using KB.CategoryModule;
+using KB.SubCategoryModule;
 using KnolwdgeBase.Infrastructure;
 using KnolwdgeBase.Infrastructure.Prism;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
-using SubCategoryModule;
 
 namespace KnoledgeBase
 {
