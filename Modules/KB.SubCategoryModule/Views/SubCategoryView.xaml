@@ -10,7 +10,7 @@
             <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
         </Grid.Resources>
         <DataGrid x:Name="GridSubCategory" AutoGenerateColumns="False" 
-				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding">
+				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" PreviewKeyDown="GridSubCategory_PreviewKeyDown">
 
             <DataGrid.Columns>
                 <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 

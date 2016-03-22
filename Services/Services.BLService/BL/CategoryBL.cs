@@ -37,5 +37,13 @@ namespace BLService.BL
 
             return true;
         }
+
+        public Boolean Remove(int id)
+        {
+            _categoryAccessor.Repo.Delete(id);
+            _categoryAccessor.Save();
+
+            return true;
+        }
     }
 }

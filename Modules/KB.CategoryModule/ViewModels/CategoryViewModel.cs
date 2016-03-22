@@ -37,5 +37,12 @@ namespace KB.CategoryModule.ViewModels
             return ok;
         }
 
+        public Boolean ManageDelete(Category category)
+        {
+            bool ok = false;
+            ok = _categoryBL.Remove(category.CategoryID);
+
+            return ok;
+        }
     }
 }

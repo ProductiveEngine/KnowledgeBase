@@ -58,7 +58,15 @@ namespace KB.SubCategoryModule.ViewModels
             ok = _subCategoryBl.Save(subCategory);
 
             return ok;
-        }      
+        }
+
+        public Boolean ManageDelete(SubCategory subCategory)
+        {
+            bool ok = false;
+            ok = _subCategoryBl.Remove(subCategory.SubCategoryID);
+
+            return ok;
+        }
     }
 }
 

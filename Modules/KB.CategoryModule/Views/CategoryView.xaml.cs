@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using DomainClasses.Models;
 using KB.CategoryModule.ViewModels;
 using KnolwdgeBase.Infrastructure;
@@ -34,5 +36,37 @@ namespace KB.CategoryModule.Views
 
         }
 
+        private void GridCategory_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            bool ok = false;
+            DataGrid dg = sender as DataGrid;
+
+            if (dg != null)
+            {
+                DataGridRow dgr = (DataGridRow)(dg.ItemContainerGenerator.ContainerFromIndex(dg.SelectedIndex));
+                if (e.Key == Key.Delete && !dgr.IsEditing)
+                {
+                    // User is attempting to delete the row
+                    var result = MessageBox.Show(
+                        "About to delete the current row.\n\nProceed?",
+                        "Delete",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question,
+                        MessageBoxResult.No);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        foreach (var row in dg.SelectedItems)
+                        {
+                            Category cat = row as Category;
+                            _cvm = (CategoryViewModel)ViewModel;
+
+                            ok = _cvm.ManageDelete(cat);
+                        }
+                    }
+                    e.Handled = (result == MessageBoxResult.No);
+                }
+            }
+        }
     }
 }
