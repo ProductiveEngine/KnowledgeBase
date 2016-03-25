@@ -1,4 +1,5 @@
-﻿using DAL.Contexts;
+﻿using System;
+using DAL.Contexts;
 using DAL.Repositories;
 using DAL.UOW;
 
@@ -20,9 +21,9 @@ namespace DAL.Accessors
             get { return _repo; }
         }
 
-        public void Save()
+        public Boolean Save()
         {
-            _uow.Save();
+            return _uow.Save()>-1;
         }
     }
 }

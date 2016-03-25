@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 
 namespace KnolwdgeBase.Infrastructure
 {
@@ -12,7 +13,7 @@ namespace KnolwdgeBase.Infrastructure
         public ViewModelBase(IView view)
         {
             View = view;
-            View.ViewModel = this;
+            View.ViewModel = this;            
         }        
 
         protected void OnPropertyChanged(string propertyName)

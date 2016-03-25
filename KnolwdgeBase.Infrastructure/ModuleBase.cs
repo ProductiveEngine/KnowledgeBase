@@ -17,7 +17,7 @@ namespace KnolwdgeBase.Infrastructure
         public ModuleBase(IUnityContainer container, IRegionManager regionManager)
         {
             Container = container;
-            RegionManager = regionManager;
+            RegionManager = regionManager;             
         }
 
         public void Initialize()

@@ -33,7 +33,7 @@ namespace DAL.Migrations
                         ModifiedDate = c.DateTime(),
                     })
                 .PrimaryKey(t => t.SubCategoryID)
-                .ForeignKey("dbo.Categories", t => t.CategoryID, cascadeDelete: true)
+                .ForeignKey("dbo.Categories", t => t.CategoryID)
                 .Index(t => t.CategoryID);
             
             CreateTable(
@@ -90,15 +90,15 @@ namespace DAL.Migrations
                 c => new
                     {
                         CommentID = c.Int(nullable: false, identity: true),
+                        StepID = c.Int(),
                         Title = c.String(nullable: false, maxLength: 50),
                         Description = c.String(maxLength: 500),
                         CreatedDate = c.DateTime(nullable: false),
                         ModifiedDate = c.DateTime(),
-                        StepVO_StepID = c.Int(),
                     })
                 .PrimaryKey(t => t.CommentID)
-                .ForeignKey("dbo.Steps", t => t.StepVO_StepID)
-                .Index(t => t.StepVO_StepID);
+                .ForeignKey("dbo.Steps", t => t.StepID)
+                .Index(t => t.StepID);
             
             CreateTable(
                 "dbo.UsefulInfos",
@@ -125,11 +125,11 @@ namespace DAL.Migrations
             DropForeignKey("dbo.UsefulInfos", "ProblemID", "dbo.Problems");
             DropForeignKey("dbo.Problems", "SubCategoryID", "dbo.SubCategories");
             DropForeignKey("dbo.Steps", "SolutionID", "dbo.Solutions");
-            DropForeignKey("dbo.Comments", "StepVO_StepID", "dbo.Steps");
+            DropForeignKey("dbo.Comments", "StepID", "dbo.Steps");
             DropForeignKey("dbo.Solutions", "ProblemID", "dbo.Problems");
             DropForeignKey("dbo.SubCategories", "CategoryID", "dbo.Categories");
             DropIndex("dbo.UsefulInfos", new[] { "ProblemID" });
-            DropIndex("dbo.Comments", new[] { "StepVO_StepID" });
+            DropIndex("dbo.Comments", new[] { "StepID" });
             DropIndex("dbo.Steps", new[] { "SolutionID" });
             DropIndex("dbo.Solutions", new[] { "ProblemID" });
             DropIndex("dbo.Problems", new[] { "SubCategoryID" });

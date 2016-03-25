@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using DAL.Accessors;
 using DomainClasses.Models;
 
@@ -33,17 +34,13 @@ namespace BLService.BL
         public Boolean Save(Category vo)
         {
             _categoryAccessor.Repo.InsertOrUpdate(vo);
-            _categoryAccessor.Save();
-
-            return true;
+            return _categoryAccessor.Save();           
         }
 
         public Boolean Remove(int id)
         {
             _categoryAccessor.Repo.Delete(id);
-            _categoryAccessor.Save();
-
-            return true;
+            return _categoryAccessor.Save();                                    
         }
     }
 }

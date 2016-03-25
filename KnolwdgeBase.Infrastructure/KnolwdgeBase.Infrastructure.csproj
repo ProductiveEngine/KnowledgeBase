@@ -80,6 +80,7 @@
     <Compile Include="IShellService.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewModel.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="ModuleBase.cs" />
     <Compile Include="Prism\IRegionManagerAware.cs" />
     <Compile Include="Prism\RegionManagerAware.cs" />

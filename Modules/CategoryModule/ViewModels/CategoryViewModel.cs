@@ -50,11 +50,8 @@ namespace CategoryModule.ViewModels
         #endregion //Constructors  
 
         public Boolean ManageSave(Category category)
-        {
-            bool ok = false;
-            ok = _categoryBL.Save(category);
-   
-            return ok;
+        {  
+            return _categoryBL.Save(category);
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)

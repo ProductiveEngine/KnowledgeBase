@@ -31,18 +31,12 @@ namespace KB.CategoryModule.ViewModels
 
         public Boolean ManageSave(Category category)
         {
-            bool ok = false;
-            ok = _categoryBL.Save(category);
-   
-            return ok;
+            return _categoryBL.Save(category);
         }
 
         public Boolean ManageDelete(Category category)
         {
-            bool ok = false;
-            ok = _categoryBL.Remove(category.CategoryID);
-
-            return ok;
+            return _categoryBL.Remove(category.CategoryID);
         }
     }
 }

@@ -32,8 +32,7 @@ namespace KB.CategoryModule.Views
             _cvm = (CategoryViewModel) ViewModel;
             cat.ModifiedDate = DateTime.Now;
 
-            ok = _cvm.ManageSave(cat);
-
+            ok = _cvm.ManageSave(cat);          
         }
 
         private void GridCategory_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -62,6 +61,11 @@ namespace KB.CategoryModule.Views
                             _cvm = (CategoryViewModel)ViewModel;
 
                             ok = _cvm.ManageDelete(cat);
+
+                            if (!ok)
+                            {
+                                dg.Items.Refresh();
+                            }
                         }
                     }
                     e.Handled = (result == MessageBoxResult.No);

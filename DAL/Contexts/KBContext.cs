@@ -26,10 +26,26 @@ namespace DAL.Contexts
         public IDbSet<SubCategory> SubCategories {get; set;}
         public IDbSet<UsefulInfo> UsefulInfos { get; set;}
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Configurations.Add(new LineItemMap());
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>()
+            //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>()
+
+            //modelBuilder.Configurations.Add(new LineItemMap());
+            //One Category -> many SubCategories
+            modelBuilder.Entity<SubCategory>()
+                .HasRequired(t => t.Category)                
+                .WithMany(t => t.SubCategories)
+                .HasForeignKey(d => d.CategoryID)
+                .WillCascadeOnDelete(false);
+
+            //One SubCategory -> many Problems
+            modelBuilder.Entity<Problem>()
+                .HasRequired(t => t.SubCategory)
+                .WithMany(t => t.Problems)
+                .HasForeignKey(d => d.SubCategoryID)
+                .WillCascadeOnDelete(false);           
+        }
 
         public void SetModified(object entity)
         {

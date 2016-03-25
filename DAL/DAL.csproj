@@ -65,13 +65,13 @@
     <Compile Include="Base\IUnitOfWork.cs" />
     <Compile Include="Contexts\KBContext.cs" />
     <Compile Include="Base\StateHelpers.cs" />
-    <Compile Include="Migrations\201601261832173_Initial.cs" />
-    <Compile Include="Migrations\201601261832173_Initial.Designer.cs">
-      <DependentUpon>201601261832173_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201603250918468_Initial.cs" />
+    <Compile Include="Migrations\201603250918468_Initial.Designer.cs">
+      <DependentUpon>201603250918468_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601261904153_Fix1.cs" />
-    <Compile Include="Migrations\201601261904153_Fix1.Designer.cs">
-      <DependentUpon>201601261904153_Fix1.cs</DependentUpon>
+    <Compile Include="Migrations\201603250946529_second.cs" />
+    <Compile Include="Migrations\201603250946529_second.Designer.cs">
+      <DependentUpon>201603250946529_second.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="Repositories\SubCategoryRepo.cs" />
     <Compile Include="UOW\KBUOW.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -96,18 +95,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601261832173_Initial.resx">
-      <DependentUpon>201601261832173_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601261904153_Fix1.resx">
-      <DependentUpon>201601261904153_Fix1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
       <Project>{9B7E22F0-B173-4B44-9B23-F26CA856A161}</Project>
       <Name>DomainClasses</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
+      <Project>{46BBD1B5-B7BA-40F5-A6AB-D97289B143A5}</Project>
+      <Name>KnolwdgeBase.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603250918468_Initial.resx">
+      <DependentUpon>201603250918468_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603250946529_second.resx">
+      <DependentUpon>201603250946529_second.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,9 +9,14 @@
         <Grid.Resources>
             <CollectionViewSource x:Key="CategoriesKey" Source="{Binding Categories, Mode=OneTime}"/>
         </Grid.Resources>
-        <DataGrid x:Name="GridSubCategory" AutoGenerateColumns="False" 
-				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" PreviewKeyDown="GridSubCategory_PreviewKeyDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontSize="18" FontWeight="Bold">Edit Subcategories</TextBlock>
 
+        <DataGrid Grid.Row="1" x:Name="GridSubCategory" AutoGenerateColumns="False" 
+				ItemsSource="{Binding SubCategories}" RowEditEnding="GridSubCategory_RowEditEnding" PreviewKeyDown="GridSubCategory_PreviewKeyDown">
             <DataGrid.Columns>
                 <DataGridComboBoxColumn x:Name="CmdCategories" Header="Category" 
 						DisplayMemberPath="Title" 

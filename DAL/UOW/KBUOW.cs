@@ -2,9 +2,11 @@
 using DAL.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure.Interception;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KnolwdgeBase.Infrastructure;
 
 namespace DAL.UOW
 {
@@ -24,7 +26,17 @@ namespace DAL.UOW
         }
         public int Save()
         {
-            return _context.SaveChanges();
+            int result = -1;
+
+            try
+            {
+                result = _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(Logger.Level.Exception, "KBUOW", ex.ToString());
+            }
+            return result;
         }
 
         public IContext Context
