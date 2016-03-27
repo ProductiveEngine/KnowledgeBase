@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using BLService.BL;
 using DomainClasses.Models;
-using KB.CategoryModule.Views;
 using KnolwdgeBase.Infrastructure;
 using Prism.Regions;
 

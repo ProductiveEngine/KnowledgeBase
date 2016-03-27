@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:KnoledgeBase"        
         xmlns:inf="clr-namespace:KnolwdgeBase.Infrastructure;assembly=KnolwdgeBase.Infrastructure"
         mc:Ignorable="d"
-        Title="Shell" Height="561.3" Width="664.8">
+        Title="Knowledge Base" Height="561.3" Width="664.8">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -23,7 +23,7 @@
                 <MenuItem Header="Subcategories" Command="{Binding NavigateCommand}" CommandParameter="SubCategoryView" />
             </MenuItem>
             <MenuItem Header="Usefull info" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
-            <MenuItem Header="Problems and Solutions" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
+            <MenuItem Header="Problems and Solutions" Command="{Binding NavigateCommand}" CommandParameter="PaSView" />
             <MenuItem Header="Open Shell" Command="{Binding OpenShellCommand}" CommandParameter="ViewB" />
             <MenuItem Header="About" Command="{Binding AboutCommand}"/>
         </Menu>

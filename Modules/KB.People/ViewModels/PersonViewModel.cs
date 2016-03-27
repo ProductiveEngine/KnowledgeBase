@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics.Tracing;
 using System.Windows;
 using KB.Business;
 using KB.People.Views;

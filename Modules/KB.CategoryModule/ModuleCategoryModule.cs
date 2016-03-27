@@ -1,8 +1,6 @@
-﻿using KB.CategoryModule.ViewModels;
-using KB.CategoryModule.Views;
+﻿using KB.CategoryModule.Views;
 using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
-using Prism.Modularity;
 using Prism.Regions;
 
 namespace KB.CategoryModule

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Data;
-using System.Windows;
 using System.Windows.Controls;
-using CategoryModule.ViewModels;
-using CategoryModule.Views;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Regions;

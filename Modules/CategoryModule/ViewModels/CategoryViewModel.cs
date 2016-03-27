@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BLService.BL;
 using CategoryModule.Views;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
-using Prism.Events;
 using Prism.Regions;
 
 namespace CategoryModule.ViewModels

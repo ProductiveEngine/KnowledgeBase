@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using BLService.BL;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
-using Prism.Mvvm;
 using Prism.Regions;
-using SubCategoryModule.Views;
 
 namespace SubCategoryModule.ViewModels
 {

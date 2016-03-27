@@ -1,6 +1,5 @@
 ﻿using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
-using Prism.Modularity;
 using Prism.Regions;
 using SubCategoryModule.Navigation;
 using SubCategoryModule.Views;

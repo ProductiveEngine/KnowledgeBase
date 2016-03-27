@@ -1,8 +1,6 @@
-﻿using KB.StatusBar.ViewModels;
-using KB.StatusBar.Views;
+﻿using KB.StatusBar.Views;
 using KnolwdgeBase.Infrastructure;
 using Microsoft.Practices.Unity;
-using Prism.Modularity;
 using Prism.Regions;
 
 namespace KB.StatusBar

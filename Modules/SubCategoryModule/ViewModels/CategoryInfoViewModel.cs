@@ -1,5 +1,4 @@
-﻿using System;
-using DomainClasses.Models;
+﻿using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Commands;
 using Prism.Regions;

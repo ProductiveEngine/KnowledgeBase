@@ -169,6 +169,10 @@
       <Project>{48c6a631-6aea-4523-839c-6d95a953ec05}</Project>
       <Name>KB.CategoryModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modules\KB.PaSModule\KB.PaSModule.csproj">
+      <Project>{9b24e199-0582-4148-b994-d77a6dcb16f4}</Project>
+      <Name>KB.PaSModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\KB.Services\KB.Services.csproj">
       <Project>{81DF9E6C-3832-4B85-8200-CB8CA8EC50F9}</Project>
       <Name>KB.Services</Name>

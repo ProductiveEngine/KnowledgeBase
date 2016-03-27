@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using BLService;
 using KB.CategoryModule;
+using KB.PaSModule;
 using KB.StatusBar;
 using KB.SubCategoryModule;
 using KnolwdgeBase.Infrastructure;
@@ -50,7 +51,8 @@ namespace KnoledgeBase
             ModuleCatalog catalog = new ModuleCatalog();
             catalog.AddModule(typeof(BLModule));
             catalog.AddModule(typeof(ModuleCateogryModule));
-            catalog.AddModule(typeof(ModuleSubCateogryModule));            
+            catalog.AddModule(typeof(ModuleSubCateogryModule));
+            catalog.AddModule(typeof(ModulePaSModule));
             //catalog.AddModule(typeof(PersonServiceModule));
             //catalog.AddModule(typeof(ModuleAModule));
 
