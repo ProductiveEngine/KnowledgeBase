@@ -71,6 +71,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\packages\Extended.Wpf.Toolkit.2.6\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModulePaSModule.cs" />
@@ -88,10 +91,19 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\IPaSViewModel.cs" />
+    <Compile Include="ViewModels\IWizardViewModel.cs" />
     <Compile Include="ViewModels\PaSViewModel.cs" />
+    <Compile Include="ViewModels\WizardViewModel.cs" />
     <Compile Include="Views\IPaSView.cs" />
+    <Compile Include="Views\IWizardView.cs" />
     <Compile Include="Views\PaSView.xaml.cs">
       <DependentUpon>PaSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WizardPageProblemView.xaml.cs">
+      <DependentUpon>WizardPageProblemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WizardView.xaml.cs">
+      <DependentUpon>WizardView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,6 +127,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\PaSView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WizardPageProblemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WizardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

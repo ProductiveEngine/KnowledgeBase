@@ -1,0 +1,45 @@
+﻿<Window x:Class="KB.PaSModule.Views.WizardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KB.PaSModule.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"        
+        mc:Ignorable="d"
+        Title="WizardView" Height="300" Width="571.023">
+    <Grid>
+        <xctk:Wizard FinishButtonClosesWindow="True">
+            <xctk:WizardPage x:Name="IntroPage" 
+                                   Title="Welcome to Problems and Solutions Wizard"
+                                   Description="This Wizard will walk you though the process of adding/editing an issue." />
+            <xctk:WizardPage x:Name="PgProblem" PageType="Interior"
+                                   Title="Problem"
+                                   Description="This is the first page in the process."
+                                   NextPage="{Binding ElementName=PgSolution}"
+                                   PreviousPage="{Binding ElementName=IntroPage}">
+
+                <StackPanel>
+                    <TextBlock Text="AAD"></TextBlock>
+               
+                </StackPanel>
+                <!--<local:WizardPageProblem></local:WizardPageProblem>-->
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="PgSolution" PageType="Interior"
+                                   Title="Solution"
+                                   Description="This is the second page in the process"
+                                   NextPage="{Binding ElementName=PgSteps}"   
+                                   PreviousPage="{Binding ElementName=PgProblem}">
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="PgSteps" PageType="Interior"
+                                   Title="Steps"
+                                   Description="This is the second page in the process"
+                                   NextPage="{Binding ElementName=LastPage}"
+                                   PreviousPage="{Binding ElementName=IntroPage}">
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="LastPage" PageType="Interior"
+                                   Title="Last Page"
+                                   Description="This is the last page in the process"
+                                   CanFinish="True"/>
+        </xctk:Wizard>
+    </Grid>
+</Window>

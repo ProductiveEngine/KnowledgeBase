@@ -1,28 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using KB.PaSModule.ViewModels;
+using KnolwdgeBase.Infrastructure;
 
 namespace KB.PaSModule.Views
 {
     /// <summary>
     /// Interaction logic for PaSView.xaml
     /// </summary>
-    public partial class PaSView : UserControl
+    public partial class PaSView : UserControl, IPaSView
     {
-        public PaSView()
+        private PaSViewModel _pas = null;
+
+        public PaSView(PaSViewModel paSViewModel)
         {
+            _pas = paSViewModel;
             InitializeComponent();
         }
+
+        private void BtnNew_Click(object sender, RoutedEventArgs e)
+        {
+            new WizardView(new WizardViewModel(null)).Show();
+        }
+
+        public IViewModel ViewModel
+        {
+            get { return (IViewModel)DataContext; }
+            set { DataContext = value; }
+        }        
     }
 }

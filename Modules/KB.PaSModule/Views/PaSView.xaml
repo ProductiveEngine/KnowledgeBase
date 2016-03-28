@@ -2,8 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:KB.PaSModule.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                           
              mc:Ignorable="d" 
              d:DesignHeight="346.023" d:DesignWidth="564.205">
     <Grid>
@@ -21,7 +20,7 @@
         </GroupBox>
         <GroupBox Grid.Row="0" Grid.Column="1" Header="Commands">
             <StackPanel>
-                <Button Margin="5">New</Button>
+                <Button x:Name="BtnNew" Margin="5" Click="BtnNew_Click">New</Button>
                 <Button Margin="5">Edit</Button>
                 <Button Margin="5">Save</Button>
                 <Button Margin="5">Cancel</Button>
@@ -40,9 +39,10 @@
                     <TextBlock Name="SolutionTitle" Margin="5,0,0,0">Title</TextBlock>
                 </StackPanel>
                 <TabControl Name="StepsTabs">
-                    
+
                 </TabControl>
             </StackPanel>
         </GroupBox>
     </Grid>
 </UserControl>
+

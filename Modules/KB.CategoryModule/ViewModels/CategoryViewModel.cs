@@ -20,7 +20,6 @@ namespace KB.CategoryModule.ViewModels
         }      
         #endregion //Properties
         #region Constructors
-
         public CategoryViewModel(IRegionManager regionManager)            
         {
             _categoryBL = new CategoryBL();
