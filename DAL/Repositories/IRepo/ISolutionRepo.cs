@@ -2,7 +2,7 @@
 
 namespace DAL.Repositories.IRepo
 {
-    public interface ISolutionRepo : IEntityRepo<Solution>
+    public interface ISolutionRepo : IEntityRepo<SolutionVO>
     {
 
     }

@@ -26,14 +26,14 @@ namespace KB.SubCategoryModule.ViewModels
             }
         }
 
-        private ObservableCollection<Category> _categories;
-        public ObservableCollection<Category> Categories
+        private ObservableCollection<CategoryVO> _categories;
+        public ObservableCollection<CategoryVO> Categories
         {
             get { return _categories; }
             set { _categories = value; }
         }
-        private ObservableCollection<SubCategory> _subCategories;
-        public ObservableCollection<SubCategory> SubCategories
+        private ObservableCollection<SubCategoryVO> _subCategories;
+        public ObservableCollection<SubCategoryVO> SubCategories
         {
             get { return _subCategories; }
             set { _subCategories = value; }
@@ -45,14 +45,14 @@ namespace KB.SubCategoryModule.ViewModels
         public SubCategoryViewModel(IRegionManager regionManager)
         {            
             _subCategoryBl = new SubCategoryBL();            
-            _subCategories = new ObservableCollection<SubCategory>(_subCategoryBl.FindAll());
+            _subCategories = new ObservableCollection<SubCategoryVO>(_subCategoryBl.FindAll());
 
             _categoryBl = new CategoryBL();
-            _categories = new ObservableCollection<Category>(_categoryBl.FindAll());
+            _categories = new ObservableCollection<CategoryVO>(_categoryBl.FindAll());
         }
         #endregion //Constructors  
        
-        public Boolean ManageSave(SubCategory subCategory)
+        public Boolean ManageSave(SubCategoryVO subCategory)
         {
             bool ok = false;
             ok = _subCategoryBl.Save(subCategory);
@@ -60,7 +60,7 @@ namespace KB.SubCategoryModule.ViewModels
             return ok;
         }
 
-        public Boolean ManageDelete(SubCategory subCategory)
+        public Boolean ManageDelete(SubCategoryVO subCategory)
         {
             bool ok = false;
             ok = _subCategoryBl.Remove(subCategory.SubCategoryID);

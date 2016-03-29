@@ -47,7 +47,7 @@ namespace SubCategoryModule.ViewModels
 
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
-            var toCategoryTitle = ((Category) navigationContext.Parameters["To"]).Title;
+            var toCategoryTitle = ((CategoryVO) navigationContext.Parameters["To"]).Title;
             if (Title == toCategoryTitle)
             {
                 return true;
@@ -67,7 +67,7 @@ namespace SubCategoryModule.ViewModels
         {
             _journal = navigationContext.NavigationService.Journal;
                
-            Category category = navigationContext.Parameters["To"] as Category;
+            CategoryVO category = navigationContext.Parameters["To"] as CategoryVO;
 
             if (category != null)
             {

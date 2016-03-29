@@ -2,7 +2,7 @@
 
 namespace DAL.Repositories.IRepo
 {
-    public interface ICommentRepo : IEntityRepo<Comment>
+    public interface ICommentRepo : IEntityRepo<CommentVO>
     {
 
     }

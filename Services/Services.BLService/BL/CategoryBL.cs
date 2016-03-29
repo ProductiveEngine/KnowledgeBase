@@ -15,20 +15,20 @@ namespace BLService.BL
             _categoryAccessor = new CategoryAccessor();
         }
 
-        public List<Category> FindAll()
+        public List<CategoryVO> FindAll()
         {
-            List<Category> catList = null;
+            List<CategoryVO> catList = null;
             catList = _categoryAccessor.Repo.All.ToList();
 
             return catList;
         }
 
-        public IQueryable<Category> GetAll()
+        public IQueryable<CategoryVO> GetAll()
         {            
             return _categoryAccessor.Repo.All;            
         }
 
-        public Boolean Save(Category vo)
+        public Boolean Save(CategoryVO vo)
         {
             _categoryAccessor.Repo.InsertOrUpdate(vo);
             return _categoryAccessor.Save();           

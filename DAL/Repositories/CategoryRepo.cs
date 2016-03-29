@@ -18,7 +18,7 @@ namespace DAL.Repositories
             _context = uow.Context as KBContext;
         }
 
-        public IQueryable<Category> All
+        public IQueryable<CategoryVO> All
         {
             get
             {
@@ -34,9 +34,9 @@ namespace DAL.Repositories
         //    get { return _context.Customers.Where(c => c.Orders.Any()).ToList(); }
         //}
 
-        public IQueryable<Category> AllIncluding(params Expression<Func<Category, object>>[] includeProperties)
+        public IQueryable<CategoryVO> AllIncluding(params Expression<Func<CategoryVO, object>>[] includeProperties)
         {
-            IQueryable<Category> query = _context.Categories;
+            IQueryable<CategoryVO> query = _context.Categories;
 
             foreach(var includeProperty in includeProperties)
             {
@@ -56,12 +56,12 @@ namespace DAL.Repositories
             _context.Dispose();
         }
 
-        public Category Find(int id)
+        public CategoryVO Find(int id)
         {
             return _context.Categories.Find(id);
         }
 
-        public void InsertOrUpdate(Category category)
+        public void InsertOrUpdate(CategoryVO category)
         {
             if(category.CategoryID == default(int))
             {
@@ -72,7 +72,7 @@ namespace DAL.Repositories
                 _context.SetModified(category);
             }
         }
-        public void InsertOrUpdateGraph(Category customerGraph)
+        public void InsertOrUpdateGraph(CategoryVO customerGraph)
         {
             if (customerGraph.State == State.Added)
             {

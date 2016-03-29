@@ -6,25 +6,25 @@ namespace DAL.Contexts
 {
     public interface IKBContext : IContext
     {
-        IDbSet<Category> Categories { get; set; }
-        IDbSet<Comment> Comments { get; set; }
-        IDbSet<Problem> Problems { get; set; }
-        IDbSet<Solution> Solutions { get; set; }
-        IDbSet<Step> Steps { get; set; }
-        IDbSet<SubCategory> SubCategories { get; set; }
-        IDbSet<UsefulInfo> UsefulInfos { get; set; }
+        IDbSet<CategoryVO> Categories { get; set; }
+        IDbSet<CommentVO> Comments { get; set; }
+        IDbSet<ProblemVO> Problems { get; set; }
+        IDbSet<SolutionVO> Solutions { get; set; }
+        IDbSet<StepVO> Steps { get; set; }
+        IDbSet<SubCategoryVO> SubCategories { get; set; }
+        IDbSet<UsefulInfoVO> UsefulInfos { get; set; }
 
     }
 
     public class KBContext : BaseContext<KBContext>, IKBContext
     {
-        public IDbSet<Category> Categories {get; set;}
-        public IDbSet<Comment> Comments {get; set;}
-        public IDbSet<Problem> Problems {get; set;}
-        public IDbSet<Solution> Solutions {get; set;}
-        public IDbSet<Step> Steps {get; set;}
-        public IDbSet<SubCategory> SubCategories {get; set;}
-        public IDbSet<UsefulInfo> UsefulInfos { get; set;}
+        public IDbSet<CategoryVO> Categories {get; set;}
+        public IDbSet<CommentVO> Comments {get; set;}
+        public IDbSet<ProblemVO> Problems {get; set;}
+        public IDbSet<SolutionVO> Solutions {get; set;}
+        public IDbSet<StepVO> Steps {get; set;}
+        public IDbSet<SubCategoryVO> SubCategories {get; set;}
+        public IDbSet<UsefulInfoVO> UsefulInfos { get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,14 +33,14 @@ namespace DAL.Contexts
 
             //modelBuilder.Configurations.Add(new LineItemMap());
             //One Category -> many SubCategories
-            modelBuilder.Entity<SubCategory>()
+            modelBuilder.Entity<SubCategoryVO>()
                 .HasRequired(t => t.Category)                
                 .WithMany(t => t.SubCategories)
                 .HasForeignKey(d => d.CategoryID)
                 .WillCascadeOnDelete(false);
 
             //One SubCategory -> many Problems
-            modelBuilder.Entity<Problem>()
+            modelBuilder.Entity<ProblemVO>()
                 .HasRequired(t => t.SubCategory)
                 .WithMany(t => t.Problems)
                 .HasForeignKey(d => d.SubCategoryID)

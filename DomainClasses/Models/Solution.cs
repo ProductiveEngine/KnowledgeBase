@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DomainClasses.Models
 {
     [Table("Solutions")]
-    public class Solution : Base.Base
+    public class SolutionVO : Base.Base
     {
         [Key]
         public int SolutionId { get; set; }
@@ -16,8 +16,8 @@ namespace DomainClasses.Models
         public float Rating { get; set; }
 
         public int ProblemID { get; set; }
-        public virtual Problem Problem { get; set; }
+        public virtual ProblemVO Problem { get; set; }
 
-        public virtual ICollection<Step> Steps { get; set; }
+        public virtual ICollection<StepVO> Steps { get; set; }
     }
 }

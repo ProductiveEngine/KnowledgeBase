@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DomainClasses.Models
 {
     [Table("UsefulInfos")]
-    public class UsefulInfo : Base.Base
+    public class UsefulInfoVO : Base.Base
     {
         [Key]
         public int UsefulInfoID { get; set; }
@@ -19,7 +19,7 @@ namespace DomainClasses.Models
         public string Tags { get; set; }
 
         public int? ProblemID { get; set; }
-        public virtual Problem Problem { get; set; }
+        public virtual ProblemVO Problem { get; set; }
     }
 
     public enum ProgamingLanguage

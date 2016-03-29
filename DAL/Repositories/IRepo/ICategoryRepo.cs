@@ -2,7 +2,7 @@
 
 namespace DAL.Repositories.IRepo
 {
-    public interface ICategoryRepo : IEntityRepo<Category>
+    public interface ICategoryRepo : IEntityRepo<CategoryVO>
     {
 
     }

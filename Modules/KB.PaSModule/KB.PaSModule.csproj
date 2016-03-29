@@ -94,6 +94,7 @@
     <Compile Include="ViewModels\IWizardViewModel.cs" />
     <Compile Include="ViewModels\PaSViewModel.cs" />
     <Compile Include="ViewModels\WizardViewModel.cs" />
+    <Compile Include="ViewModels\WizardVO.cs" />
     <Compile Include="Views\IPaSView.cs" />
     <Compile Include="Views\IWizardView.cs" />
     <Compile Include="Views\PaSView.xaml.cs">
@@ -120,9 +121,17 @@
     <Folder Include="Navigation\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DomainClasses\DomainClasses.csproj">
+      <Project>{9b7e22f0-b173-4b44-9b23-f26ca856a161}</Project>
+      <Name>DomainClasses</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\KnolwdgeBase.Infrastructure\KnolwdgeBase.Infrastructure.csproj">
       <Project>{46bbd1b5-b7ba-40f5-a6ab-d97289b143a5}</Project>
       <Name>KnolwdgeBase.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Services.BLService\BLService.csproj">
+      <Project>{0B09E253-902D-4A66-94D5-28FA31BF21C9}</Project>
+      <Name>BLService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

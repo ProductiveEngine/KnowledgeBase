@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DomainClasses.Models
 {
     [Table("Comments")]
-    public class Comment : Base.Base
+    public class CommentVO : Base.Base
     {
         [Key]
         public int CommentID { get; set; }
 
         public int? StepID { get; set; }
-        public virtual Step Step { get; set; }
+        public virtual StepVO Step { get; set; }
     }
 }

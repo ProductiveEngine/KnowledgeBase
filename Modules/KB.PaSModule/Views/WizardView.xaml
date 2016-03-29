@@ -8,7 +8,39 @@
         mc:Ignorable="d"
         Title="WizardView" Height="300" Width="571.023">
     <Grid>
-        <xctk:Wizard FinishButtonClosesWindow="True">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Title" Width="100"></Label>
+                <TextBox  Height="23" TextWrapping="Wrap" Text="" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Description" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="TextBox" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Category" Width="100"></Label>
+                <ComboBox x:Name="cmbCategory" Width="200" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="Title"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Subcategory" Width="100"></Label>
+                <ComboBox x:Name="cmbSubcategory" Width="200"  ItemsSource="{Binding SubCategories}" SelectedItem="{Binding SelectedSubCategory}" DisplayMemberPath="Title"/>
+            </StackPanel>
+            <!--SubCategoryid -->
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Tags" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="TextBox" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="CreatedDate" Width="100"></Label>
+                <TextBlock Text=""></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="ModifiedDate" Width="100"></Label>
+                <TextBlock Text=""></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        
+        <!--<xctk:Wizard FinishButtonClosesWindow="True">
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to Problems and Solutions Wizard"
                                    Description="This Wizard will walk you though the process of adding/editing an issue." />
@@ -18,11 +50,8 @@
                                    NextPage="{Binding ElementName=PgSolution}"
                                    PreviousPage="{Binding ElementName=IntroPage}">
 
-                <StackPanel>
-                    <TextBlock Text="AAD"></TextBlock>
                
-                </StackPanel>
-                <!--<local:WizardPageProblem></local:WizardPageProblem>-->
+                --><!--<local:WizardPageProblem></local:WizardPageProblem>--><!--
             </xctk:WizardPage>
             <xctk:WizardPage x:Name="PgSolution" PageType="Interior"
                                    Title="Solution"
@@ -40,6 +69,6 @@
                                    Title="Last Page"
                                    Description="This is the last page in the process"
                                    CanFinish="True"/>
-        </xctk:Wizard>
+        </xctk:Wizard>-->
     </Grid>
 </Window>

@@ -2,7 +2,7 @@
 
 namespace DAL.Repositories.IRepo
 {
-    public interface IUsefulInfoRepo : IEntityRepo<UsefulInfo>
+    public interface IUsefulInfoRepo : IEntityRepo<UsefulInfoVO>
     {
 
     }

@@ -28,7 +28,7 @@ namespace KB.SubCategoryModule.Views
         {
             bool ok = false;
                         
-            SubCategory cat = e.Row.DataContext as SubCategory;
+            SubCategoryVO cat = e.Row.DataContext as SubCategoryVO;
             _cvm = (SubCategoryViewModel)ViewModel;
             cat.ModifiedDate = DateTime.Now;
 
@@ -57,7 +57,7 @@ namespace KB.SubCategoryModule.Views
                     {
                         foreach (var row in dg.SelectedItems)
                         {
-                            SubCategory subCat = row as SubCategory;
+                            SubCategoryVO subCat = row as SubCategoryVO;
                             _cvm = (SubCategoryViewModel)ViewModel;
 
                             ok = _cvm.ManageDelete(subCat);

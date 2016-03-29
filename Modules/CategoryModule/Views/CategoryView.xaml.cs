@@ -30,7 +30,7 @@ namespace CategoryModule.Views
             bool ok = false;
 
             //var _emp = e.Row.Item as Employee;
-            Category cat = e.Row.DataContext as Category;
+            CategoryVO cat = e.Row.DataContext as CategoryVO;
             _cvm = (CategoryViewModel)ViewModel;
             cat.ModifiedDate = DateTime.Now;
 

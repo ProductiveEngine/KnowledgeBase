@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:KB.PaSModule.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <Label></Label>
+
+    </StackPanel>
 </UserControl>

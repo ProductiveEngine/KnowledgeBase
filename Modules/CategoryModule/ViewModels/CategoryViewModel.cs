@@ -26,8 +26,8 @@ namespace CategoryModule.ViewModels
             }
         }
 
-        private ObservableCollection<Category> _categories;
-        public ObservableCollection<Category> Categories
+        private ObservableCollection<CategoryVO> _categories;
+        public ObservableCollection<CategoryVO> Categories
         {
             get { return _categories; }
             set { _categories = value; }
@@ -39,11 +39,11 @@ namespace CategoryModule.ViewModels
             : base(view)
         {
             _categoryBL = categoryBL;
-            _categories = new ObservableCollection<Category>(_categoryBL.FindAll());            
+            _categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());            
         }
         #endregion //Constructors  
 
-        public Boolean ManageSave(Category category)
+        public Boolean ManageSave(CategoryVO category)
         {  
             return _categoryBL.Save(category);
         }

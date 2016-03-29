@@ -28,7 +28,7 @@ namespace KB.CategoryModule.Views
         {
             bool ok = false;
 
-            Category cat = e.Row.DataContext as Category;
+            CategoryVO cat = e.Row.DataContext as CategoryVO;
             _cvm = (CategoryViewModel) ViewModel;
             cat.ModifiedDate = DateTime.Now;
 
@@ -57,7 +57,7 @@ namespace KB.CategoryModule.Views
                     {
                         foreach (var row in dg.SelectedItems)
                         {
-                            Category cat = row as Category;
+                            CategoryVO cat = row as CategoryVO;
                             _cvm = (CategoryViewModel)ViewModel;
 
                             ok = _cvm.ManageDelete(cat);

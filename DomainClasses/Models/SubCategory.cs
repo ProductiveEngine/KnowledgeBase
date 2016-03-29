@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DomainClasses.Models
 {
     [Table("SubCategories")]
-    public class SubCategory : Base.Base
+    public class SubCategoryVO : Base.Base
     {
         [Key]
         public int SubCategoryID { get; set; }
@@ -16,7 +16,7 @@ namespace DomainClasses.Models
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        public virtual Category Category { get; set; }
-        public virtual ICollection<Problem> Problems { get; set; }        
+        public virtual CategoryVO Category { get; set; }
+        public virtual ICollection<ProblemVO> Problems { get; set; }        
     }
 }

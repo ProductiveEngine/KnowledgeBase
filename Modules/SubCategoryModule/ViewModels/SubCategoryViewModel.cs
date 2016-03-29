@@ -50,7 +50,7 @@ namespace SubCategoryModule.ViewModels
 
         public ICommand SelectItemCommand { get; set; }
 
-        public DelegateCommand<SubCategory> CategoryInfoCommand { get; set; }
+        public DelegateCommand<SubCategoryVO> CategoryInfoCommand { get; set; }
 
         private string _selectedItem = "None";
 
@@ -64,14 +64,14 @@ namespace SubCategoryModule.ViewModels
             }
         }
 
-        private ObservableCollection<Category> _categories;
-        public ObservableCollection<Category> Categories
+        private ObservableCollection<CategoryVO> _categories;
+        public ObservableCollection<CategoryVO> Categories
         {
             get { return _categories; }
             set { _categories = value; }
         }
-        private ObservableCollection<SubCategory> _subCategories;
-        public ObservableCollection<SubCategory> SubCategories
+        private ObservableCollection<SubCategoryVO> _subCategories;
+        public ObservableCollection<SubCategoryVO> SubCategories
         {
             get { return _subCategories; }
             set { _subCategories = value; }
@@ -89,10 +89,10 @@ namespace SubCategoryModule.ViewModels
             _regionManager = regionManager;
 
             _subCategoryBl = new SubCategoryBL();            
-            _subCategories = new ObservableCollection<SubCategory>(_subCategoryBl.FindAll());
+            _subCategories = new ObservableCollection<SubCategoryVO>(_subCategoryBl.FindAll());
 
             _categoryBl = new CategoryBL();
-            _categories = new ObservableCollection<Category>(_categoryBl.FindAll());
+            _categories = new ObservableCollection<CategoryVO>(_categoryBl.FindAll());
 
             NotificationRequest = new InteractionRequest<INotification>();
             NotificationCommand = new DelegateCommand(RaiseNotification);
@@ -105,15 +105,15 @@ namespace SubCategoryModule.ViewModels
 
             SelectItemCommand = new DelegateCommand<object[]>(SelectItem);
 
-            CategoryInfoCommand = new DelegateCommand<SubCategory>(CategoryInfo);
+            CategoryInfoCommand = new DelegateCommand<SubCategoryVO>(CategoryInfo);
         }
         #endregion //Constructors  
 
-        private void CategoryInfo(SubCategory subcategory)
+        private void CategoryInfo(SubCategoryVO subcategory)
         {
             if (subcategory != null && subcategory.CategoryID > 0)
             {
-                Category category = _categoryBl.GetAll().FirstOrDefault(x => x.CategoryID == subcategory.CategoryID);
+                CategoryVO category = _categoryBl.GetAll().FirstOrDefault(x => x.CategoryID == subcategory.CategoryID);
                 var parameters = new NavigationParameters();
                 parameters.Add("To", category);
                 _regionManager.RequestNavigate("ContentRegion", new Uri("CategoryInfoView", UriKind.Relative),
@@ -129,7 +129,7 @@ namespace SubCategoryModule.ViewModels
             
         }
 
-        public Boolean ManageSave(SubCategory subCategory)
+        public Boolean ManageSave(SubCategoryVO subCategory)
         {
             bool ok = false;
             ok = _subCategoryBl.Save(subCategory);
@@ -156,7 +156,7 @@ namespace SubCategoryModule.ViewModels
         {
             if (items != null && items.Length > 0)
             {
-                SelectedItem = ((SubCategory) items.FirstOrDefault()).Title ;
+                SelectedItem = ((SubCategoryVO) items.FirstOrDefault()).Title ;
             }
         }
 

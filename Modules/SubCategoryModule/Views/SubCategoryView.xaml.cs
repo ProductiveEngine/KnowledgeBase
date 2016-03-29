@@ -44,7 +44,7 @@ namespace SubCategoryModule.Views
             bool ok = false;
 
             //var _emp = e.Row.Item as Employee;
-            SubCategory cat = e.Row.DataContext as SubCategory;
+            SubCategoryVO cat = e.Row.DataContext as SubCategoryVO;
             _cvm = (SubCategoryViewModel)ViewModel;
             cat.ModifiedDate = DateTime.Now;
 
