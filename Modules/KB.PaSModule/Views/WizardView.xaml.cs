@@ -21,5 +21,10 @@ namespace KB.PaSModule.Views
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
         }
+
+        private void Wizard_Finish(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("AAA");
+        }
     }
 }
