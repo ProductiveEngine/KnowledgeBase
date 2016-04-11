@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using BLService.BL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Services.BLService.BL;
 
 namespace UnitTestProject1
 {
@@ -19,9 +20,11 @@ namespace UnitTestProject1
             //    Assert.IsTrue(repo.All.Any(c => c.Title == "Databases"));
             //}
 
-            CategoryBL cBL = new CategoryBL();
-            Assert.IsTrue(cBL.GetAll().Any(c => c.Title == "Databases"));
+            //CategoryBL cBL = new CategoryBL();
+            //Assert.IsTrue(cBL.GetAll().Any(c => c.Title == "Databases"));
 
+            WizardBL wBL = new WizardBL();
+            wBL.FindById(2);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace KB.PaSModule.Views
 
         private void Wizard_Finish(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("AAA");
+            ((WizardViewModel) ViewModel).ManageSave();
         }
     }
 }

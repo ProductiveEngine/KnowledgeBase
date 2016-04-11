@@ -94,7 +94,6 @@
     <Compile Include="ViewModels\IWizardViewModel.cs" />
     <Compile Include="ViewModels\PaSViewModel.cs" />
     <Compile Include="ViewModels\WizardViewModel.cs" />
-    <Compile Include="ViewModels\WizardVO.cs" />
     <Compile Include="Views\IPaSView.cs" />
     <Compile Include="Views\IWizardView.cs" />
     <Compile Include="Views\PaSView.xaml.cs">

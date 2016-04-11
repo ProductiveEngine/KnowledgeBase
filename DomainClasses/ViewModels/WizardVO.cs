@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DomainClasses.Models;
 
-namespace KB.PaSModule.ViewModels
+namespace DomainClasses.ViewModels
 {
     public class WizardVO
     {
@@ -13,17 +9,11 @@ namespace KB.PaSModule.ViewModels
         public SolutionVO Solution;
         public List<StepVO> Steps;
 
-        public void InitializeNew()
+        public WizardVO()
         {
             Problem = new ProblemVO();
             Solution = new SolutionVO();
             Steps = new List<StepVO>(1);
         }
-
-        public void InitializeEdit(int problemId)
-        {
-
-        }
-
     }
 }
