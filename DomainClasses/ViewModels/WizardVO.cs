@@ -4,9 +4,7 @@ using DomainClasses.Models;
 namespace DomainClasses.ViewModels
 {
     public class WizardVO
-    {
-        public ProblemVO Problem;
-        public SolutionVO Solution;
+    {                
         public List<StepVO> Steps;
 
         public WizardVO()
@@ -15,5 +13,27 @@ namespace DomainClasses.ViewModels
             Solution = new SolutionVO();
             Steps = new List<StepVO>(1);
         }
+
+        private ProblemVO _problem;
+
+        public ProblemVO Problem
+        {
+            get { return _problem; }
+            set
+            {
+                _problem = value;
+            }
+        }
+
+        private SolutionVO _solution;
+
+        public SolutionVO Solution
+        {
+            get { return _solution; }
+            set
+            {
+                _solution = value;
+            }
+        }        
     }
 }

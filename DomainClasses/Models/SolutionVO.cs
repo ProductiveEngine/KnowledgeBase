@@ -10,7 +10,7 @@ namespace DomainClasses.Models
         [Key]
         public int SolutionId { get; set; }
 
-        [StringLength(500, MinimumLength = 3)]
+        [StringLength(500)]
         public string Tags { get; set; }
         
         public float Rating { get; set; }

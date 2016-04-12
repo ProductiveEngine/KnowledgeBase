@@ -9,8 +9,9 @@ namespace DomainClasses.Models
     {
         [Key]
         public int ProblemID { get; set; }
-        
-        [StringLength(500, MinimumLength = 3)]
+
+        //[StringLength(500, MinimumLength = 3)]
+        [StringLength(500)]
         public string Tags { get; set; }
 
         public int? SubCategoryID { get; set; }

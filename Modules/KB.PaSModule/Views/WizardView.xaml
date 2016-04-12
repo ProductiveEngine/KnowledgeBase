@@ -17,14 +17,16 @@
                                    Description="This is the first page in the process."
                                    NextPage="{Binding ElementName=PgSolution}"
                                    PreviousPage="{Binding ElementName=IntroPage}">
-                <StackPanel>
+                <StackPanel >
                     <StackPanel Orientation="Horizontal" Margin="2">
+                        <TextBox Width="100" Text="{Binding Aa }"></TextBox>
+                        <TextBox Width="100" Text="{Binding Bb.Title }"></TextBox>
                         <Label Content="Title" Width="100"></Label>
-                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding WizardVo.Problem.Title}" Width="250" />
+                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Problem.Title}" Width="250" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="Description" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Problem.Description}" Width="250"/>
+                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Problem.Title}" Width="250"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="Category" Width="100"></Label>
