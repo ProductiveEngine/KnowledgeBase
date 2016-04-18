@@ -13,9 +13,9 @@ namespace KB.PaSModule.Views
         private PaSViewModel _pas = null;
 
         public PaSView(PaSViewModel paSViewModel)
-        {
-            _pas = paSViewModel;
+        {            
             InitializeComponent();
+            DataContext = paSViewModel;
         }
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
@@ -27,11 +27,6 @@ namespace KB.PaSModule.Views
         {
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
-        }
-
-        private void GridCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        }        
     }
 }
