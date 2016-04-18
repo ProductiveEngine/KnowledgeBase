@@ -27,6 +27,11 @@ namespace KB.PaSModule.Views
         {
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
-        }        
+        }
+
+        private void GridCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

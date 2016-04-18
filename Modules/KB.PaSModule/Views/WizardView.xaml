@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KB.PaSModule.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"        
         mc:Ignorable="d"
-        Title="WizardView" Height="300" Width="571.023">
+        Title="WizardView" Height="500" Width="571.023">
     <Grid>
         <xctk:Wizard FinishButtonClosesWindow="True" Finish="Wizard_Finish">
             <xctk:WizardPage x:Name="IntroPage" 

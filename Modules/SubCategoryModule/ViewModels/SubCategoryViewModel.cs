@@ -2,12 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using BLService.BL;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Commands;
 using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
+using Services.BLService.BL;
 
 namespace SubCategoryModule.ViewModels
 {

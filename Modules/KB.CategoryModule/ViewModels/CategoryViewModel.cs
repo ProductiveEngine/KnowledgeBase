@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using BLService.BL;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Regions;
+using Services.BLService.BL;
 
 namespace KB.CategoryModule.ViewModels
 {

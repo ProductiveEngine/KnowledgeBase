@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using BLService.BL;
 using CategoryModule.Views;
 using DomainClasses.Models;
 using KnolwdgeBase.Infrastructure;
 using Prism.Regions;
+using Services.BLService.BL;
 
 namespace CategoryModule.ViewModels
 {

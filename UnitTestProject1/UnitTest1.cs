@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using BLService.BL;
-using DomainClasses.Models;
+﻿using DomainClasses.Models;
 using DomainClasses.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Services.BLService.BL;

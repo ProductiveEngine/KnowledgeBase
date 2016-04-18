@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DAL.Accessors;
 using DomainClasses.Models;
 
-namespace BLService.BL
+namespace Services.BLService.BL
 {
     public class CategoryBL
     {
@@ -28,13 +27,13 @@ namespace BLService.BL
             return _categoryAccessor.Repo.All;            
         }
 
-        public Boolean Save(CategoryVO vo)
+        public bool Save(CategoryVO vo)
         {
             _categoryAccessor.Repo.InsertOrUpdate(vo);
             return _categoryAccessor.Save();           
         }
 
-        public Boolean Remove(int id)
+        public bool Remove(int id)
         {
             _categoryAccessor.Repo.Delete(id);
             return _categoryAccessor.Save();                                    

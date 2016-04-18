@@ -1,6 +1,6 @@
-﻿using BLService.BL;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using Prism.Modularity;
+using Services.BLService.BL;
 
 namespace BLService
 {
