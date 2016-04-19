@@ -13,18 +13,7 @@ namespace KB.PaSModule.ViewModels
         private readonly ProblemBL _problemBL;
         private readonly SolutionBL _solutionBL;
 
-        #region Properties  
-
-        private String _te;
-
-        public String Te
-        {
-            get
-            {
-                return _te;
-            }
-            set { _te = value; }
-        }
+        #region Properties          
             
         private ObservableCollection<ProblemVO> _problems;
         public ObservableCollection<ProblemVO> Problems
@@ -87,8 +76,7 @@ namespace KB.PaSModule.ViewModels
             _problemBL = new ProblemBL();
             _problems = new ObservableCollection<ProblemVO>(_problemBL.GetAll());
 
-            _solutionBL = new SolutionBL();
-            _te = "aaaaf";
+            _solutionBL = new SolutionBL();            
         }
         #endregion //Constructors  
     }

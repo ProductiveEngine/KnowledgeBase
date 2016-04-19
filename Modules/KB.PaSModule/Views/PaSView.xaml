@@ -27,27 +27,49 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox x:Name="PsLists" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Header="Problems and Solutions" Margin="0,0,0,-164" >
-            <StackPanel Orientation="Horizontal">
-                <ListBox ItemsSource="{Binding Problems}" Width="170" Margin="0,0,10,0">
+        <GroupBox x:Name="PsLists" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Header="Problems and Solutions" Margin="0,0,0,-191" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95*"/>
+                    <ColumnDefinition Width="106*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Problems" Grid.Column="0" Grid.Row="0"></TextBlock>
+                <TextBlock Text="Solutions" Grid.Column="1" Grid.Row="0"></TextBlock>
+                <ListBox ItemsSource="{Binding Problems}" SelectedItem="{Binding SelectedProblem}" Grid.Column="0" Grid.Row="1" Width="170" Margin="0,5,11,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="aa" />
+                                <TextBlock Text="{Binding Title}"></TextBlock>
                                 <!--<ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />-->
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <TextBlock Text="aaaa"></TextBlock>
-                <TextBlock Text="{Binding Te}"></TextBlock>
-            </StackPanel>
+                <ListBox ItemsSource="{Binding Solutions}" SelectedItem="{Binding SelectedSolution}"  Grid.Column="1" Grid.Row="1" Width="170" Margin="0,5,11,10">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}"></TextBlock>
+                                <!--<ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />-->
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </GroupBox>
-        <GroupBox x:Name="Steps" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Header="Solution Steps">
+        <GroupBox x:Name="Steps" Grid.Row="0" Grid.Column="2" Header="Solution Steps">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock>Problem:</TextBlock>
