@@ -39,8 +39,8 @@ namespace DAL.Repositories
 
         public void Delete(int id)
         {
-            var category = _context.Steps.Find(id);
-            _context.Steps.Remove(category);
+            var step = _context.Steps.Find(id);
+            _context.Steps.Remove(step);
         }
 
         public void Dispose()
@@ -53,15 +53,20 @@ namespace DAL.Repositories
             return _context.Steps.Find(id);
         }
 
-        public void InsertOrUpdate(StepVO category)
+        public StepVO FindAsNoTracking(int id)
         {
-            if (category.StepID == default(int))
+            return _context.Steps.AsNoTracking().FirstOrDefault(x => x.StepID == id);
+        }
+
+        public void InsertOrUpdate(StepVO step)
+        {
+            if (step.StepID == default(int))
             {
-                _context.SetAdd(category);
+                _context.SetAdd(step);
             }
             else
             {
-                _context.SetModified(category);
+                _context.SetModified(step);
             }
         }
         public void InsertOrUpdateGraph(StepVO customerGraph)

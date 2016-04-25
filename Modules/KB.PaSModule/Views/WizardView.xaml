@@ -24,6 +24,11 @@
                         <Label Content="Title" Width="100"></Label>
                         <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Problem.Title}" Width="250" />
                     </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="2">
+                        <Label Content="DescriptiAon" Width="100"></Label>
+                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding ProblemVo.Title}" Width="250"/>
+                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding ProblemVo.SubCategoryID}" Width="250"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="Description" Width="100"></Label>
                         <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Problem.Title}" Width="250"/>

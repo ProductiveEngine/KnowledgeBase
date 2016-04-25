@@ -39,8 +39,8 @@ namespace DAL.Repositories
 
         public void Delete(int id)
         {
-            var category = _context.Problems.Find(id);
-            _context.Problems.Remove(category);
+            var problem = _context.Problems.Find(id);
+            _context.Problems.Remove(problem);
         }
 
         public void Dispose()
@@ -53,17 +53,23 @@ namespace DAL.Repositories
             return _context.Problems.Find(id);
         }
 
-        public void InsertOrUpdate(ProblemVO category)
+        public ProblemVO FindAsNoTracking(int id)
         {
-            if (category.ProblemID == default(int))
+            return _context.Problems.AsNoTracking().FirstOrDefault(x => x.ProblemID == id);
+        }
+
+        public void InsertOrUpdate(ProblemVO problem)
+        {
+            if (problem.ProblemID == default(int))
             {
-                _context.SetAdd(category);
+                _context.SetAdd(problem);
             }
             else
             {
-                _context.SetModified(category);
+                _context.SetModified(problem);
             }
         }
+
         public void InsertOrUpdateGraph(ProblemVO customerGraph)
         {
             if (customerGraph.State == State.Added)
@@ -75,6 +81,11 @@ namespace DAL.Repositories
                 _context.Problems.Add(customerGraph);
                 _context.ApplyStateChanges();
             }
+        }
+
+        public void Detach(ProblemVO problem)
+        {
+            
         }
     }
 }

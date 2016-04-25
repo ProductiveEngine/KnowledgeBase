@@ -46,19 +46,26 @@ namespace Services.BLService.BL
 
         public Boolean Save(WizardVO vo)
         {
+            vo = null;
+            vo = new WizardVO();
+
+            vo.Problem.Title = "TEST 4";
+            vo.Problem.SubCategoryID = 1;
+
+
             _wizardAccessor.RepoProblem.InsertOrUpdate(vo.Problem);
             
 
-            _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
+            //_wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
             
-            if (vo.Steps != null && vo.Steps.Count > 0)
-            {
-                foreach (StepVO step in vo.Steps)
-                {
-                    _wizardAccessor.RepoStep.InsertOrUpdate(step);
-                }
+            //if (vo.Steps != null && vo.Steps.Count > 0)
+            //{
+            //    foreach (StepVO step in vo.Steps)
+            //    {
+            //        _wizardAccessor.RepoStep.InsertOrUpdate(step);
+            //    }
                 
-            }            
+            //}            
 
             return _wizardAccessor.Save();
         } 

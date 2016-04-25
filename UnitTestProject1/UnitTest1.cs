@@ -24,16 +24,19 @@ namespace UnitTestProject1
             //Assert.IsTrue(cBL.GetAll().Any(c => c.Title == "Databases"));
 
             WizardBL wBL = new WizardBL();
-            WizardVO wizardVo = wBL.FindById(2);
-            wizardVo.Problem.Title = "TEST2";
-            wizardVo.Solution.Title = "TEEST";
-            wizardVo.Steps[0].Title = "AAA";
+            //WizardVO wizardVo = wBL.FindById(2);
+            WizardVO wizardVo = new WizardVO();            
 
-            StepVO s = new StepVO();
-            s.SolutionID = wizardVo.Solution.SolutionId;
-            s.Title = "Second Step";
+            wizardVo.Problem.Title = "TEST 4";
+            wizardVo.Problem.SubCategoryID = 1;
+            //wizardVo.Solution.Title = "TEEST";
+            //wizardVo.Steps[0].Title = "AAA";
 
-            wizardVo.Steps.Add(s);
+            //StepVO s = new StepVO();
+            //s.SolutionID = wizardVo.Solution.SolutionId;
+            //s.Title = "Second Step";
+
+            //wizardVo.Steps.Add(s);
 
             wBL.Save(wizardVo);
 

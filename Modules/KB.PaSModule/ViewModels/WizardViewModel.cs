@@ -15,6 +15,7 @@ namespace KB.PaSModule.ViewModels
         private readonly CategoryBL _categoryBL;
         private readonly SubCategoryBL _subCategoryBL;
         private readonly WizardBL _wizardBL;
+        private readonly ProblemBL _problemBl;
 
         #region Properties         
 
@@ -82,6 +83,14 @@ namespace KB.PaSModule.ViewModels
                 //OnPropertyChanged("WizardVo");
             }
         }
+
+        private ProblemVO _problemVo;
+
+        public ProblemVO ProblemVo
+        {
+            get { return _problemVo;}
+            set { _problemVo = value; }
+        }
         
         #endregion //Properties
         #region Constructors
@@ -92,15 +101,20 @@ namespace KB.PaSModule.ViewModels
             _categoryBL = new CategoryBL();
             _categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());
 
-            _subCategoryBL = new SubCategoryBL();                      
+            _subCategoryBL = new SubCategoryBL();     
+            _wizardBL = new WizardBL();     
+            
+            ProblemVo = new ProblemVO();
+            
+            _problemBl = new ProblemBL();            
         }
 
         #endregion //Constructors 
 
         public void ManageSave()
         {
-            MessageBox.Show(_wizardVo.Problem.Title);
-            //_wizardBL.Save(_wizardVo);
+            _problemBl.Save((_problemVo));
+            _wizardBL.Save(_wizardVo);
         } 
     }
 }

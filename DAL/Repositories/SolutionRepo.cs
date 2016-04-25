@@ -39,8 +39,8 @@ namespace DAL.Repositories
 
         public void Delete(int id)
         {
-            var category = _context.Solutions.Find(id);
-            _context.Solutions.Remove(category);
+            var solution = _context.Solutions.Find(id);
+            _context.Solutions.Remove(solution);
         }
 
         public void Dispose()
@@ -51,6 +51,11 @@ namespace DAL.Repositories
         public SolutionVO Find(int id)
         {
             return _context.Solutions.Find(id);
+        }
+
+        public SolutionVO FindAsNoTracking(int id)
+        {
+            return _context.Solutions.AsNoTracking().FirstOrDefault(x => x.SolutionId == id);
         }
 
         public void InsertOrUpdate(SolutionVO solution)
