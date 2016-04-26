@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -55,6 +56,17 @@ namespace KB.PaSModule.ViewModels
             set { _subCategories = value; }
         }
 
+        private SolutionVO _selectedSolution;
+        public SolutionVO SelectedSolution
+        {
+            get { return _selectedSolution; }
+            set
+            {
+                _selectedSolution = value;
+                OnPropertyChanged("SelectedSolution");
+            }
+        }
+
         private SubCategoryVO _selectedSubCategory;
         public SubCategoryVO SelectedSubCategory
         {
@@ -67,7 +79,7 @@ namespace KB.PaSModule.ViewModels
                 if (_selectedSubCategory != value)
                 {
                     _selectedSubCategory = value;
-                    WizardVo.Problem.SubCategory = _selectedSubCategory;
+                    Problem.SubCategoryID = _selectedSubCategory.SubCategoryID;
                     OnPropertyChanged("SelectedCategory");
                 }
             }
@@ -84,14 +96,14 @@ namespace KB.PaSModule.ViewModels
             }
         }
 
-        private ProblemVO _problemVo;
+        private ProblemVO _problem;
 
-        public ProblemVO ProblemVo
+        public ProblemVO Problem
         {
-            get { return _problemVo;}
-            set { _problemVo = value; }
+            get { return _problem;}
+            set { _problem = value; }
         }
-        
+       
         #endregion //Properties
         #region Constructors
         public WizardViewModel(IRegionManager regionManager)
@@ -104,17 +116,32 @@ namespace KB.PaSModule.ViewModels
             _subCategoryBL = new SubCategoryBL();     
             _wizardBL = new WizardBL();     
             
-            ProblemVo = new ProblemVO();
+            Problem = new ProblemVO();
             
             _problemBl = new ProblemBL();            
         }
 
         #endregion //Constructors 
 
+        public void AddSolution()
+        {
+            if (_problem.Solutions == null)
+            {
+                _problem.Solutions = new List<SolutionVO>();
+            }
+
+            SolutionVO solution = new SolutionVO();
+            solution.ProblemID = _problem.ProblemID;
+
+            _problem.Solutions.Add(solution);           
+        }
+
         public void ManageSave()
         {
-            _problemBl.Save((_problemVo));
-            _wizardBL.Save(_wizardVo);
+            _problemBl.SaveGraph(_problem);
+            //_wizardBL.Save(_wizardVo);
         } 
+
+
     }
 }

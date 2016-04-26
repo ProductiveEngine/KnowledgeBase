@@ -7,7 +7,79 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"        
         mc:Ignorable="d"
         Title="WizardView" Height="500" Width="571.023">
-    <Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel >
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Title" Width="100"></Label>
+                <TextBox TextWrapping="Wrap" Text="{Binding Problem.Title}" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Description" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Problem.Description}" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Category" Width="100"></Label>
+                <ComboBox x:Name="cmbCategory" Width="250" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="Title"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Subcategory" Width="100"></Label>
+                <ComboBox x:Name="cmbSubcategory" Width="250"  ItemsSource="{Binding SubCategories}" SelectedItem="{Binding SelectedSubCategory}" DisplayMemberPath="Title"/>
+            </StackPanel>
+            <!--SubCategoryid -->
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Tags" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="TextBox" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="CreatedDate" Width="100"></Label>
+                <TextBlock Text="{Binding Problem.CreatedDate}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="ModifiedDate" Width="100"></Label>
+                <TextBlock Text="{Binding Problem.ModifiedDate}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    
+    <!--                    -->
+    <StackPanel>
+            <StackPanel  Orientation="Horizontal">
+
+                <ListView ItemsSource="{Binding Problem.Solutions}" SelectedItem="{Binding  SelectedSolution}" Height="91" Width="240" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Title}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            <StackPanel  Orientation="Vertical">
+                <Button x:Name="btnSavea" Content="Add" Click="btnSavea_Click" />
+                <Button x:Name="btnAddSolution" Content="Add" Click="btnAddSolution_Click" />
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Label Content="Title" Width="100"></Label>
+                    <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding SelectedSolution.Title}" Width="250" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Label Content="Description" Width="100"></Label>
+                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedSolution.Description}" Width="250"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Label Content="Tags" Width="100"></Label>
+                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedSolution.Tags}" Width="250"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Label Content="CreatedDate" Width="100"></Label>
+                    <TextBlock Text="{Binding SelectedSolution.CreatedDate}"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Label Content="ModifiedDate" Width="100"></Label>
+                    <TextBlock Text="{Binding SelectedSolution.ModifiedDate}"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+
+    <!--<Grid>
         <xctk:Wizard FinishButtonClosesWindow="True" Finish="Wizard_Finish">
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to Problems and Solutions Wizard"
@@ -17,73 +89,15 @@
                                    Description="This is the first page in the process."
                                    NextPage="{Binding ElementName=PgSolution}"
                                    PreviousPage="{Binding ElementName=IntroPage}">
-                <StackPanel >
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <TextBox Width="100" Text="{Binding Aa }"></TextBox>
-                        <TextBox Width="100" Text="{Binding Bb.Title }"></TextBox>
-                        <Label Content="Title" Width="100"></Label>
-                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Problem.Title}" Width="250" />
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Margin="2">
-                        <Label Content="DescriptiAon" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding ProblemVo.Title}" Width="250"/>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding ProblemVo.SubCategoryID}" Width="250"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Description" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Problem.Title}" Width="250"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Category" Width="100"></Label>
-                        <ComboBox x:Name="cmbCategory" Width="250" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" DisplayMemberPath="Title"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Subcategory" Width="100"></Label>
-                        <ComboBox x:Name="cmbSubcategory" Width="250"  ItemsSource="{Binding SubCategories}" SelectedItem="{Binding SelectedSubCategory}" DisplayMemberPath="Title"/>
-                    </StackPanel>
-                    <!--SubCategoryid -->
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Tags" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="TextBox" Width="250"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="CreatedDate" Width="100"></Label>
-                        <TextBlock Text="{Binding WizardVo.Problem.CreatedDate}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="ModifiedDate" Width="100"></Label>
-                        <TextBlock Text="{Binding WizardVo.Problem.ModifiedDate}"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
-                <!--<local:WizardPageProblem></local:WizardPageProblem>-->
+               
+                --><!--<local:WizardPageProblem></local:WizardPageProblem>--><!--
             </xctk:WizardPage>
             <xctk:WizardPage x:Name="PgSolution" PageType="Interior"
                                    Title="Solution"
                                    Description="This is the second page in the process"
                                    NextPage="{Binding ElementName=PgSteps}"   
                                    PreviousPage="{Binding ElementName=PgProblem}">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Title" Width="100"></Label>
-                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding WizardVo.Solution.Title}" Width="250" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Description" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Solution.Description}" Width="250"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="Tags" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding WizardVo.Solution.Tags}" Width="250"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="CreatedDate" Width="100"></Label>
-                        <TextBlock Text="{Binding WizardVo.Solution.CreatedDate}"></TextBlock>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="2">
-                        <Label Content="ModifiedDate" Width="100"></Label>
-                        <TextBlock Text="{Binding WizardVo.Solution.ModifiedDate}"></TextBlock>
-                    </StackPanel>
-                </StackPanel>
+               
             </xctk:WizardPage>
             <xctk:WizardPage x:Name="PgSteps" PageType="Interior"
                                    Title="Steps"
@@ -96,5 +110,5 @@
                                    Description="This is the last page in the process"
                                    CanFinish="True"/>
         </xctk:Wizard>
-    </Grid>
+    </Grid>-->
 </Window>

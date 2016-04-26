@@ -33,6 +33,12 @@ namespace Services.BLService.BL
             return _problemAccessor.Save();
         }
 
+        public bool SaveGraph(ProblemVO vo)
+        {
+            _problemAccessor.Repo.InsertOrUpdateGraph(vo);
+            return _problemAccessor.Save();
+        }
+
         public bool Remove(int id)
         {
             _problemAccessor.Repo.Delete(id);

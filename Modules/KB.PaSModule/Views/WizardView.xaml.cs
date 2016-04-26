@@ -26,5 +26,15 @@ namespace KB.PaSModule.Views
         {
             ((WizardViewModel) ViewModel).ManageSave();
         }
+
+        private void btnAddSolution_Click(object sender, RoutedEventArgs e)
+        {
+            ((WizardViewModel) ViewModel).AddSolution();
+        }
+
+        private void btnSavea_Click(object sender, RoutedEventArgs e)
+        {
+            ((WizardViewModel)ViewModel).ManageSave();
+        }
     }
 }
