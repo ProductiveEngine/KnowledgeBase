@@ -11,11 +11,11 @@
         <StackPanel >
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Label Content="Title" Width="100"></Label>
-                <TextBox TextWrapping="Wrap" Text="{Binding Problem.Title}" Width="250"/>
+                <TextBox TextWrapping="Wrap" Text="{Binding Wizard.Problem.Title}" Width="250"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Label Content="Description" Width="100"></Label>
-                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Problem.Description}" Width="250"/>
+                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Problem.Description}" Width="250"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Label Content="Category" Width="100"></Label>
@@ -27,53 +27,43 @@
             </StackPanel>
             <!--SubCategoryid -->
             <StackPanel Orientation="Horizontal" Margin="2">
-                <Label Content="Tags" Width="100"></Label>
-                <TextBox Height="50" TextWrapping="Wrap" Text="TextBox" Width="250"/>
+                <Label Content="Problem.Tags" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Problem.Tags}" Width="250"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Label Content="CreatedDate" Width="100"></Label>
-                <TextBlock Text="{Binding Problem.CreatedDate}"></TextBlock>
+                <TextBlock Text="{Binding Wizard.Problem.CreatedDate}"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="2">
                 <Label Content="ModifiedDate" Width="100"></Label>
-                <TextBlock Text="{Binding Problem.ModifiedDate}"></TextBlock>
+                <TextBlock Text="{Binding Wizard.Problem.ModifiedDate}"></TextBlock>
             </StackPanel>
         </StackPanel>
     
     <!--                    -->
     <StackPanel>
-            <StackPanel  Orientation="Horizontal">
-
-                <ListView ItemsSource="{Binding Problem.Solutions}" SelectedItem="{Binding  SelectedSolution}" Height="91" Width="240" >
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Title}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </StackPanel>
+            <StackPanel  Orientation="Horizontal"/>
             <StackPanel  Orientation="Vertical">
                 <Button x:Name="btnSavea" Content="Add" Click="btnSavea_Click" />
-                <Button x:Name="btnAddSolution" Content="Add" Click="btnAddSolution_Click" />
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <Label Content="Title" Width="100"></Label>
-                    <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding SelectedSolution.Title}" Width="250" />
+                    <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Title}" Width="250" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <Label Content="Description" Width="100"></Label>
-                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedSolution.Description}" Width="250"/>
+                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Description}" Width="250"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <Label Content="Tags" Width="100"></Label>
-                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedSolution.Tags}" Width="250"/>
+                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Tags}" Width="250"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <Label Content="CreatedDate" Width="100"></Label>
-                    <TextBlock Text="{Binding SelectedSolution.CreatedDate}"></TextBlock>
+                    <TextBlock Text="{Binding Wizard.Solution.CreatedDate}"></TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <Label Content="ModifiedDate" Width="100"></Label>
-                    <TextBlock Text="{Binding SelectedSolution.ModifiedDate}"></TextBlock>
+                    <TextBlock Text="{Binding Wizard.Solution.ModifiedDate}"></TextBlock>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

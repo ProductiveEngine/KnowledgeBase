@@ -46,17 +46,20 @@ namespace Services.BLService.BL
 
         public Boolean Save(WizardVO vo)
         {
-            vo = null;
-            vo = new WizardVO();
+            //vo = null;
+            //vo = new WizardVO();
 
-            vo.Problem.Title = "TEST 4";
-            vo.Problem.SubCategoryID = 1;
+            //vo.Problem.Title = "TEST 4";
+            //vo.Problem.SubCategoryID = 1;
 
-
+            vo.Problem.Solutions = null;
             _wizardAccessor.RepoProblem.InsertOrUpdate(vo.Problem);
-            
+            _wizardAccessor.Save();
 
-            //_wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
+            vo.Solution.Problem = null;
+            vo.Solution.Steps = null;
+            vo.Solution.ProblemID = vo.Problem.ProblemID;
+            _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
             
             //if (vo.Steps != null && vo.Steps.Count > 0)
             //{

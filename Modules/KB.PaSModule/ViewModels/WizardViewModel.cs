@@ -85,13 +85,13 @@ namespace KB.PaSModule.ViewModels
             }
         }
 
-        private WizardVO _wizardVo;
-        public WizardVO WizardVo
+        private WizardVO _wizard;
+        public WizardVO Wizard
         {
-            get { return _wizardVo; }
+            get { return _wizard; }
             set
             {
-                _wizardVo = value;
+                _wizard = value;
                 //OnPropertyChanged("WizardVo");
             }
         }
@@ -108,7 +108,7 @@ namespace KB.PaSModule.ViewModels
         #region Constructors
         public WizardViewModel(IRegionManager regionManager)
         {
-            WizardVo = new WizardVO();            
+            Wizard = new WizardVO();            
 
             _categoryBL = new CategoryBL();
             _categories = new ObservableCollection<CategoryVO>(_categoryBL.FindAll());
@@ -138,8 +138,9 @@ namespace KB.PaSModule.ViewModels
 
         public void ManageSave()
         {
-            _problemBl.SaveGraph(_problem);
-            //_wizardBL.Save(_wizardVo);
+            _wizard.Problem.SubCategoryID = SelectedSubCategory.SubCategoryID;
+            //_problemBl.SaveGraph(_problem);
+            _wizardBL.Save(_wizard);
         } 
 
 
