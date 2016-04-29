@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnoledgeBase", "KnoledgeBase\KnoledgeBase.csproj", "{E1D6C98E-E386-4FF8-88BD-9A2288209CCF}"
 EndProject
@@ -141,5 +141,8 @@ Global
 		{48C6A631-6AEA-4523-839C-6D95A953EC05} = {87D3FD46-479A-49EC-80F4-9DBE8345A9FE}
 		{0DA3B1CC-1C78-48FE-A774-2C014E3B3233} = {87D3FD46-479A-49EC-80F4-9DBE8345A9FE}
 		{9B24E199-0582-4148-B994-D77A6DCB16F4} = {87D3FD46-479A-49EC-80F4-9DBE8345A9FE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.ExceptionHandling.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal

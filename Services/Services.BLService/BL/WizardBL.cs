@@ -35,7 +35,7 @@ namespace Services.BLService.BL
 
                     if (wizard.Solution.Steps != null && wizard.Solution.Steps.Count > 0)
                     {
-                        wizard.Steps = wizard.Solution.Steps.ToList();
+                       // wizard.Steps = wizard.Solution.Steps.ToList();
                     }
                 }
                 
@@ -60,15 +60,15 @@ namespace Services.BLService.BL
             vo.Solution.Steps = null;
             vo.Solution.ProblemID = vo.Problem.ProblemID;
             _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
-            
-            //if (vo.Steps != null && vo.Steps.Count > 0)
-            //{
-            //    foreach (StepVO step in vo.Steps)
-            //    {
-            //        _wizardAccessor.RepoStep.InsertOrUpdate(step);
-            //    }
-                
-            //}            
+
+            if (vo.Steps != null && vo.Steps.Count > 0)
+            {
+                foreach (StepVO step in vo.Steps)
+                {
+                    _wizardAccessor.RepoStep.InsertOrUpdate(step);
+                }
+
+            }
 
             return _wizardAccessor.Save();
         } 

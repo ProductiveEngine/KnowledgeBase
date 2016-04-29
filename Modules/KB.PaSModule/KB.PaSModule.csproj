@@ -132,6 +132,10 @@
       <Project>{0B09E253-902D-4A66-94D5-28FA31BF21C9}</Project>
       <Name>BLService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CategoryModule\CategoryModule.csproj">
+      <Project>{69A76156-DD02-4C70-B7F5-3ACDB8B9CF8A}</Project>
+      <Name>CategoryModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\PaSView.xaml">

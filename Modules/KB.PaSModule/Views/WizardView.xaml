@@ -1,4 +1,4 @@
-﻿<Window x:Class="KB.PaSModule.Views.WizardView"
+﻿<Window xmlns:Navigation="clr-namespace:CategoryModule.Navigation;assembly=CategoryModule"  x:Class="KB.PaSModule.Views.WizardView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KB.PaSModule.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"        
         mc:Ignorable="d"
-        Title="WizardView" Height="500" Width="571.023">
+        Title="WizardView" Height="830" Width="721.023">
     <StackPanel Orientation="Vertical">
         <StackPanel >
             <StackPanel Orientation="Horizontal" Margin="2">
@@ -39,32 +39,63 @@
                 <TextBlock Text="{Binding Wizard.Problem.ModifiedDate}"></TextBlock>
             </StackPanel>
         </StackPanel>
-    
-    <!--                    -->
-    <StackPanel>
-            <StackPanel  Orientation="Horizontal"/>
+
+        <!--                    -->
+        <StackPanel>
             <StackPanel  Orientation="Vertical">
-                <Button x:Name="btnSavea" Content="Add" Click="btnSavea_Click" />
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Label Content="Title" Width="100"></Label>
-                    <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Title}" Width="250" />
+                <Button Name="btnAdd" Content="Add" Click="btnAddStep_Click" />
+                <Button Name="btnDelete" Content="Delete" Click="btnDeleteStep_Click" />
+                <ListView Name="lstSteps" ItemsSource="{Binding Wizard.Steps}" SelectedItem="{Binding SelectedStep}" Height="96" SelectionChanged="lstSteps_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="" Width="120" DisplayMemberBinding="{Binding Sequence}" />
+                            <GridViewColumn Header="Title" Width="50" DisplayMemberBinding="{Binding Title}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel  Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Label Content="Title" Width="100"></Label>
+                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding SelectedStep.Title}" Width="250" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Label Content="Description" Width="100"></Label>
+                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedStep.Description}" Width="250"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Label Content="CreatedDate" Width="100"></Label>
+                        <TextBlock Text="{Binding SelectedStep.CreatedDate}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Label Content="ModifiedDate" Width="100"></Label>
+                        <TextBlock Text="{Binding SelectedStep.ModifiedDate}"></TextBlock>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Label Content="Description" Width="100"></Label>
-                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Description}" Width="250"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Label Content="Tags" Width="100"></Label>
-                    <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Tags}" Width="250"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Label Content="CreatedDate" Width="100"></Label>
-                    <TextBlock Text="{Binding Wizard.Solution.CreatedDate}"></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="2">
-                    <Label Content="ModifiedDate" Width="100"></Label>
-                    <TextBlock Text="{Binding Wizard.Solution.ModifiedDate}"></TextBlock>
-                </StackPanel>
+            </StackPanel>
+
+
+        </StackPanel>
+        <StackPanel  Orientation="Vertical">
+            <Button x:Name="btnSavea" Content="Add" Click="btnSavea_Click" />
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Title" Width="100"></Label>
+                <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Title}" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Description" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Description}" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="Tags" Width="100"></Label>
+                <TextBox Height="50" TextWrapping="Wrap" Text="{Binding Wizard.Solution.Tags}" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="CreatedDate" Width="100"></Label>
+                <TextBlock Text="{Binding Wizard.Solution.CreatedDate}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="2">
+                <Label Content="ModifiedDate" Width="100"></Label>
+                <TextBlock Text="{Binding Wizard.Solution.ModifiedDate}"></TextBlock>
             </StackPanel>
         </StackPanel>
     </StackPanel>

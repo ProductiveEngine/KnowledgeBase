@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DomainClasses.Models;
 using KB.PaSModule.ViewModels;
 using KnolwdgeBase.Infrastructure;
 
@@ -35,6 +36,23 @@ namespace KB.PaSModule.Views
         private void btnSavea_Click(object sender, RoutedEventArgs e)
         {
             ((WizardViewModel)ViewModel).ManageSave();
+        }
+
+        private void btnAddStep_Click(object sender, RoutedEventArgs e)
+        {
+            ((WizardViewModel)ViewModel).AddStep();
+        }
+
+        private void btnDeleteStep_Click(object sender, RoutedEventArgs e)
+        {
+            //ListView1.Items.RemoveAt(ListView1.Items.IndexOf(ListView1.SelectedItem));
+            ((WizardViewModel)ViewModel).DeleteStep();
+        }
+
+        private void lstSteps_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {            
+            ((WizardViewModel)ViewModel).ChangeSelectedStep((StepVO)lstSteps.SelectedItem);
+            lstSteps.Items.Refresh();
         }
     }
 }

@@ -73,6 +73,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppException.cs" />
+    <Compile Include="EException.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="GlobalCommands.cs" />
     <Compile Include="GlobalConstants.cs" />

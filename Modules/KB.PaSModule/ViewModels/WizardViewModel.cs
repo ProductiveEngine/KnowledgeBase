@@ -67,6 +67,17 @@ namespace KB.PaSModule.ViewModels
             }
         }
 
+        private StepVO _selectedStep;
+        public StepVO SelectedStep
+        {
+            get { return _selectedStep; }
+            set
+            {
+                _selectedStep = value;
+                OnPropertyChanged("SelectedStep");
+            }
+        }
+
         private SubCategoryVO _selectedSubCategory;
         public SubCategoryVO SelectedSubCategory
         {
@@ -138,11 +149,29 @@ namespace KB.PaSModule.ViewModels
 
         public void ManageSave()
         {
-            _wizard.Problem.SubCategoryID = SelectedSubCategory.SubCategoryID;
+            if (SelectedSubCategory != null)
+            {
+                _wizard.Problem.SubCategoryID = SelectedSubCategory.SubCategoryID;
+            }
+            
             //_problemBl.SaveGraph(_problem);
             _wizardBL.Save(_wizard);
-        } 
+        }
 
+        public void AddStep()
+        {
+            _wizard.Steps.Add(new StepVO() {Title = "-"});
+        }
+
+        public void DeleteStep()
+        {
+            
+        }
+
+        public void ChangeSelectedStep(StepVO step)
+        {
+            SelectedStep = step;
+        }
 
     }
 }
