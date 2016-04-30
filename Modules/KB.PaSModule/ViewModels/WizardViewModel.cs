@@ -163,9 +163,9 @@ namespace KB.PaSModule.ViewModels
             _wizard.Steps.Add(new StepVO() {Title = "-"});
         }
 
-        public void DeleteStep()
+        public void DeleteStep(StepVO step)
         {
-            
+            _wizard.Steps.Remove(step);
         }
 
         public void ChangeSelectedStep(StepVO step)

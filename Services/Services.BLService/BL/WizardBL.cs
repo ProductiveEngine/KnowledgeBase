@@ -52,25 +52,33 @@ namespace Services.BLService.BL
             //vo.Problem.Title = "TEST 4";
             //vo.Problem.SubCategoryID = 1;
 
+            if (vo.Problem != null)
+            {         
             vo.Problem.Solutions = null;
             _wizardAccessor.RepoProblem.InsertOrUpdate(vo.Problem);
             _wizardAccessor.Save();
-
-            vo.Solution.Problem = null;
-            vo.Solution.Steps = null;
-            vo.Solution.ProblemID = vo.Problem.ProblemID;
-            _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
-
-            if (vo.Steps != null && vo.Steps.Count > 0)
-            {
-                foreach (StepVO step in vo.Steps)
-                {
-                    _wizardAccessor.RepoStep.InsertOrUpdate(step);
-                }
-
             }
 
-            return _wizardAccessor.Save();
+        if (vo.Solution != null && vo.Problem != null && vo.Problem.ProblemID > 0)
+            {
+                //vo.Solution.Problem = null;
+                vo.Solution.Steps = null;
+                vo.Solution.ProblemID = vo.Problem.ProblemID;
+                _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
+                _wizardAccessor.Save();
+            }
+
+            if (vo.Steps != null && vo.Steps.Count > 0 && vo.Solution != null && vo.Solution.SolutionId > 0)
+            {                                
+                foreach (StepVO step in vo.Steps)
+                {
+                    step.SolutionID = vo.Solution.SolutionId;
+                    _wizardAccessor.RepoStep.InsertOrUpdate(step);
+                }
+                _wizardAccessor.Save();
+            }
+            
+            return true;
         } 
     }
 }

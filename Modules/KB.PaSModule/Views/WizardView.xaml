@@ -48,19 +48,19 @@
                 <ListView Name="lstSteps" ItemsSource="{Binding Wizard.Steps}" SelectedItem="{Binding SelectedStep}" Height="96" SelectionChanged="lstSteps_SelectionChanged">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="" Width="120" DisplayMemberBinding="{Binding Sequence}" />
-                            <GridViewColumn Header="Title" Width="50" DisplayMemberBinding="{Binding Title}" />
+                            <GridViewColumn Header="#" Width="30" DisplayMemberBinding="{Binding Sequence}" />
+                            <GridViewColumn Header="Title" Width="200" DisplayMemberBinding="{Binding Title}" />
                         </GridView>
                     </ListView.View>
                 </ListView>
                 <StackPanel  Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="Title" Width="100"></Label>
-                        <TextBox  Height="23" TextWrapping="Wrap" Text="{Binding SelectedStep.Title}" Width="250" />
+                        <TextBox x:Name="txtStepTitle"  Height="23" TextWrapping="Wrap" Text="{Binding SelectedStep.Title}" Width="250" TextChanged="txtStepTitle_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="Description" Width="100"></Label>
-                        <TextBox Height="50" TextWrapping="Wrap" Text="{Binding SelectedStep.Description}" Width="250"/>
+                        <TextBox x:Name="txtStepDescription" Height="50" TextWrapping="Wrap" Text="{Binding SelectedStep.Description}" Width="250" TextChanged="txtStepDescription_TextChanged" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Content="CreatedDate" Width="100"></Label>
