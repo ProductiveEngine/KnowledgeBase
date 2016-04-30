@@ -20,8 +20,8 @@
         </GroupBox>
         <GroupBox Grid.Row="0" Grid.Column="1" Header="Commands">
             <StackPanel>
-                <Button x:Name="BtnNew" Margin="5" Click="BtnNew_Click">New</Button>
-                <Button Margin="5">Edit</Button>
+                <Button x:Name="btnNew" Margin="5" Click="btnNew_Click">New</Button>
+                <Button x:Name="btnEdit" Margin="5" Click="btnEdit_Click">Edit</Button>
                 <Button Margin="5">Save</Button>
                 <Button Margin="5">Cancel</Button>
             </StackPanel>
@@ -39,7 +39,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Problems" Grid.Column="0" Grid.Row="0"></TextBlock>
                 <TextBlock Text="Solutions" Grid.Column="1" Grid.Row="0"></TextBlock>
-                <ListBox ItemsSource="{Binding Problems}" SelectedItem="{Binding SelectedProblem}" Grid.Column="0" Grid.Row="1" Width="170" Margin="0,5,11,10">
+                <ListBox x:Name="lstProblems" ItemsSource="{Binding Problems}" SelectedItem="{Binding SelectedProblem}" Grid.Column="0" Grid.Row="1" Width="170" Margin="0,5,11,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
@@ -53,7 +53,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <ListBox ItemsSource="{Binding Solutions}" SelectedItem="{Binding SelectedSolution}"  Grid.Column="1" Grid.Row="1" Width="170" Margin="0,5,11,10">
+                <ListBox x:Name="lstSolutions" ItemsSource="{Binding Solutions}" SelectedItem="{Binding SelectedSolution}"  Grid.Column="1" Grid.Row="1" Width="170" Margin="0,5,11,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">

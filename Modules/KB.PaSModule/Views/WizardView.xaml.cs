@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Data;
 using DomainClasses.Models;
 using KB.PaSModule.ViewModels;
 using KnolwdgeBase.Infrastructure;
@@ -23,21 +25,11 @@ namespace KB.PaSModule.Views
             set { DataContext = value; }
         }
 
-        private void Wizard_Finish(object sender, RoutedEventArgs e)
-        {
-            ((WizardViewModel) ViewModel).ManageSave();
-        }
-
-        private void btnAddSolution_Click(object sender, RoutedEventArgs e)
-        {
-            ((WizardViewModel) ViewModel).AddSolution();
-        }
-
-        private void btnSavea_Click(object sender, RoutedEventArgs e)
-        {
-            ((WizardViewModel)ViewModel).ManageSave();
-        }
-
+        //private void Wizard_Finish(object sender, RoutedEventArgs e)
+        //{
+        //    ((WizardViewModel) ViewModel).ManageSave();
+        //}
+       
         private void btnAddStep_Click(object sender, RoutedEventArgs e)
         {
             ((WizardViewModel)ViewModel).AddStep();
@@ -58,13 +50,13 @@ namespace KB.PaSModule.Views
         }
 
         private void txtStepTitle_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
+        {            
             lstSteps.Items.Refresh();
             ReOrderSteps();
         }
 
         private void txtStepDescription_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
+        {           
             lstSteps.Items.Refresh();
             ReOrderSteps();
         }
@@ -76,8 +68,24 @@ namespace KB.PaSModule.Views
             foreach (StepVO step in lstSteps.Items)
             {
                 step.Sequence = (byte) ordinal++;
-            }
-            
+            }            
         }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            WizardViewModel wvo = ((WizardViewModel) ViewModel);
+
+            if (wvo.ManageSave())
+            {
+                Close();
+            }
+        }
+
+        private void txtStepTitle_LostFocus(object sender, RoutedEventArgs e)
+        {
+            lstSteps.Items.Refresh();
+            ReOrderSteps();
+        }
+
     }
 }

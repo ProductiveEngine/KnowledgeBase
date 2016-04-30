@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainClasses.Base
 {
-    public class Base : IObjectWithState, INotifyPropertyChanged
+    public class Base : IObjectWithState, INotifyPropertyChanged, IDataErrorInfo
     {
         public Base()
         {
@@ -36,6 +36,39 @@ namespace DomainClasses.Base
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-        }        
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = null;
+
+                switch (columnName)
+                {
+                    case "Title":
+                        if (string.IsNullOrEmpty(Title))
+                        {
+                            error = "Title required";
+                        }
+                        break;                    
+                }
+                Error = error;
+                return (Error);
+            }
+        }
+
+        private string _Error;
+
+        [NotMapped]
+        public string Error
+        {
+            get { return _Error; }
+            private set
+            {
+                _Error = value;
+                OnPropertyChanged("Error");
+            }
+        }
     }
 }

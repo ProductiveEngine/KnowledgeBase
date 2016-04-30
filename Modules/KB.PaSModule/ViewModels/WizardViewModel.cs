@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using DomainClasses.Models;
 using DomainClasses.ViewModels;
 using KnolwdgeBase.Infrastructure;
+using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
 using Prism.Regions;
 using Services.BLService.BL;
 
@@ -16,9 +17,8 @@ namespace KB.PaSModule.ViewModels
         private readonly CategoryBL _categoryBL;
         private readonly SubCategoryBL _subCategoryBL;
         private readonly WizardBL _wizardBL;
-        private readonly ProblemBL _problemBl;
 
-        #region Properties         
+        #region Properties                        
 
         private ObservableCollection<CategoryVO> _categories;
         public ObservableCollection<CategoryVO> Categories
@@ -73,7 +73,7 @@ namespace KB.PaSModule.ViewModels
             get { return _selectedStep; }
             set
             {
-                _selectedStep = value;
+                _selectedStep = value;              
                 OnPropertyChanged("SelectedStep");
             }
         }
@@ -90,7 +90,11 @@ namespace KB.PaSModule.ViewModels
                 if (_selectedSubCategory != value)
                 {
                     _selectedSubCategory = value;
-                    Problem.SubCategoryID = _selectedSubCategory.SubCategoryID;
+
+                    if (_selectedSubCategory != null)
+                    {
+                        Problem.SubCategoryID = _selectedSubCategory.SubCategoryID;
+                    }
                     OnPropertyChanged("SelectedCategory");
                 }
             }
@@ -117,6 +121,7 @@ namespace KB.PaSModule.ViewModels
        
         #endregion //Properties
         #region Constructors
+
         public WizardViewModel(IRegionManager regionManager)
         {
             Wizard = new WizardVO();            
@@ -127,12 +132,18 @@ namespace KB.PaSModule.ViewModels
             _subCategoryBL = new SubCategoryBL();     
             _wizardBL = new WizardBL();     
             
-            Problem = new ProblemVO();
-            
-            _problemBl = new ProblemBL();            
-        }
+            Problem = new ProblemVO();            
+        }        
 
         #endregion //Constructors 
+
+        public void InitializeEdit(int problemId)
+        {
+            _wizard = _wizardBL.FindById(problemId);
+
+            SelectedSubCategory = _wizard.Problem.SubCategory;
+            SelectedCategory = _categories.FirstOrDefault(x => x.CategoryID == SelectedSubCategory.CategoryID);
+        }
 
         public void AddSolution()
         {
@@ -147,20 +158,22 @@ namespace KB.PaSModule.ViewModels
             _problem.Solutions.Add(solution);           
         }
 
-        public void ManageSave()
+        public bool ManageSave()
         {
-            if (SelectedSubCategory != null)
-            {
-                _wizard.Problem.SubCategoryID = SelectedSubCategory.SubCategoryID;
-            }
+            bool ok;
+
+            ok = CanSave(_wizard);
             
-            //_problemBl.SaveGraph(_problem);
-            _wizardBL.Save(_wizard);
+            if (ok)
+            {
+                ok =_wizardBL.Save(_wizard);
+            }
+            return ok;
         }
 
         public void AddStep()
         {
-            _wizard.Steps.Add(new StepVO() {Title = "-"});
+            _wizard.Steps.Add(new StepVO() { Title = "-" });
         }
 
         public void DeleteStep(StepVO step)
@@ -172,6 +185,31 @@ namespace KB.PaSModule.ViewModels
         {
             SelectedStep = step;
         }
+      
+        private bool CanSave(WizardVO wizard)
+        {
+            bool ok = false;
 
+            if (wizard != null)
+            {
+                if (SelectedSubCategory != null && _wizard.Problem != null)
+                {
+                    _wizard.Problem.SubCategoryID = SelectedSubCategory.SubCategoryID;
+                }
+
+                ok = wizard.ValidateVO();
+            }
+            return ok;
+        }
+      
+        public event EventHandler ClosingRequest;
+
+        protected void OnClosingRequest()
+        {
+            if (this.ClosingRequest != null)
+            {
+                this.ClosingRequest(this, EventArgs.Empty);
+            }
+        }
     }
 }

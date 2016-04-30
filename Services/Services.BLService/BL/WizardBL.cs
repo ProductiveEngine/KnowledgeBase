@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using DAL.Accessors;
 using DomainClasses.Models;
@@ -35,7 +36,7 @@ namespace Services.BLService.BL
 
                     if (wizard.Solution.Steps != null && wizard.Solution.Steps.Count > 0)
                     {
-                       // wizard.Steps = wizard.Solution.Steps.ToList();
+                        wizard.Steps = new ObservableCollection<StepVO>(wizard.Solution.Steps); 
                     }
                 }
                 
@@ -44,28 +45,20 @@ namespace Services.BLService.BL
             return wizard;
         }
 
-        public Boolean Save(WizardVO vo)
-        {
-            //vo = null;
-            //vo = new WizardVO();
-
-            //vo.Problem.Title = "TEST 4";
-            //vo.Problem.SubCategoryID = 1;
-
+        public bool Save(WizardVO vo)
+        {           
             if (vo.Problem != null)
-            {         
-            vo.Problem.Solutions = null;
-            _wizardAccessor.RepoProblem.InsertOrUpdate(vo.Problem);
-            _wizardAccessor.Save();
+            {
+                vo.Problem.ModifiedDate = DateTime.Now;
+                _wizardAccessor.RepoProblem.InsertOrUpdate(vo.Problem);                
             }
 
-        if (vo.Solution != null && vo.Problem != null && vo.Problem.ProblemID > 0)
-            {
-                //vo.Solution.Problem = null;
-                vo.Solution.Steps = null;
+             if (vo.Solution != null && vo.Problem != null && vo.Problem.ProblemID > 0)
+            {                
+                //vo.Solution.Steps = null;
                 vo.Solution.ProblemID = vo.Problem.ProblemID;
-                _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);
-                _wizardAccessor.Save();
+                vo.Solution.ModifiedDate = DateTime.Now;
+                _wizardAccessor.RepoSolution.InsertOrUpdate(vo.Solution);                
             }
 
             if (vo.Steps != null && vo.Steps.Count > 0 && vo.Solution != null && vo.Solution.SolutionId > 0)
@@ -73,12 +66,12 @@ namespace Services.BLService.BL
                 foreach (StepVO step in vo.Steps)
                 {
                     step.SolutionID = vo.Solution.SolutionId;
+                    step.ModifiedDate = DateTime.Now;
                     _wizardAccessor.RepoStep.InsertOrUpdate(step);
-                }
-                _wizardAccessor.Save();
+                }                
             }
-            
-            return true;
+                        
+            return _wizardAccessor.Save();
         } 
     }
 }

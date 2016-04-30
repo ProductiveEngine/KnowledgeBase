@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using DomainClasses.Models;
 using KB.PaSModule.ViewModels;
 using KnolwdgeBase.Infrastructure;
 
@@ -18,15 +19,27 @@ namespace KB.PaSModule.Views
             DataContext = paSViewModel;
         }
 
-        private void BtnNew_Click(object sender, RoutedEventArgs e)
-        {
-            new WizardView(new WizardViewModel(null)).Show();
-        }
-
         public IViewModel ViewModel
         {
             get { return (IViewModel)DataContext; }
             set { DataContext = value; }
-        }        
+        }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            new WizardView(new WizardViewModel(null)).Show();
+        }
+       
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if ((ProblemVO) lstProblems.SelectedItem != null)
+            {
+                int problemId = ((ProblemVO) lstProblems.SelectedItem).ProblemID;
+
+                WizardViewModel wvm = new WizardViewModel(null);
+                wvm.InitializeEdit(problemId);
+                new WizardView(wvm).Show();
+            }
+        }
     }
 }

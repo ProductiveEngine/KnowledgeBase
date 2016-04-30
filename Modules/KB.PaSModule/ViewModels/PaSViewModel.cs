@@ -11,10 +11,10 @@ namespace KB.PaSModule.ViewModels
     public class PaSViewModel: ViewModelBase, IPaSViewModel
     {
         private readonly ProblemBL _problemBL;
-        private readonly SolutionBL _solutionBL;
+        private readonly SolutionBL _solutionBL;        
 
         #region Properties          
-            
+
         private ObservableCollection<ProblemVO> _problems;
         public ObservableCollection<ProblemVO> Problems
         {
@@ -39,10 +39,14 @@ namespace KB.PaSModule.ViewModels
                     _selectedProblem = value;
                     OnPropertyChanged("SelectedProblem");
 
-                    Solutions = new ObservableCollection<SolutionVO>(_solutionBL.GetAll().Where(x => x.ProblemID == _selectedProblem.ProblemID).ToList());
+                    Solutions = new ObservableCollection<SolutionVO>(_solutionBL.GetAll().Where(x => x.ProblemID == _selectedProblem.ProblemID));
                     OnPropertyChanged("Solutions");
-                    SelectedSolution = Solutions[0];
-                    OnPropertyChanged("SelectedSolution");
+
+                    if (Solutions != null && Solutions.Count > 0)
+                    {
+                        SelectedSolution = Solutions[0];
+                        OnPropertyChanged("SelectedSolution");
+                    }
                 }
             }
         }

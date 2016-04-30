@@ -59,6 +59,7 @@
     <Compile Include="Models\StepVO.cs" />
     <Compile Include="Models\SubCategoryVO.cs" />
     <Compile Include="Models\UsefulInfoVO.cs" />
+    <Compile Include="ViewModels\CloseableViewModel.cs" />
     <Compile Include="ViewModels\WizardVO.cs" />
   </ItemGroup>
   <ItemGroup>
