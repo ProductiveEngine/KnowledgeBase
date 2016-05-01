@@ -4,42 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                
              mc:Ignorable="d" 
-             d:DesignHeight="346.023" d:DesignWidth="564.205">
-    <Grid>
+             d:DesignHeight="346.023" Width="1046.872">
+    <Grid Margin="0,0,0,-59">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="95*"/>
-            <ColumnDefinition Width="106*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="108*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <GroupBox x:Name="Search" Grid.Row="0" Grid.Column="0" Header="Search" >
-            <TextBlock> AA</TextBlock>
-        </GroupBox>
-        <GroupBox Grid.Row="0" Grid.Column="1" Header="Commands">
-            <StackPanel>
-                <Button x:Name="btnNew" Margin="5" Click="btnNew_Click">New</Button>
-                <Button x:Name="btnEdit" Margin="5" Click="btnEdit_Click">Edit</Button>
-                <Button Margin="5">Save</Button>
-                <Button Margin="5">Cancel</Button>
-            </StackPanel>
-        </GroupBox>
-
-        <GroupBox x:Name="PsLists" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Header="Problems and Solutions" Margin="0,0,0,-191" >
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="95*"/>
-                    <ColumnDefinition Width="106*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="152*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="14*" />
+                    <RowDefinition Height="17*" />
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="Problem:" Target="{Binding ElementName=txtSProblem}"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Name="txtSProblem" Margin="4,5,5,5" />
+                <Button Grid.Column="1" Grid.Row="1" x:Name="btnSearch" Margin="89,1,5,1" Content="Search" Height="20"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="PsLists" Grid.Column="0" Grid.Row="1"  Margin="0,0,0,-251" >
+            <Grid Margin="0,0,0,-6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="164*"/>
+                    <ColumnDefinition Width="121*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <TextBlock Text="Problems" Grid.Column="0" Grid.Row="0"></TextBlock>
-                <TextBlock Text="Solutions" Grid.Column="1" Grid.Row="0"></TextBlock>
-                <ListBox x:Name="lstProblems" ItemsSource="{Binding Problems}" SelectedItem="{Binding SelectedProblem}" Grid.Column="0" Grid.Row="1" Width="170" Margin="0,5,11,10">
+                <ListBox x:Name="lstProblems" Grid.RowSpan="2" ItemsSource="{Binding Problems}" SelectedItem="{Binding SelectedProblem}" Grid.Column="0" Grid.Row="1" Margin="0,5,0,10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,2">
@@ -53,34 +55,53 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <ListBox x:Name="lstSolutions" ItemsSource="{Binding Solutions}" SelectedItem="{Binding SelectedSolution}"  Grid.Column="1" Grid.Row="1" Width="170" Margin="0,5,11,10">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Title}"></TextBlock>
-                                <!--<ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />-->
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <Button x:Name="btnNew" Margin="5" Click="btnNew_Click" Content="New" />
+                    <Button x:Name="btnEdit" Margin="5" Click="btnEdit_Click" Content="Edit" />
+                </StackPanel>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="Steps" Grid.Row="0" Grid.Column="2" Header="Solution Steps">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>Problem:</TextBlock>
-                    <TextBlock Name="ProblemTitle" Margin="5,0,0,0">Title</TextBlock>
-                    <TextBlock Margin="10,0,0,0" >Solution:</TextBlock>
-                    <TextBlock Name="SolutionTitle" Margin="5,0,0,0">Title</TextBlock>
-                </StackPanel>
-                <TabControl Name="StepsTabs">
+        <GroupBox x:Name="Steps" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Header="Solution Steps" Margin="0,0,10,-251">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                </TabControl>
-            </StackPanel>
+                <TextBlock Grid.Column="0" Grid.Row="0" Margin="5,0,0,0">Problem:</TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" Name="txtProblemTitle" Text="{Binding SelectedProblem.Title}" Margin="5,0,0,0"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Margin="5,0,0,0">Solution:</TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="0" Name="txtSolutionTitle" Text="{Binding SelectedSolution.Title}" Margin="5,0,0,0"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1" Margin="5,0,5,0">Description:</TextBlock>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="txtProblemDescr" TextWrapping="Wrap" Text="{Binding SelectedProblem.Description}"  Height="53" Width="259" Margin="5">
+                </TextBox>
+
+                <TextBlock Grid.Column="2" Grid.Row="1" Margin="5,0,5,0">Description:</TextBlock>
+                <TextBox Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedSolution.Description}" Width="262" Height="52" Margin="5">
+                </TextBox>
+
+                <ListView  Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2"  Name="lstSteps" ItemsSource="{Binding Steps}" SelectedItem="{Binding SelectedStep}" Margin="0,10,6,-185" SelectionChanged="lstSteps_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="#" Width="30" DisplayMemberBinding="{Binding Sequence}" />
+                            <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label  Grid.Column="2" Grid.Row="2" Content=" Step Description" Width="100"></Label>
+                <TextBox  Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" x:Name="txtStepDescription" TextWrapping="Wrap" Text="{Binding SelectedStep.Description}" MaxLength="500" Margin="5,0,6,-185" />
+            </Grid>
         </GroupBox>
     </Grid>
 </UserControl>

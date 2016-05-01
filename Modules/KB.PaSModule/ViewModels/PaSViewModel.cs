@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using DomainClasses.Models;
+using DomainClasses.ViewModels;
 using KnolwdgeBase.Infrastructure;
 using Prism.Regions;
 using Services.BLService.BL;
@@ -10,8 +11,9 @@ namespace KB.PaSModule.ViewModels
 {
     public class PaSViewModel: ViewModelBase, IPaSViewModel
     {
-        private readonly ProblemBL _problemBL;
-        private readonly SolutionBL _solutionBL;        
+        private readonly ProblemBL _problemBL;        
+        private readonly WizardBL _wizardBL;
+
 
         #region Properties          
 
@@ -39,39 +41,39 @@ namespace KB.PaSModule.ViewModels
                     _selectedProblem = value;
                     OnPropertyChanged("SelectedProblem");
 
-                    Solutions = new ObservableCollection<SolutionVO>(_solutionBL.GetAll().Where(x => x.ProblemID == _selectedProblem.ProblemID));
-                    OnPropertyChanged("Solutions");
-
-                    if (Solutions != null && Solutions.Count > 0)
-                    {
-                        SelectedSolution = Solutions[0];
-                        OnPropertyChanged("SelectedSolution");
-                    }
+                    WizardVO wizard = _wizardBL.FindById(_selectedProblem.ProblemID);
+                    SelectedSolution = wizard.Solution;
+                    Steps = wizard.Steps;
                 }
             }
-        }
-
-        private ObservableCollection<SolutionVO> _subProblems;
-        public ObservableCollection<SolutionVO> Solutions
-        {
-            get { return _subProblems; }
-            set { _subProblems = value; }
-        }
+        }                
 
         private SolutionVO _selectedSolution;
         public SolutionVO SelectedSolution
         {
-            get
-            {
-                return _selectedSolution;
-            }
+            get { return _selectedSolution; }
             set
             {
-                if (_selectedSolution != value)
-                {
-                    _selectedSolution = value;                                     
-                }
+                _selectedSolution = value;
+                OnPropertyChanged("SelectedSolution");
             }
+        }
+
+        private ObservableCollection<StepVO> _steps;
+        public ObservableCollection<StepVO> Steps
+        {
+            get
+            {
+                return _steps;
+            }
+            set { _steps = value; }
+        }
+
+        private StepVO _selectedStep;
+        public StepVO SelectedStep
+        {
+            get { return _selectedStep; }
+            set {  _selectedStep = value; }
         }
         #endregion //Properties
         #region Constructors
@@ -80,8 +82,13 @@ namespace KB.PaSModule.ViewModels
             _problemBL = new ProblemBL();
             _problems = new ObservableCollection<ProblemVO>(_problemBL.GetAll());
 
-            _solutionBL = new SolutionBL();            
+            _wizardBL = new WizardBL();            
         }
         #endregion //Constructors  
+
+        public void ChangeSelectedStep(StepVO step)
+        {
+            SelectedStep = step;
+        }
     }
 }

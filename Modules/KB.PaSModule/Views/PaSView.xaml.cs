@@ -41,5 +41,11 @@ namespace KB.PaSModule.Views
                 new WizardView(wvm).Show();
             }
         }
+
+        private void lstSteps_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((WizardViewModel)ViewModel).ChangeSelectedStep((StepVO)lstSteps.SelectedItem);
+            lstSteps.Items.Refresh();
+        }
     }
 }

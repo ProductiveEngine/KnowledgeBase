@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:KnoledgeBase"        
         xmlns:inf="clr-namespace:KnolwdgeBase.Infrastructure;assembly=KnolwdgeBase.Infrastructure"
         mc:Ignorable="d"
-        Title="Knowledge Base" Height="561.3" Width="664.8">
+        Title="Knowledge Base" Height="561.3" Width="1135.8">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
