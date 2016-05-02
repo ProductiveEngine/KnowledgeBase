@@ -16,15 +16,24 @@ namespace Services.BLService.BL
 
         public List<SubCategoryVO> FindAll()
         {
-            List<SubCategoryVO> subCatList = null;
-            subCatList = _subCategoryAccessor.Repo.All.ToList();
+            List<SubCategoryVO> subCatList;
 
+            using (var subCategoryAccessor = new SubCategoryAccessor())
+            {
+                subCatList = subCategoryAccessor.Repo.All.ToList();
+            }            
             return subCatList;
         }
 
         public IQueryable<SubCategoryVO> GetAll()
         {
-            return _subCategoryAccessor.Repo.All;
+            IQueryable<SubCategoryVO> qSubCategory;
+
+            using (var subCategoryAccessor = new SubCategoryAccessor())
+            {
+                qSubCategory = subCategoryAccessor.Repo.All;
+            }
+            return qSubCategory;
         }
 
         public bool Save(SubCategoryVO vo)

@@ -5,7 +5,7 @@ using DAL.UOW;
 
 namespace DAL.Accessors
 {
-    public class SolutionAccessor
+    public class SolutionAccessor: IDisposable
     {
         private readonly KBUOW<KBContext> _uow;
         private readonly SolutionRepo _repo;
@@ -24,6 +24,10 @@ namespace DAL.Accessors
         public Boolean Save()
         {
             return _uow.Save() > -1;
+        }
+
+        public void Dispose()
+        {            
         }
     }
 }

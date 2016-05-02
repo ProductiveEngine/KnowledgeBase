@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DAL.Accessors;
 using DomainClasses.Models;
@@ -16,15 +17,24 @@ namespace Services.BLService.BL
 
         public List<ProblemVO> FindAll()
         {
-            List<ProblemVO> catList = null;
-            catList = _problemAccessor.Repo.All.ToList();
+            List<ProblemVO> problermList;
 
-            return catList;
+            using (var problemAccessor = new ProblemAccessor())
+            {
+                problermList = problemAccessor.Repo.All.ToList();
+            }
+            return problermList;
         }
 
         public IQueryable<ProblemVO> GetAll()
         {
-            return _problemAccessor.Repo.All;
+            IQueryable<ProblemVO> qProblem;
+
+            using (var problemAccessor = new ProblemAccessor())
+            {
+                qProblem = problemAccessor.Repo.All;
+            }
+            return qProblem;
         }
 
         public bool Save(ProblemVO vo)
@@ -41,7 +51,16 @@ namespace Services.BLService.BL
 
         public bool Remove(int id)
         {
-            _problemAccessor.Repo.Delete(id);
+            try
+            {
+                _problemAccessor.Repo.Delete(id);
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
             return _problemAccessor.Save();
         }
     }

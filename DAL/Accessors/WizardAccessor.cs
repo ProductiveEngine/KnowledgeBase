@@ -5,7 +5,7 @@ using DAL.UOW;
 
 namespace DAL.Accessors
 {
-    public class WizardAccessor
+    public class WizardAccessor: IDisposable
     {
         private readonly KBUOW<KBContext> _uow;
         private readonly ProblemRepo _repoProblem;
@@ -40,5 +40,8 @@ namespace DAL.Accessors
             return _uow.Save() > -1;
         }
 
+        public void Dispose()
+        {            
+        }
     }
 }

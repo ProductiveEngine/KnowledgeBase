@@ -16,15 +16,24 @@ namespace Services.BLService.BL
 
         public List<SolutionVO> FindAll()
         {
-            List<SolutionVO> catList = null;
-            catList = _solutionAccessor.Repo.All.ToList();
+            List<SolutionVO> catList;
 
+            using (var solutionAccessor = new SolutionAccessor())
+            {
+                catList = solutionAccessor.Repo.All.ToList();
+            }
             return catList;
         }
 
         public IQueryable<SolutionVO> GetAll()
         {
-            return _solutionAccessor.Repo.All;
+            IQueryable<SolutionVO> qSolution;
+
+            using (var solutionAccessor = new SolutionAccessor())
+            {
+                qSolution = solutionAccessor.Repo.All;
+            }
+            return qSolution;
         }
 
         public bool Save(SolutionVO vo)

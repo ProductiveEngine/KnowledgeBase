@@ -21,25 +21,26 @@ namespace Services.BLService.BL
         {
             WizardVO wizard = new WizardVO();
 
-            //_wizardAccessor.RepoProblem.AllIncluding(s => s.Solutions).FirstOrDefault();
-
-            wizard.Problem = _wizardAccessor.RepoProblem.Find(problemId);
-
-            if (wizard.Problem != null && wizard.Problem.ProblemID > 0)
+            using (var wizardAccessor = new WizardAccessor())
             {
-                List<SolutionVO> solutions = wizard.Problem.Solutions.ToList();
+                wizard.Problem = wizardAccessor.RepoProblem.Find(problemId);
 
-                if (solutions != null && solutions.Count > 0)
+                if (wizard.Problem != null && wizard.Problem.ProblemID > 0)
                 {
-                    SolutionVO solution = solutions.FirstOrDefault();
-                    wizard.Solution = solution;
+                    List<SolutionVO> solutions = wizard.Problem.Solutions.ToList();
 
-                    if (wizard.Solution.Steps != null && wizard.Solution.Steps.Count > 0)
+                    if (solutions != null && solutions.Count > 0)
                     {
-                        wizard.Steps = new ObservableCollection<StepVO>(wizard.Solution.Steps); 
+                        SolutionVO solution = solutions.FirstOrDefault();
+                        wizard.Solution = solution;
+
+                        if (wizard.Solution.Steps != null && wizard.Solution.Steps.Count > 0)
+                        {
+                            wizard.Steps = new ObservableCollection<StepVO>(wizard.Solution.Steps);
+                        }
                     }
+
                 }
-                
             }
 
             return wizard;

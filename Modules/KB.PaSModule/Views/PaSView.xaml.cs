@@ -27,24 +27,32 @@ namespace KB.PaSModule.Views
 
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
-            new WizardView(new WizardViewModel(null)).Show();
+            PaSViewModel pas = (PaSViewModel)ViewModel;
+
+            new WizardView(new WizardViewModel(null)).ShowDialog();
+
+            pas.RefreshProblemList();            
         }
        
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            PaSViewModel pas = (PaSViewModel)ViewModel;
+
             if ((ProblemVO) lstProblems.SelectedItem != null)
             {
                 int problemId = ((ProblemVO) lstProblems.SelectedItem).ProblemID;
 
                 WizardViewModel wvm = new WizardViewModel(null);
                 wvm.InitializeEdit(problemId);
-                new WizardView(wvm).Show();
+                new WizardView(wvm).ShowDialog();
+
+                pas.RefreshProblemList();                
             }
-        }
+        }   
 
         private void lstSteps_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((WizardViewModel)ViewModel).ChangeSelectedStep((StepVO)lstSteps.SelectedItem);
+            ((PaSViewModel) ViewModel).ChangeSelectedStep((StepVO) lstSteps.SelectedItem);
             lstSteps.Items.Refresh();
         }
     }

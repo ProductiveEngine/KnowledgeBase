@@ -5,7 +5,7 @@ using DAL.UOW;
 
 namespace DAL.Accessors
 {
-    public class CategoryAccessor
+    public class CategoryAccessor: IDisposable
     {
         private readonly KBUOW<KBContext> _uow;
         private readonly CategoryRepo _repo;
@@ -24,6 +24,10 @@ namespace DAL.Accessors
         public Boolean Save()
         {
             return _uow.Save()>-1;
+        }
+
+        public void Dispose()
+        {            
         }
     }
 }

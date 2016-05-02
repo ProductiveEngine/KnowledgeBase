@@ -206,10 +206,7 @@ namespace KB.PaSModule.ViewModels
 
         protected void OnClosingRequest()
         {
-            if (this.ClosingRequest != null)
-            {
-                this.ClosingRequest(this, EventArgs.Empty);
-            }
+            ClosingRequest?.Invoke(this, EventArgs.Empty);
         }
     }
 }
