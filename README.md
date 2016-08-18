@@ -1,8 +1,24 @@
 #Knowledge Base
 This is a WPF application showcasing the use of the Prism framework.
+You can store the problems you encounter as a developer with their corresponding solutions.
 
 #Features
-With this program you can store the the problems that you encounter as a developer with their corresponding solutions.
+* Basic project structure for WPF projects
+  - MVVM pattern using the Prism framework
+* Enterprise level Data Access Layer
+  - Repository
+  - Unit of Work
+  - Accessors
+
+#Technologies
+* WPF
+* Prism Framework
+* Entity Framework
+* Extended WPF toolkit
+* Unity
+
+#IDE
+Microsoft Visual Studio
 
 #Getting started
 1. Run the script KBDB.sql (MS SQL database)
